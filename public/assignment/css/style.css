@@ -8,7 +8,7 @@ body{
 }
 .form-group{
     margin-top: 20px;
-    
+
 }
 
 .navbar-header
@@ -44,5 +44,14 @@ li.borderless{
     opacity: 0.8;
 }
 
+.end-padding{
+    padding-bottom: 20px;
+}
 
+a.remove-hover{
+    text-decoration: none;
+}
 
+span.glyphicon.glyphicon-play{
+    padding-right: 5px;
+}
