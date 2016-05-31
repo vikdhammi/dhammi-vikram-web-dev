@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="viewport" content="initial-scale=1.25, user-scalable=no">
-    <title>Choose Widget</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="/assignment/css/style.css" rel="stylesheet"/>
-</head>
-<body>
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="/assignment/widget/widget-list.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
                 </a>
@@ -29,52 +18,52 @@
 <div class="container">
     <ul class="list-group">
         <li class="list-group-item borderless">
-            <a href="/assignment/widget/widget-heading.html" class="remove-hover"> Header
+            <a ng-click="model.addHeading()" class="remove-hover"> Header
             </a>
 
         </li>
         <li class="list-group-item borderless">
-            <a href="#" class="remove-hover"> Label
+            <a  class="remove-hover"> Label
             </a>
 
         </li>
         <li class="list-group-item borderless">
-            <a href="#" class="remove-hover"> HTML
+            <a  class="remove-hover"> HTML
             </a>
 
         </li>
         <li class="list-group-item borderless">
-            <a href="#" class="remove-hover"> Text Input
+            <a  class="remove-hover"> Text Input
             </a>
 
         </li>
         <li class="list-group-item borderless">
-            <a href="#" class="remove-hover"> Link
+            <a  class="remove-hover"> Link
             </a>
 
         </li>
         <li class="list-group-item borderless">
-            <a href="#" class="remove-hover"> Button
+            <a  class="remove-hover"> Button
             </a>
 
         </li>
         <li class="list-group-item borderless">
-        <a href="/assignment/widget/widget-image.html" class="remove-hover"> Image
+        <a ng-click="model.addImage()" class="remove-hover"> Image
         </a>
 
     </li>
         <li class="list-group-item borderless">
-            <a href="/assignment/widget/widget-youtube.html" class="remove-hover"> YouTube
+            <a ng-click="model.addYoutube()" class="remove-hover"> YouTube
             </a>
 
         </li>
         <li class="list-group-item borderless">
-            <a href="#" class="remove-hover"> Data Table
+            <a  class="remove-hover"> Data Table
             </a>
 
         </li>
         <li class="list-group-item borderless">
-            <a href="#" class="remove-hover"> Repeater
+            <a " class="remove-hover"> Repeater
             </a>
 
         </li>
@@ -94,7 +83,7 @@
 
             </div>
             <div class="col-xs-3 text-center">
-                <a href="/assignment/user/profile.html">
+                <a href="#/user/{{model.userId}}">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
 
@@ -102,5 +91,3 @@
         </div>
     </div>
 </nav>
-</body>
-</html>

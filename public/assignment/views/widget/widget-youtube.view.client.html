@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="viewport" content="initial-scale=1.25, user-scalable=no">
-    <title>Widget Edit</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-</head>
-<body>
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="/assignment/widget/widget-list.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
                 </a>
@@ -23,7 +12,7 @@
                 Widget Edit
             </a>
             <p class="navbar-text pull-right">
-                <a href="/assignment/widget/widget-list.html" class="navbar-link">
+                <a ng-click="model.updateWidget(model.widget)" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -38,32 +27,38 @@
 
     <form>
         <div class="form-group">
-            <label for="widget-name">Name</label>
+            <label for="youtube-name">Name</label>
             <input type="text"
+                   ng-model="model.widget.name"
                    class="form-control"
-                   id="widget-name">
+                   placeholder="Sports Video"
+                   id="youtube-name">
         </div>
         <div class="form-group">
-            <label for="widget-text">Text</label>
+            <label for="youtube-text">Text</label>
             <input type="text"
+                   ng-model="model.widget.text"
                    class="form-control"
-                   id="widget-text"
-                   placeholder="What's Your Desert-Island Streaming Service?">
+                   placeholder="GoPro Video"
+                   id="youtube-text">
         </div>
-
         <div class="form-group">
-            <label for="widget-size">Size</label>
-            <select class="form-control" id="widget-size">
-                <option></option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-            </select>
+            <label for="youtube-url">Text</label>
+            <input type="text"
+                   ng-model="model.widget.url"
+                   class="form-control"
+                   id="youtube-url"
+                   placeholder="https://www.youtube.com/watch?v=NoKDBxu0si4">
         </div>
-        <a class="btn btn-danger btn-danger btn-block" href="/assignment/widget/widget-list.html" >Delete</a>
+        <div class="form-group">
+            <label for="youtube-width">Text</label>
+            <input type="text"
+                   ng-model="model.widget.width"
+                   class="form-control"
+                   placeholder="100%"
+                   id="youtube-width">
+        </div>
+        <a class="btn btn-danger btn-danger btn-block" ng-click="model.deleteWidget()" >Delete</a>
     </form>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
@@ -84,5 +79,3 @@
         </div>
     </div>
 </nav>
-</body>
-</html>

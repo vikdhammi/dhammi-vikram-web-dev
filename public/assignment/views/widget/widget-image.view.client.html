@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="viewport" content="initial-scale=1.25, user-scalable=no">
-    <title>Widget Image</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="/assignment/css/style.css" rel="stylesheet"/>
-</head>
-<body>
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="/assignment/widget/widget-list.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
                 </a>
@@ -23,7 +12,7 @@
                 Widget Edit
             </a>
             <p class="navbar-text pull-right">
-                <a href="/assignment/widget/widget-list.html" class="navbar-link">
+                <a ng-click="model.updateWidget(model.widget)" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -40,18 +29,21 @@
         <div class="form-group">
             <label for="image-name">Name</label>
             <input type="text"
+                   ng-model="model.widget.name"
                    class="form-control"
                    id="image-name">
         </div>
         <div class="form-group">
             <label for="image-text">Text</label>
             <input type="text"
+                   ng-model="model.widget.text"
                    class="form-control"
                    id="image-text">
         </div>
         <div class="form-group">
             <label for="image-url">URL</label>
             <input type="text"
+                   ng-model="model.widget.url"
                    class="form-control"
                    id="image-url"
                    placeholder="https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/0327-3.jpg?itok=EXZiM9A1">
@@ -59,6 +51,7 @@
         <div class="form-group">
             <label for="image-width">Width</label>
             <input type="text"
+                   ng-model="model.widget.width"
                    class="form-control"
                    id="image-width"
                    placeholder="100%">
@@ -66,6 +59,7 @@
         <div class="form-group">
             <label for="image-url">Upload</label>
             <input type="file"
+                   ng-model="model.widget.upload"
                    class="form-control"
                    id="image-upload"
                    placeholder="No file choosen">
@@ -75,7 +69,7 @@
                   href="#" >Upload Image</a>
         <a class="btn btn-danger
                   btn-block"
-                  href="/assignment/widget/widget-list.html" >Delete</a>
+           ng-click="model.deleteWidget()" >Delete</a>
     </form>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
@@ -96,5 +90,3 @@
         </div>
     </div>
 </nav>
-</body>
-</html>

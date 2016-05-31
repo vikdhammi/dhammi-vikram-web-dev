@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="viewport" content="initial-scale=1.25, user-scalable=no">
-    <title>Profile</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-</head>
-<body>
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="/assignment/website/website-list.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
                 </a>
@@ -23,7 +12,7 @@
                 Edit Website
             </a>
             <p class="navbar-text pull-right">
-                <a href="/assignment/website/website-list.html" class="navbar-link">
+                <a ng-click="model.updateWebsite(website)" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -39,6 +28,7 @@
         <div class="form-group">
             <label for="name">Website Name</label>
             <input type="text"
+                   ng-model="model.website.name"
                    class="form-control"
                    id="name"
                    value="Expedia"
@@ -48,12 +38,14 @@
             <label for="description">Website Description</label>
             <textarea
                     id="description"
+                    ng-model="model.website.desc"
                     class="form-control"
                     placeholder="Description"
                     rows="5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</textarea>
         </div>
 
-        <a class="btn btn-danger btn-danger btn-block" href="/assignment/website/website-list.html" >Delete</a>
+        <a ng-click="model.deleteWebsite(model.websiteId)" class="btn btn-danger btn-danger btn-block"
+            >Delete</a>
     </form>
 
 </div>
@@ -61,18 +53,17 @@
     <div class="container">
         <div class="row navbar-text">
             <div class="col-xs-3 text-center">
+                <span class="glyphicon glyphicon-share-alt"></span>
             </div>
             <div class="col-xs-3 text-center">
             </div>
             <div class="col-xs-3 text-center">
             </div>
             <div class="col-xs-3 text-center">
-                <a href="/assignment/user/profile.html">
+                <a href="#/user/{{model.userId}}">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>
         </div>
     </div>
 </nav>
-</body>
-</html>
