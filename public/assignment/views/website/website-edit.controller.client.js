@@ -25,8 +25,8 @@
             }
         }
         
-        function updateWebsite(website){
-            var result = WebsiteService.updateWebsite(vm.websiteId,website);
+        function updateWebsite(){
+            var result = WebsiteService.updateWebsite(vm.websiteId, vm.website);
             if(result){
                 $location.url("/user/"+vm.userId+"/website/");
             }

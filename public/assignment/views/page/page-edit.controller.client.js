@@ -10,6 +10,7 @@
         vm.pageId = $routeParams.pageId;
         vm.deletePage = deletePage;
         vm.updatePage = updatePage;
+        vm.page = PageService.findPageById(vm.pageId);
 
         function init(){
             vm.page = PageService.findPageById(vm.pageId);
@@ -26,8 +27,8 @@
             }
         }
 
-        function updatePage(page) {
-            var result = PageService.updatePage(pageId,page);
+        function updatePage() {
+            var result = PageService.updatePage(vm.pageId,vm.page);
             if(result){
                 $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/");
             }
