@@ -10,31 +10,45 @@
         vm.pageId = $routeParams.pageId;
         vm.deletePage = deletePage;
         vm.updatePage = updatePage;
-        vm.page = PageService.findPageById(vm.pageId);
+        //vm.page = PageService.findPageById(vm.pageId);
 
         function init(){
-            vm.page = PageService.findPageById(vm.pageId);
+            PageService
+                .findPageById(vm.pageId)
+                .then(function(response){
+                    vm.page = response.data;
+                });
         }
         init();
         
         function  deletePage(pageId) {
-            var result = PageService.deletePage(pageId);
-            if(result){
-                $location.url("/user/"+ vm.userId+"/website/"+vm.websiteId+"/page/");
-            }
-            else{
-                vm.error = "Unable to delete page";
-            }
+            PageService
+                .deletePage(pageId)
+                .then(function(response){
+                    var result = response.data;
+                    if(result){
+                        $location.url("/user/"+ vm.userId+"/website/"+vm.websiteId+"/page/");
+                    }
+                    else{
+                        vm.error = "Unable to delete page";
+                    }
+                });
+
         }
 
         function updatePage() {
-            var result = PageService.updatePage(vm.pageId,vm.page);
-            if(result){
-                $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/");
-            }
-            else{
-                vm.error = "Unable to update page";
-            }
+            PageService
+                .updatePage(vm.pageId,vm.page)
+                .then(function(response){
+                    var result = response.data;
+                    if(result){
+                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/");
+                    }
+                    else{
+                        vm.error = "Unable to update page";
+                    }
+                });
+
         }
 
     }

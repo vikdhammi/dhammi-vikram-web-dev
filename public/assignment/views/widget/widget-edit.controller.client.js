@@ -14,28 +14,42 @@
 
 
         function init(){
-           vm.widget= WidgetService.findWidgetsById(vm.widgetId);
+           WidgetService
+               .findWidgetsById(vm.widgetId)
+               .then(function(response){
+                   vm.widget = response.data;
+               });
         }
         init();
 
 
         function updateWidget(widget){
-            if(WidgetService.updateWidget(vm.widgetId,widget)){
-                $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
-            }
-            else{
-                vm.error="Unable to update Widget";
-            }
+            WidgetService
+                .updateWidget(vm.widgetId,widget)
+                .then(function(response){
+                    var result = response.data;
+                    if(result){
+                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+                    }
+                    else{
+                        vm.error="Unable to update Widget";
+                    }
+                });
 
         }
 
         function deleteWidget(){
-            if(WidgetService.deleteWidget(vm.widgetId)){
-                $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
-            }
-            else{
-                vm.error="Unable to delete Widget";
-            }
+            WidgetService
+                .deleteWidget(vm.widgetId)
+                .then(function(response){
+                    var result = response.data;
+                    if(result){
+                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+                    }
+                    else{
+                        vm.error="Unable to delete Widget";
+                    }
+                });
 
         }
 

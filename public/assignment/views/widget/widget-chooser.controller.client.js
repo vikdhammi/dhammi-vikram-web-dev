@@ -16,7 +16,11 @@
 
 
         function init(){
-           vm.widgets= WidgetService.findWidgetsForPageId(vm.pageId);
+           WidgetService
+               .findWidgetsForPageId(vm.pageId)
+               .then(function(response){
+                   vm.widgets = response.data;
+               });
         }
         init();
 
@@ -26,12 +30,20 @@
                 pageId: vm.pageId,
                 widgetType: "HEADER"
             };
-            if(WidgetService.createWidget(vm.pageId,newWidget)){
-                $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+newWidget._id);
-            }
-            else{
-                vm.error="Unable to create Widget";
-            }
+            WidgetService
+                .createWidget(vm.pageId,newWidget)
+                .then(function(response){
+                    var result = response.data;
+                    if(result){
+                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+newWidget._id);
+                    }
+                    else{
+                        vm.error="Unable to create Widget";
+                    }
+
+
+                });
+
         }
 
         function addImage(){
@@ -40,12 +52,17 @@
                 pageId: vm.pageId,
                 widgetType: "IMAGE"
             };
-            if(WidgetService.createWidget(vm.pageId,newWidget)){
-                $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+newWidget._id);
-            }
-            else{
-                vm.error="Unable to create Widget";
-            }
+            WidgetService
+                .createWidget(vm.pageId,newWidget)
+                .then(function(response){
+                    var result = response.data;
+                    if(result){
+                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+newWidget._id);
+                    }
+                    else{
+                        vm.error="Unable to create Widget";
+                    }
+                });
         }
 
         function addYoutube(){
@@ -54,12 +71,17 @@
                 pageId: vm.pageId,
                 widgetType: "YOUTUBE"
             };
-            if(WidgetService.createWidget(vm.pageId,newWidget)){
-                $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+newWidget._id);
-            }
-            else{
-                vm.error="Unable to create Widget";
-            }
+            WidgetService
+                .createWidget(vm.pageId,newWidget)
+                .then(function(response){
+                    var result = response.data;
+                    if(result){
+                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+newWidget._id);
+                    }
+                    else{
+                        vm.error="Unable to create Widget";
+                    }
+                });
         }
 
         function getSafeHtml(widget){
