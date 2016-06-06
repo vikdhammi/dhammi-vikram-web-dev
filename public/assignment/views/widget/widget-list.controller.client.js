@@ -17,7 +17,10 @@
                .findWidgetsForPageId(vm.pageId)
                .then(function(response) {
                    vm.widgets = response.data;
+
                });
+
+            $(".container").sortable({ axis: "y"});
         }
         init();
 
