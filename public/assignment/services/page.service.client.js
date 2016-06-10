@@ -22,7 +22,7 @@
         
         function createPage(websiteId, name){
             var newPage = {
-                _id: (new Date()).getTime()+"",
+           //     _id: (new Date()).getTime()+"",
                 name: name,
                 websiteId: websiteId
             };

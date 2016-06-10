@@ -12,7 +12,7 @@
         function createPage(name){
             PageService
                 .createPage(vm.websiteId, name)
-                .then(function(reponse){
+                .then(function(response){
                     var newPage = response.data;
                     if(newPage){
                         $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");

@@ -32,12 +32,12 @@
         }
         function createWebsite(developerId, name, desc){
             var newWebsite = {
-                _id: (new Date()).getTime()+"",
+              // _id: (new Date()).getTime()+"",
                 name: name,
                 description: desc,
                 developerId: developerId
             };
-            return $http.post("/api/user/:userId/website", newWebsite);
+            return $http.post("/api/user/"+developerId+"/website", newWebsite);
         }
         function findWebsitesForUserId(userId){
             var url = "/api/user/"+userId+"/website";
