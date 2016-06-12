@@ -13,6 +13,8 @@
         vm.addHeading = addHeading;
         vm.addImage = addImage;
         vm.addYoutube = addYoutube;
+        vm.addHtml = addHtml;
+        vm.addText = addText;
 
 
         function init(){
@@ -23,19 +25,64 @@
                });
         }
         init();
-
-        function addHeading(){
+        
+        function addHtml(){
             var newWidget = {
-                _id: (new Date()).getTime()+"",
-                pageId: vm.pageId,
-                widgetType: "HEADER"
+              name: "HtmlWidget",
+                _page: vm.pageId,
+                type: "HTML"
             };
             WidgetService
                 .createWidget(vm.pageId,newWidget)
                 .then(function(response){
                     var result = response.data;
                     if(result){
-                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+newWidget._id);
+                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+result._id);
+                    }
+                    else{
+                        vm.error="Unable to create Widget";
+                    }
+
+
+                });
+
+        }
+
+        function addText(){
+            var newWidget = {
+                name: "TextWidget",
+        //        _page: vm.pageId,
+                type: "TEXT"
+            };
+            WidgetService
+                .createWidget(vm.pageId,newWidget)
+                .then(function(response){
+                    var result = response.data;
+                    if(result){
+                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+result._id);
+                    }
+                    else{
+                        vm.error="Unable to create Widget";
+                    }
+
+
+                });
+
+        }
+        
+        function addHeading(){
+            var newWidget = {
+          //      _id: (new Date()).getTime()+"",
+                name: "HeaderWidget",
+                _page: vm.pageId,
+                type: "HEADER"
+            };
+            WidgetService
+                .createWidget(vm.pageId,newWidget)
+                .then(function(response){
+                    var result = response.data;
+                    if(result){
+                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+result._id);
                     }
                     else{
                         vm.error="Unable to create Widget";
@@ -48,16 +95,17 @@
 
         function addImage(){
             var newWidget={
-                _id: (new Date()).getTime()+"",
-                pageId: vm.pageId,
-                widgetType: "IMAGE"
+         //       _id: (new Date()).getTime()+"",
+                name: "ImageWidget",
+                _page: vm.pageId,
+                type: "IMAGE"
             };
             WidgetService
                 .createWidget(vm.pageId,newWidget)
                 .then(function(response){
                     var result = response.data;
                     if(result){
-                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+newWidget._id);
+                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+result._id);
                     }
                     else{
                         vm.error="Unable to create Widget";
@@ -67,16 +115,17 @@
 
         function addYoutube(){
             var newWidget={
-                _id: (new Date()).getTime()+"",
-                pageId: vm.pageId,
-                widgetType: "YOUTUBE"
+          //      _id: (new Date()).getTime()+"",
+                name: "YoutubeWidget",
+                _page: vm.pageId,
+                type: "YOUTUBE"
             };
             WidgetService
                 .createWidget(vm.pageId,newWidget)
                 .then(function(response){
                     var result = response.data;
                     if(result){
-                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+newWidget._id);
+                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+result._id);
                     }
                     else{
                         vm.error="Unable to create Widget";

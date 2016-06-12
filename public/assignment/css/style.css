@@ -5,6 +5,7 @@ input.form-control {
 
 body{
     padding-top: 60px;
+    padding-bottom: 60px;
 }
 .form-group{
     margin-top: 20px;
@@ -42,6 +43,7 @@ li.borderless{
     padding-bottom: 5px;
     border-bottom-left-radius: 8px;
     opacity: 0.8;
+    z-index: 2;
 }
 
 .end-padding{
@@ -54,4 +56,15 @@ a.remove-hover{
 
 span.glyphicon.glyphicon-play{
     padding-right: 5px;
+}
+
+span.help-inline{
+    color:#D63301;
+    background-color: #FFCCBA;
+}
+
+div.ui-state-error-text.custom-err{
+    color:#D63301;
+    background-color: #FFCCBA;
+
 }

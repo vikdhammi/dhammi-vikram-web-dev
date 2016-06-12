@@ -3,16 +3,16 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
                 </a>
             </p>
             <a class="navbar-brand" href="#">
-                New Page
+                Text Widget
             </a>
             <p class="navbar-text pull-right">
-                <a ng-click="model.createPage(name); submitted=true" class="navbar-link">
+                <a ng-click="model.updateWidget(model.widget)" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -24,30 +24,30 @@
 </nav>
 <div class="container">
 
+            Text
+            <input
+                   ng-model="model.widget.text"
+                   class="form-control"/>
 
-    <form name="pageForm" ng-app>
+            Rows
+            <input
+                   ng-model="model.widget.rows"
+                   class="form-control"/>
 
-            <div class="control-group" ng-class="{true: 'error'}[submitted && pageForm.name.$error.required]">
-            <label for="name">Name</label>
-            <input type="text"
-                   ng-model="name"
-                   class="form-control"
-                   id="name"
-                   name="name"
-                   placeholder="Page Name"
-                    required/>
-                <span class="help-inline" ng-show="submitted && pageForm.name.$error.required">*Page Name is a Required field</span>
-                </div>
+        Placeholder
+    <div class="input-group">
+        <input type="text"
 
-            <label for="title">Title</label>
-            <input type="text"
-                   ng-model="title"
-                   class="form-control"
-                   id="title"
-                   placeholder="Page Title">
+        readonly
+               class = "form-control" value ="Formatted"/>
+        <span class="input-group-addon">
+            <input ng-model="model.widget.formatted" type="checkbox"/>
+        </span>
 
+    </div>
 
-    </form>
+    <a class="btn btn-danger btn-danger btn-block" ng-click="model.deleteWidget()">Delete</a>
+
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">

@@ -37,18 +37,26 @@
         }
 
         function updatePage() {
-            PageService
-                .updatePage(vm.pageId,vm.page)
-                .then(function(response){
-                    var result = response.data;
-                    if(result){
-                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/");
-                    }
-                    else{
-                        vm.error = "Unable to update page";
-                    }
-                });
+            if(vm.page.name) {
+                PageService
+                    .updatePage(vm.pageId, vm.page)
+                    .then(function (response) {
+                        var result = response.data;
+                        if (result.name) {
+                            if (result) {
+                                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/");
+                            }
+                            else {
+                                vm.error = "Unable to update page";
+                            }
+                        }
 
+
+                    });
+            }
+            else{
+                vm.error = "*" +"Page Name cannot be left blank";
+            }
         }
 
     }

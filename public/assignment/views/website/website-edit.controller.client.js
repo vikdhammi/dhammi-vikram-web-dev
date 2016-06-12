@@ -35,18 +35,24 @@
         }
         
         function updateWebsite(){
-            WebsiteService
-                .updateWebsite(vm.websiteId, vm.website)
-                .then(function(response){
-                    var website = response.data;
-                    if(website){
-                        $location.url("/user/"+vm.userId+"/website/");
-                    }
-                    else{
-                        vm.error = "Unable to update website";
-                    }
-                });
+            if(vm.website.name) {
+                WebsiteService
+                    .updateWebsite(vm.websiteId, vm.website)
+                    .then(function (response) {
+                        var website = response.data;
 
+                        if (website) {
+                            $location.url("/user/" + vm.userId + "/website/");
+                        }
+                        else {
+                            vm.error = "Unable to update website";
+                        }
+
+                    });
+            }
+            else {
+                vm.error = "*" +"Website Name cannot be left blank";
+            }
         }
     }
 })();

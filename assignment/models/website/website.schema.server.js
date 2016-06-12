@@ -4,8 +4,9 @@ module.exports = function() {
 
     var WebsiteSchema = mongoose.Schema({
         _user: {type: mongoose.Schema.ObjectId, ref: "User"},
-        name: String,
+        name: {type: String, required: true},
         description: String,
+    //    pages: [Page],
         dateCreated: {type: Date, default: Date.now}
     }, {collection: "assignment.website"});
 

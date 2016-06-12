@@ -7,7 +7,10 @@ module.exports = function() {
         password: {type: String, minLength : 4, required: true},
         firstName: {type: String, minLength: 4 },
         lastName: String,
+        email: String,
+        phone: String,
         dob: Date,
+    //    websites: [Website],
         dateCreated: {type: Date, default: Date.now()}
     }, {collection: "assignment.user"});
     
