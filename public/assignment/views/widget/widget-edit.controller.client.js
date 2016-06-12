@@ -24,18 +24,22 @@
 
 
         function updateWidget(widget){
-            WidgetService
-                .updateWidget(vm.widgetId,widget)
-                .then(function(response){
-                    var result = response.data;
-                    if(result){
-                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
-                    }
-                    else{
-                        vm.error="Unable to update Widget";
-                    }
-                });
-
+            if(widget.name) {
+                WidgetService
+                    .updateWidget(vm.widgetId, widget)
+                    .then(function (response) {
+                        var result = response.data;
+                        if (result) {
+                            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                        }
+                        else {
+                            vm.error = "Unable to update Widget";
+                        }
+                    });
+            }
+            else {
+                vm.error= "*" +"Widget Name is a required!";
+            }
         }
 
         function deleteWidget(){

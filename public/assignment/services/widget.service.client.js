@@ -13,7 +13,8 @@
                 createWidget: createWidget,
                 findWidgetsById: findWidgetsById,
                 updateWidget: updateWidget,
-                deleteWidget: deleteWidget
+                deleteWidget: deleteWidget,
+                reorderWidget: reorderWidget
             };
             return api;
             
@@ -40,6 +41,12 @@
             function deleteWidget(widgetId){
                 var url = "/api/widget/" + widgetId;
                 return $http.delete(url);
+            }
+            
+            function reorderWidget(pageId, start, end) {
+                console.log(start);
+                console.log(end);
+                return $http.put("/page/"+pageId+"/widget?start="+start+"&end="+end);
             }
 
 

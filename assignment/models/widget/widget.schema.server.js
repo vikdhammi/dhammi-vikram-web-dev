@@ -7,6 +7,7 @@ module.exports = function(){
        _page: {type: mongoose.Schema.ObjectId, ref: "Page"},
         type: {type: String, enum: ['HEADER','IMAGE','YOUTUBE','HTML','INPUT','TEXT']},
         name: {type: String, required: true},
+        order: Number,
         text: String,
         placeholder: String,
         description: String,

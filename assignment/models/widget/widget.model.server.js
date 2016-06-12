@@ -9,16 +9,27 @@ module.exports = function(){
         findAllWidgetsForPage: findAllWidgetsForPage,
         findWidgetById: findWidgetById,
         updateWidget: updateWidget,
-        deleteWidget: deleteWidget
-   //     reorderWidget: reorderWidget
+        deleteWidget: deleteWidget,
+        reorderWidget: reorderWidget
     };
 
     return api;
 
 
+
     function createWidget(pageId, widget){
-        widget._page = pageId;
-        return Widget.create(widget);
+        return Widget
+            .find({_page: widget._page})
+            .then(
+                function(widgets){
+                    widget.order = widgets.length;
+                    return Widget.create(widget);
+                },
+                function(error){
+                    return null;
+                }
+            );
+       
     }
 
     function findAllWidgetsForPage(pageId){
@@ -40,7 +51,13 @@ module.exports = function(){
         return Widget.remove({_id: widgetId});
     }
 
-    // function reorderWidget(pageId, start, end){
-    //
-    // }
+    function reorderWidget(pageId, widgets){
+        return Widget
+            .update({_page: pageId},
+                {$set: widgets},
+                false,
+                true
+            );
+    }
+
 };

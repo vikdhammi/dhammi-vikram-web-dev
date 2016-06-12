@@ -21,10 +21,48 @@ module.exports = function(app, models){
     app.put("/api/widget/:widgetId",updateWidget);
     app.delete("/api/widget/:widgetId",deleteWidget);
     app.post ("/api/uploads", upload.single('myFile'), uploadImage);
+    app.put("/page/:pageId/widget",reorderWidget);
 
 
+    function reorderWidget(req, res){
+        var pageId = req.params.pageId;
+        var start = req.query.start;
+        var end = req.query.end;
 
-
+        widgetModel
+            .findAllWidgetsForPage(pageId)
+            .then(
+                function(widgets){
+                    widgets.forEach(
+                        function(widget){
+                            delete widget._id;
+                            if(widget.order == start){
+                                widget.order = end;
+                            }
+                            else if(widget.order > start && widget.order <= end){
+                                widget.order = widget.order-1;
+                            }
+                            else if(widget.order < start && widget.order >= end){
+                                widget.order = widget.order+1;
+                            }
+                        }
+                    );
+                    widgetModel
+                        .reorderWidget(pageId,widgets)
+                        .then(
+                            function(response){
+                                res.json(widgets);
+                            },
+                            function(error){
+                                res.statusCode(400).send(error);
+                            }
+                        );
+                },
+                function(error){
+                    res.statusCode(400).send(error);
+                }
+            );
+    }
 
     function uploadImage(req, res) {
 

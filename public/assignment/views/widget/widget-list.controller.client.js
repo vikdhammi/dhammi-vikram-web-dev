@@ -10,7 +10,8 @@
         vm.websiteId = $routeParams.websiteId;
         vm.getSafeHtml = getSafeHtml;
         vm.getSafeUrl = getSafeUrl;
-
+        vm.reorderWidget = reorderWidget;
+        vm.error = false;
 
         function init(){
            WidgetService
@@ -33,6 +34,20 @@
             var id = urlParts[urlParts.length - 1];
             var url = "https://www.youtube.com/embed/" + id;
             return $sce.trustAsResourceUrl(url);
+        }
+
+        function reorderWidget(start, end){
+            console.log(start+" "+end);
+            WidgetService
+                .reorderWidget(vm.pageId, start, end)
+                .then(
+                    function(response){
+                        init();
+                    },
+                    function(error){
+                        vm.error = "Unable to reorder widgets";
+                    }
+                );
         }
 
     }
