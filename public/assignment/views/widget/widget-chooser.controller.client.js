@@ -50,7 +50,7 @@
 
         function addText(){
             var newWidget = {
-                name: "TextWidget",
+                name: "Text Widget",
         //        _page: vm.pageId,
                 type: "TEXT"
             };
@@ -73,7 +73,7 @@
         function addHeading(){
             var newWidget = {
           //      _id: (new Date()).getTime()+"",
-                name: "HeaderWidget",
+                name: "Header Widget",
                 _page: vm.pageId,
                 type: "HEADER"
             };
@@ -96,7 +96,7 @@
         function addImage(){
             var newWidget={
          //       _id: (new Date()).getTime()+"",
-                name: "ImageWidget",
+                name: "Image Widget",
                 _page: vm.pageId,
                 type: "IMAGE"
             };
@@ -116,10 +116,11 @@
         function addYoutube(){
             var newWidget={
           //      _id: (new Date()).getTime()+"",
-                name: "YoutubeWidget",
+                name: "Youtube Widget",
                 _page: vm.pageId,
                 type: "YOUTUBE"
             };
+
             WidgetService
                 .createWidget(vm.pageId,newWidget)
                 .then(function(response){

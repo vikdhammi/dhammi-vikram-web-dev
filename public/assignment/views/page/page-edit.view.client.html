@@ -26,19 +26,19 @@
 <div class="container">
 
 
-    <form name="pageEFrom" ng-app>
-        <div class="control-group" ng-class="{true: 'error'}[submitted && pageEForm.edit-name.$error.required]">
+    <form name="pageEForm" ng-app>
+        <div class="control-group" ng-class="{true: 'error'}[submitted && pageEForm.name.$error.required]">
             <label for="edit-name">Name</label>
             <input type="text"
                    ng-model="model.page.name"
                    class="form-control"
-                   id="edit-name"
-                   name="edit-name"
+                   id="name"
+                   name="name"
                    placeholder="Page Name"
                    value="Blog Post"
                     required/>
             <!--<div class="ui-state-error-text custom-err">{{model.error}}</div>-->
-            <span class="help-inline" ng-show="submitted && pageEForm.edit-name.$error.required">{{model.error}}</span>
+            <span class="help-inline" ng-show="submitted && pageEForm.name.$error.required">{{model.error}}</span>
         </div>
 
             <label for="title">Title</label>
