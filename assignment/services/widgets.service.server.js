@@ -26,42 +26,21 @@ module.exports = function(app, models){
 
     function reorderWidget(req, res){
         var pageId = req.params.pageId;
-        var start = req.query.start;
-        var end = req.query.end;
+        var start = parseInt(req.query.start);
+        var end = parseInt(req.query.end);
+        start = start;
+        end= end;
 
         widgetModel
-            .findAllWidgetsForPage(pageId)
+            .reorderWidget(pageId, start , end)
             .then(
-                function(widgets){
-                    widgets.forEach(
-                        function(widget){
-                            delete widget._id;
-                            if(widget.order == start){
-                                widget.order = end;
-                            }
-                            else if(widget.order > start && widget.order <= end){
-                                widget.order = widget.order-1;
-                            }
-                            else if(widget.order < start && widget.order >= end){
-                                widget.order = widget.order+1;
-                            }
-                        }
-                    );
-                    widgetModel
-                        .reorderWidget(pageId,widgets)
-                        .then(
-                            function(response){
-                                res.json(widgets);
-                            },
-                            function(error){
-                                res.statusCode(400).send(error);
-                            }
-                        );
+                function(stats) {
+                    res.sendStatus(200);
                 },
                 function(error){
-                    res.statusCode(400).send(error);
-                }
-            );
+                    res.sendStatus(400);
+                });
+
     }
 
     function uploadImage(req, res) {

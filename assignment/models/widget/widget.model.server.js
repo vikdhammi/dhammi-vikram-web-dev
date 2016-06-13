@@ -15,8 +15,6 @@ module.exports = function(){
 
     return api;
 
-
-
     function createWidget(pageId, widget){
         return Widget
             .find({_page: widget._page})
@@ -29,7 +27,6 @@ module.exports = function(){
                     return null;
                 }
             );
-       
     }
 
     function findAllWidgetsForPage(pageId){
@@ -51,13 +48,38 @@ module.exports = function(){
         return Widget.remove({_id: widgetId});
     }
 
-    function reorderWidget(pageId, widgets){
+    function reorderWidget(pageId, start, end) {
         return Widget
-            .update({_page: pageId},
-                {$set: widgets},
-                false,
-                true
-            );
-    }
+            .find({_page: pageId},
+                function (error, widgets) {
+                    widgets.forEach(
+                        function (widget) {
+                            if (start < end) {
+                                if (widget.order === start) {
+                                    widget.order = end;
+                                    widget.save();
+                                    console.log(start+" " +end);
+                                }
+                                else if (widget.order > start && widget.order <= end) {
+                                    widget.order--;
+                                    widget.save();
+                                    console.log(start+" "+end);
+                                }
+                            }
+                            else {
+                                if (widget.order === start) {
+                                    widget.order = end;
+                                    widget.save();
+                                }
+                                else if (widget.order < start && widget.order >= end) {
+                                    widget.order++;
+                                    widget.save();
+                                    console.log(start+" "+end);
+                                }
+                            }
+                        }
+                    );
 
+                });
+    }
 };

@@ -3,10 +3,6 @@
         .module("WebAppMaker")
         .factory("WidgetService",WidgetService);
 
-    
-
-
-        
         function WidgetService($http){
             var api = {
                 findWidgetsForPageId: findWidgetsForPageId,
@@ -49,8 +45,6 @@
                 return $http.put("/page/"+pageId+"/widget?start="+start+"&end="+end);
             }
 
-
         }
-
-
+    
 })();
