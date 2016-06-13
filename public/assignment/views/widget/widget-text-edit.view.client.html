@@ -35,11 +35,13 @@
                    class="form-control" type="number"/>
 
         Placeholder
-        <div class="input-group">
+    <input
+            ng-model="model.widget.placeholder"
+            class="form-control"/>
+
+    <div class="input-group">
         <input type="text"
-               ng-model="model.widget.rows"
-        readonly
-               class = "form-control" value ="Formatted"/>
+        readonly class = "form-control" value ="Formatted"/>
         <span class="input-group-addon">
             <input ng-model="model.widget.formatted" type="checkbox"/>
         </span>

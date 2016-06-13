@@ -21,7 +21,7 @@
 
                });
 
-            $(".container").sortable({ axis: "y"});
+      //      $(".container").sortable({ axis: "y"});
         }
         init();
 
