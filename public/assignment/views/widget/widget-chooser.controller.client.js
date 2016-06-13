@@ -29,7 +29,7 @@
         function addHtml(){
             var newWidget = {
               name: "HtmlWidget",
-         //       _page: vm.pageId,
+               _page: vm.pageId,
                 type: "HTML"
             };
             WidgetService
@@ -51,7 +51,7 @@
         function addText(){
             var newWidget = {
                 name: "Text Widget",
-            //   _page: vm.pageId,
+                _page: vm.pageId,
                 type: "TEXT"
             };
             WidgetService
