@@ -1,0 +1,114 @@
+
+<div class="container">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+          <span class="glyphicon glyphicon-pencil">
+          </span>
+            </p>
+            <a class="navbar-brand" href="#">
+                <h3>Registration</h3>
+            </a>
+            </div>
+        </div>
+
+
+    <form name="registerForm" ng-app>
+        <div class="control-group" ng-class="{true: 'error'}[submitted && registerForm.username.$error.required]">
+            <label for="firstname">*First Name</label>
+            <input class="form-control"
+                   name="firstName"
+                   ng-model="firstName"
+                   type="text"
+                   placeholder="Michael"
+                   required/>
+            <span class="help-inline" ng-show="submitted && registerForm.firstName.$error.required">*First Name is a Required field</span>
+
+                <label for="lastname">*Last Name</label>
+                <input class="form-control"
+                       name="lastName"
+                       ng-model="lastName"
+                       type="text"
+                       placeholder="Clarke"
+                       required/>
+                <span class="help-inline" ng-show="submitted && registerForm.lastName.$error.required">*Last Name is a Required field</span>
+
+            <label for="username">*Username</label>
+            <input class="form-control"
+                   name="username"
+                   ng-model="username"
+                   type="text"
+                   placeholder="mick17"
+                   required/>
+            <span class="help-inline" ng-show="submitted && registerForm.username.$error.required">*Username is a Required field</span>
+
+           <!-- <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle"
+                        type="button"
+                        id="dropdownMenu1"
+                        name="gender"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="true"
+                        required
+                        ng-model="gender">
+                   *Gender
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#">Gender</a></li>
+                    <li><a href="#">Male</a></li>
+                    <li><a href="#">Female</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+                <span class="help-inline" ng-show="submitted && registerForm.gender.$error.required">*Gender is a Required field</span>
+            </div>
+-->
+            <label for="email">*Email</label>
+            <input class="form-control"
+                   name="email"
+                   ng-model="email"
+                   type="email"
+                   placeholder="jamesfrank@gmail.com"
+                   required/>
+            <span class="help-inline" ng-show="submitted && registerForm.email.$error.required">*Email is a Required field</span>
+
+            <label for="confirm-email">*Confirm Email</label>
+            <input class="form-control"
+                   name="confirm-Email"
+                   ng-model="confirmemail"
+                   type="email"
+                   placeholder="jamesfrank@gmail.com"
+                   required/>
+            <span class="help-inline" ng-show="submitted && registerForm.confirm-email.$error.required">*Email is a Required field</span>
+
+            <label for="password">*Password</label>
+            <input class="form-control"
+           ng-model="password"
+           name="password"
+           type="password"
+           placeholder="password"
+            required/>
+            <span class="help-inline" ng-show="submitted && registerForm.password.$error.required">*Password is a Required field</span>
+
+            <label for="confirm-password">*Confirm Password</label>
+    <input class="form-control"
+           ng-model="repassword"
+           name="repassword"
+           id="confirm-password"
+           type="password"
+           placeholder="verify password"
+            required
+            compare-to="registerForm.password"/>
+            <span class="help-inline" ng-show="submitted && registerForm.repassword.$error.required">*Password is a Required field</span>
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+            </div>
+    <a class="btn btn-primary btn-block"
+       ng-click="model.createUser(username,password,repassword,email); submitted=true">Submit</a>
+    <a class="btn btn-danger btn-block"
+       href="#/login">Cancel</a>
+    </form>
+</div>

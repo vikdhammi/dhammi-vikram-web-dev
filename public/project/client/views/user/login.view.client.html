@@ -1,0 +1,33 @@
+
+<div class="container">
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+
+
+<h1>Login</h1>
+    <form name="loginForm" ng-app>
+        <div class="control-group" ng-class="{true: 'error'}[submitted && loginForm.username.$error.required]">
+    <input ng-model="username"
+           name = "username"
+           class="form-control"
+            type="text"
+            placeholder="username"
+            required/>
+            <span class="help-inline" ng-show="submitted && loginForm.username.$error.required">*Username is a Required field</span>
+
+
+    <input ng-model="password"
+            class="form-control"
+       type="password"
+       placeholder="password"
+        required/>
+            <span class="help-inline" ng-show="submitted && loginForm.username.$error.required">*Password is a Required field</span>
+        </div>
+    <a ng-click ="model.login(username, password); submitted=true"
+       class="btn btn-primary btn-block">Login</a>
+    <a class="btn btn-success btn-block"
+       href="#/register" >Register</a>
+        <a href="#/reset" class="form-group">Forgotten your password?</a>
+    </form>
+</div>

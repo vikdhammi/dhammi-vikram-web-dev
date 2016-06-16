@@ -10,15 +10,26 @@ module.exports = function(){
         // getUsers: getUsers,
         findUserById: findUserById,
         findUserByCredentials: findUserByCredentials,
+        findUserByUsername: findUserByUsername,
         updateUser: updateUser,
-        deleteUser: deleteUser
+        deleteUser: deleteUser,
+        findFacebookUser: findFacebookUser
     };
     
     return api;
 
+    function findFacebookUser(facebookUser) {
+      return User.findOne({"facebook.id": id});
+    }
+    
+    function findUserByUsername(username){
+        return User.findOne({username: username});
+    }
+
     function findUserByCredentials(username, password){
         return User.findOne({username: username, password: password});
     }
+
     function createUser(user){
         console.log("user.model.server.createUser()");
         console.log(user);

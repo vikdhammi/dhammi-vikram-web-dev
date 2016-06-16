@@ -1,4 +1,9 @@
 var express = require('express');
+
+var cookieParser = require('cookie-parser');
+var session      = require('express-session');
+var passport = require('passport');
+
 var app = express();
 
 var connectionString = 'mongodb://127.0.0.1:27017/web-dev';
@@ -17,6 +22,12 @@ mongoose.connect(connectionString);
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(cookieParser());    // first cookie is initialized then session
+app.use(session({ secret: process.env.SESSION_SECRET }));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // configure a public directory to host static content
 app.use(express.static(__dirname + '/public'));

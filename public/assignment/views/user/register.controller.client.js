@@ -32,13 +32,17 @@
         function createUser(username, password, repassword){
             if(password === repassword){
                   UserService
-                      .createUser(username, password, repassword)
+                      .register(username, password, repassword)
                       .then(function (response){
                           var user = response.data;
                           if(user){
                               $location.url("/user/"+user._id);
                           }
-                      });
+                      },
+                          function (error) {
+                              vm.error = error;
+                          }
+                      );
             }
             else{
                 vm.error="Both passwords dont match";

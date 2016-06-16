@@ -1,0 +1,67 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#/user/{{model.userId}}/website" class="navbar-link">
+          <span class="glyphicon glyphicon-chevron-left">
+          </span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="#">
+                New Website
+            </a>
+            <p class="navbar-text pull-right">
+                <a ng-click="model.createWebsite(name,description); submitted=true" class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+                </a>
+            </p>
+
+
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <form name="websiteForm" ng-app>
+        <div class="control-group" ng-class="{true: 'error'}[submitted && websiteForm.name.$error.required]">
+        <label for="website-name">Name</label>
+
+            <input ng-model="name"
+                   name="name"
+                    type="text"
+                   class="form-control"
+                   id="name"
+                   placeholder="Name"
+                   required/>
+                <span class="help-inline" ng-show="submitted && websiteForm.name.$error.required">*Website Name is a Required field</span>
+        </div>
+
+            <label for="website-description">Description</label>
+            <textarea ng-model="description"
+                    id="website-description"
+                    class="form-control"
+                    placeholder="Description"
+                    rows="5"></textarea>
+
+    </form>
+
+
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="row navbar-text">
+            <div class="col-xs-3 text-center">
+            </div>
+            <div class="col-xs-3 text-center">
+            </div>
+            <div class="col-xs-3 text-center">
+            </div>
+            <div class="col-xs-3 text-center">
+                <a href="#/user/{{model.userId}}">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
