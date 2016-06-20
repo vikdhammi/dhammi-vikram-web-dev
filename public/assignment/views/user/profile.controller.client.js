@@ -48,17 +48,21 @@
                 );
         }
          function updateUser(newUser){
-             UserService
-                 .updateUser(id, newUser)
-                 .then(
-                     function(response){
-                         vm.success = "Successfully updated";
-                     },
-                     function(error){
-                         vm.error = "Unable to update";
-                     }
-                 );
-             
+             if(newUser.name) {
+                 UserService
+                     .updateUser(id, newUser)
+                     .then(
+                         function (response) {
+                             vm.success = "Successfully updated";
+                         },
+                         function (error) {
+                             vm.error = "Unable to update";
+                         }
+                     );
+             }
+             else {
+                 vm.error="*"+"Username cannot be left blank!";
+             }
          }
     }
 
