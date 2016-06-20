@@ -24,14 +24,15 @@
 </nav>
 <div class="container">
     <form class="widgetForm" ng-app>
-        <div class="control-group">
+        <div class="form-group">
             Text
             <input ng-class="{true: 'error'}[submitted && widgetForm.name.$error.required]"
                    ng-model="model.widget.text"
+                   id="name"
                    name="name"
                    class="form-control"
                     required/>
-        <span class="help-inline" ng-show="submitted && widgetForm.name.$error.required">Name required</span>
+        <span class="help-inline" ng-show="submitted && widgetForm.name.$error.required">{{model.error}}</span>
         </div>
             Rows
             <input min="2"
