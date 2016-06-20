@@ -18,7 +18,7 @@ module.exports = function(){
     
     return api;
 
-    function findFacebookUser(facebookUser) {
+    function findFacebookUser(id) {
       return User.findOne({"facebook.id": id});
     }
     

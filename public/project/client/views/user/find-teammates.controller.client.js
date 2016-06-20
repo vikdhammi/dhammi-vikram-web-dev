@@ -6,7 +6,7 @@
 
 
 
-    function TeamMateSearchController(FlickrService , $location, $routeParams, UserService){
+    function TeamMateSearchController($location, $routeParams, UserService){
         var vm = this;
         vm.userId = $routeParams.userId;
        
@@ -15,12 +15,11 @@
 
         function searchTeammates(searchText){
             UserService
-                .searchTeammates(searchText)
+                .register(searchText)
                 .then(function(response){
                    vm.users = response.data;
+                    console.log(vm.users);
                 });
         }
-
-      
     }
 })();

@@ -12,7 +12,7 @@
                 HTML Widget
             </a>
             <p class="navbar-text pull-right">
-                <a ng-click="model.updateWidget(model.widget)" class="navbar-link">
+                <a ng-click="model.updateWidget(model.widget); submitted=true" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -23,12 +23,17 @@
     </div>
 </nav>
 <div class="container">
+    <form name="widgetName" ng-app>
     <div class="form-group">
         <label for="name">Name</label>
-        <input type="text"
+        <input ng-class="{true: 'error'}[submitted && widgetForm.name.$error.required]"
+               name="name"
+                type="text"
                ng-model="model.widget.name"
                class="form-control"
-               id="name">
+               id="name"
+                required/>
+        <span class="help-inline" ng-show="submitted && widgetForm.name.$error.required">{{model.error}}</span>
     </div>
     <div class="form-group">
         <label for="bootstrap-class">Bootstrap Class</label>
@@ -47,6 +52,7 @@
     <a class="btn btn-danger btn-danger btn-block" ng-click="model.deleteWidget()">Delete</a>
 <!--{{model.widget.text}}-->
     <!--<div ng-bind-html="{{model.widget.text}}"></div>-->
+    </form>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">

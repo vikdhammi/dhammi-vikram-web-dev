@@ -32,7 +32,7 @@
         function createUser(username, password, repassword){
             if(password === repassword){
                   UserService
-                      .register(username, password, repassword)
+                      .register(username, password)
                       .then(function (response){
                           var user = response.data;
                           if(user){
@@ -45,7 +45,7 @@
                       );
             }
             else{
-                vm.error="Both passwords dont match";
+                vm.error="Both passwords don't match";
             }
         }
 

@@ -3,8 +3,8 @@ module.exports = function() {
   var mongoose = require("mongoose");
 
     var UserSchema = mongoose.Schema({
-       username: {type: String, required: true},
-        password: {type: String, minLength : 4, required: true},
+       username: {type: String},
+        password: {type: String, minLength : 4},
         firstName: {type: String, minLength: 4 },
         lastName: String,
         facebook:{

@@ -9,19 +9,19 @@
         var vm = this;
         vm.userId = $routeParams.userId;
         
+        
+            vm.viewSchedule = viewSchedule;
 
-        vm.viewSchedule = viewSchedule;
-
-
+            
+        
+        
         function viewSchedule(){
             ScheduleService
                 .viewSchedule()
                 .then(function(response){
-                    data = response.data.replace("jsonFlickrApi(","");
-                    data = data.substring(0,data.length - 1);
-                    data = JSON.parse(data);
-                    vm.schedules = data.schedules;
-
+                   console.log("schedule controller");
+                    console.log(response.data);
+                    vm.schedules = response.data;
                 });
         }
 

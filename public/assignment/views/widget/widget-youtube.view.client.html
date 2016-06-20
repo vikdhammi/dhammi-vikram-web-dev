@@ -26,9 +26,10 @@
 
 
     <form name="widgetForm" ng-app>
-        <div class="control-group" ng-class="{true: 'error'}[submitted && widgetForm.name.$error.required]">
+        <div class="control-group">
             <label for="youtube-name">Name</label>
-            <input type="text"
+            <input ng-class="{true: 'error'}[submitted && widgetForm.name.$error.required]"
+                    type="text"
                    ng-model="model.widget.name"
                    name="name"
                    class="form-control"

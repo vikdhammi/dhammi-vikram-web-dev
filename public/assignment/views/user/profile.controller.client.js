@@ -4,14 +4,15 @@
         .controller("ProfileController",ProfileController);
 
 
-    function ProfileController($routeParams, $location, UserService){
+    function ProfileController($routeParams, $location, UserService, $rootScope){
          var vm = this;
 
          vm.updateUser = updateUser;
          vm.unregister = unregister;
         vm.logout = logout;
-
-         var id=$routeParams.id;
+        vm.userId = $routeParams.userId;
+       var id = $rootScope.currentUser._id;
+       //  var id=$routeParams.id;
 
         function init(){
             UserService
@@ -36,7 +37,7 @@
         }
         function unregister(){
             UserService
-                .deleteUser(id)
+                .deleteUser(vm.userId)
                 .then(
                     function() {
                         $location.url("/login");

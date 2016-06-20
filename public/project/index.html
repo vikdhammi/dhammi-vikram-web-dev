@@ -5,21 +5,31 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="viewport" content="initial-scale=1.25, user-scalable=no">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="/project/css/style.css" rel="stylesheet"/>
-    <link href="/project/css/19-1-10-1-14.css" rel="stylesheet" type="text/css" />
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
-    <title>US Cricket League</title>
+
     <script src="../js/jquery.js"></script>
     <script src="../js/jquery-ui.js"></script>
     <script src="../css/jquery-ui.css"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <link href="/project/css/style.css" rel="stylesheet"/>
+
+    <link href="/project/css/19-1-10-1-14.css" rel="stylesheet" type="text/css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
+    <title>US Cricket League</title>
+
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
     <script src="../js/textAngular-rangy.min.js"></script>
     <script src="../js/textAngular-sanitize.min.js"></script>
     <script src="../js/textAngular.min.js"></script>
     <link href = "../css/textAngular.css" rel="stylesheet"/>
     <script src="app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+
+
+
     <script src="config.js"></script>
    <script src="client/services/user.service.client.js"></script>
     <script src="client/services/match-schedule.service.client.js"></script>
@@ -27,10 +37,9 @@
     <script src="client/views/user/login.controller.client.js"></script>
     <script src="client/views/user/register.controller.client.js"></script>
     <script src="client/views/user/cricket-match-schedule.controller.client.js"></script>
-
+    <script src="client/views/user/find-teammates.controller.client.js"></script>
 </head>
 <body>
-<div>
     <div id="main">
 
         <div id="header"><a href="#">United Premier League</a></div>
@@ -49,17 +58,13 @@
 
                 <li><a href="#" >News</a></li>
 
-                <li><a href="/login">Login/Sign Up</a></li>
+                <li><a href="/project/#/login">Login/Sign Up</a></li>
 
             </ul>
 
         </div>
 
         <div id="banner">
-
-
-
-
 
         </div>
 
@@ -80,15 +85,10 @@
                 </p>
             </div>
 
-
-
-
-
         </div>
 
-
-
 </div>
-    </div>
+
 </body>
+<div ng-view></div>
 </html>

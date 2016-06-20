@@ -8,22 +8,15 @@ var bcrypt = require("bcrypt-nodejs");
 module.exports = function(app, models) {
 
     var userModel = models.userModel;
-    // var users = [
-    //     {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder"},
-    //     {_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley"},
-    //     {_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia"},
-    //     {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi"}
-    // ];
 
    // app.get("/api/user/:username/:password", getUsers);
     app.post("/api/user", createUser);
     app.post("/api/logout", logout);
-    app.get("/auth/facebook/callback", passport.authenticate('facebook'))
-    app.get("/auth/facebook", passport.authenticate('facebook',{
-       successRedirect: "/assignment/#/profile",
+    app.get("/auth/facebook", passport.authenticate('facebook'));
+    app.get("/auth/facebook/callback", passport.authenticate('facebook',{
+        successRedirect: "/assignment/#/user",
            failureRedirect: "/assignment/#/login"
     }));
-
     app.post("/api/register", register);
     app.get("/api/loggedIn", loggedIn);
     app.post("/api/login", passport.authenticate('local'),login); //local - standard name for local strategy
@@ -69,7 +62,7 @@ module.exports = function(app, models) {
                 if (facebookUser) {
                     return done(null, facebookUser);
                 }
-
+        
                 else {
                     facebookUser = {
                         username: profile.displayName.replace(/ /g, ''),
@@ -88,9 +81,9 @@ module.exports = function(app, models) {
                         );
                 }
             }
-
+        
             );
-    res.send(user);
+    //res.send(user);
 
     }
 
@@ -139,36 +132,36 @@ module.exports = function(app, models) {
                        // return;
                     }
                     else{
-                        req.body.password = bcrypt.hashSync(user.password);
-                        return userModel
-                            .createUser(req.body);
+                        req.body.password = bcrypt.hashSync(req.body.password);
+                        userModel
+                            .createUser(req.body)
+                            .then(
+                                function(user){
+                                    if(user){
+                                        req.login(user, function (err) {
+                                            if(err){
+                                                res.statusCode(400).send(err);
+                                            }
+                                            else{
+                                                res.json(user);
+                                            }
+                                        });
+                                    }
+                                },
+                                function(err){
+                                    res.statusCode(400).send(err);
+                                }
+                            );
                     }
                 },
                 function(error){
                     res.statusCode(400).send(error);
                 }
-            )
-            .then(
-                function(user){
-                    if(user){
-                        req.login(user, function (err) {
-                            if(err){
-                                res.statusCode(400).send(err);
-                            }
-                            else{
-                                res.json(user);
-                            }
-                        });
-                    }
-                },
-                function(err){
-                    res.statusCode(400).send(err);
-                }
             );
     }
     
     function logout(res, req) {
-       req.logout();
+      // req.logout();
        res.send(200);
     }
     function deleteUser(req, res) {

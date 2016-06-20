@@ -1,27 +1,30 @@
 
 <div class="container">
-    <div class="alert-danger">
-        {{model.error}}
-    </div>
+    <!--<div ng-show="model.error" class="alert alert-danger" role="alert">-->
+        <!--{{model.error}}-->
+    <!--</div>-->
 
     <h1>Register</h1>
     <form name="registerForm" ng-app>
-        <div class="control-group" ng-class="{true: 'error'}[submitted && registerForm.username.$error.required]">
-    <input class="form-control"
+        <div class="control-group" >
+    <input ng-class="{true: 'error'}[submitted && registerForm.username.$error.required]"
+            class="form-control"
            name="username"
            ng-model="username"
            type="text"
            placeholder="username"
             required/>
             <span class="help-inline" ng-show="submitted && registerForm.username.$error.required">*Username is a Required field</span>
-    <input class="form-control"
+    <input ng-class="{true: 'error'}[submitted && registerForm.password.$error.required]"
+            class="form-control"
            ng-model="password"
            name="password"
            type="password"
            placeholder="password"
             required/>
             <span class="help-inline" ng-show="submitted && registerForm.password.$error.required">*Password is a Required field</span>
-    <input class="form-control"
+    <input ng-class="{true: 'error'}[submitted && registerForm.repassword.$error.required]"
+            class="form-control"
            ng-model="repassword"
            name="repassword"
            type="password"

@@ -1,4 +1,4 @@
-
-(function (){
-    angular.module("CricketApp",["ngRoute"]);
+(function(){
+    angular
+        .module("CricketApp",["ngRoute"]);
 })();

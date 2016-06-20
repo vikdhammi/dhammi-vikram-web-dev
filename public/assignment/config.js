@@ -18,6 +18,14 @@
                         controller: "RegisterController",
                         controllerAs: "model"
                     })
+                    .when("/user" , {
+                        templateUrl:"views/user/profile.view.client.html",
+                        controller: "ProfileController",
+                        controllerAs: "model",
+                        resolve: {
+                            loggedIn: checkLoggedIn
+                        }
+                    })
                     .when("/user/:id", {
                         templateUrl: "views/user/profile.view.client.html",
                         controller: "ProfileController",
@@ -25,6 +33,7 @@
                         resolve: {
                             loggedIn: checkLoggedIn
                         }
+
                     })
                     .when("/user/:userId/website", {
                         templateUrl: "views/website/website-list.view.client.html",
@@ -81,7 +90,7 @@
                         redirect: "/login"
                     });
 
-        function checkLoggedIn(UserService, $location ,$q){
+        function checkLoggedIn(UserService, $location ,$q, $rootScope){
                                                                 //$q - library allows us to work with async calls/promises
             var deferred = $q.defer();
 
@@ -92,10 +101,12 @@
                         var user= response.data;
                         console.log(user);
                         if(user=='0'){
+                            $rootScope.currentUser = null;
                             deferred.reject();
                             $location.url("/login");
                         }
                         else{
+                            $rootScope.currentUser = user;
                             deferred.resolve();
                         }
                     },

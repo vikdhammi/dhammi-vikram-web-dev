@@ -5,25 +5,17 @@ var bcrypt = require("bcrypt-nodejs");
 
 module.exports = function(app, models) {
 
-    var userModel = models.userModel;
-    // var users = [
-    //     {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder"},
-    //     {_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley"},
-    //     {_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia"},
-    //     {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi"}
-    // ];
+    var userModel = models.projectUserModel;
+    app.post("/api/project/user", createUser);
+    app.post("/api/project/logout", logout);
+    app.post("/api/project/register", register);
+    app.get("/api/project/loggedIn", loggedIn);
+    app.post("/api/project/login", passport.authenticate('local'),login); //local - standard name for local strategy
+    app.get("/api/project/user/:userId", findUserById);
+    app.put("/api/project/user/:userId", updateUser);
+    app.delete("/api/project/user/:userId", deleteUser);
 
-   // app.get("/api/user/:username/:password", getUsers);
-    app.post("/api/user", createUser);
-    app.post("/api/logout", logout);
-    app.post("/api/register", register);
-    app.get("/api/loggedIn", loggedIn);
-    app.post("/api/login", passport.authenticate('local'),login); //local - standard name for local strategy
-    app.get("/api/user/:userId", findUserById);
-    app.put("/api/user/:userId", updateUser);
-    app.delete("/api/user/:userId", deleteUser);
-
-    passport.use('local',new LocalStrategy(localStrategy));
+    passport.use(new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
 
@@ -32,7 +24,7 @@ module.exports = function(app, models) {
             .findUserByUsername(username)
             .then(
                 function (user) {
-                    if(user && bcrypt.compareSync(password, user.password)){
+                    if(user && (password === user.password)){
                         done(null, user);    // allows request to go thru (success case)
                     }
                     else{
@@ -65,8 +57,10 @@ module.exports = function(app, models) {
 
     function login(req, res){
         var user = req.user;
+        console.log(user);
         res.json(user);
     }
+
     function loggedIn(req, res) {
         if(req.isAuthenticated()){
             res.json(req.user);
@@ -120,7 +114,7 @@ module.exports = function(app, models) {
     }
     
     function logout(res, req) {
-       req.logout();
+    //   req.logout();
        res.send(200);
     }
     function deleteUser(req, res) {
@@ -155,15 +149,7 @@ module.exports = function(app, models) {
                     res.statusCode(400).send(err);
                 }
             );
-        // for (var i in users){
-        //     if(users[i]._id === id){
-        //         users[i].firstName = newUser.firstName;
-        //         users[i].lastName = newUser.lastName;
-        //         res.sendStatus(200);
-        //         return;
-        //     }
-        // }
-        // res.sendStatus(400);
+
     }
 
     function createUser(req, res){
@@ -175,11 +161,9 @@ module.exports = function(app, models) {
                  res.json(user);
              },
              function(error){
-                 res.statusCode(400).send(error);
+                 res.statusCode(400).send("Username"+user.username+"is already taken!");
              });
-        // users.push(user);
-        //
-        // res.send(user);
+
     }
 
     function findUserById(req, res){
@@ -196,13 +180,7 @@ module.exports = function(app, models) {
                     res.statusCode(400).send(error);
                 }
             );
-        // for(var i in users){
-        //     if(users[i]._id === id){
-        //         res.send(users[i]);
-        //         return;
-        //     }
-        // }
-        // res.send({});
+
     }
 
     function getUsers(req, res){
@@ -211,7 +189,7 @@ module.exports = function(app, models) {
         console.log(username);
         console.log(password);
         if(username && password){
-            findUserByCredentials(username, password, res);
+            findUserByCredentials(username, password, req,res);
 
         }
         else if(username){
@@ -222,20 +200,6 @@ module.exports = function(app, models) {
         }
     }
 
-    // function findUserByCredentials(username, password, res){
-    //     userModel
-    //         .findUserByCredentials(username, password)
-    //         .then(
-    //             function(user){
-    //                 console.log(req.session);
-    //                 req.session.currentUser = user;
-    //                 res.json(user);
-    //             },
-    //             function(error){
-    //                 res.statusCode(400).send(error);
-    //             }
-    //         );
-    // }
 
     function findUserByUsername(username, res){
 
@@ -250,13 +214,21 @@ module.exports = function(app, models) {
                 }
 
             );
-        // for(var i in users){
-        //     if(users[i].username === username){
-        //         res.send(users[i]);
-        //         return;
-        //     }
-        // }
-        // res.send({});
+
+    }
+
+    function findUserByCredentials(username, password ,req, res) {
+        userModel
+            .findUserByCredentials(username, password)
+            .then(
+                function(user){
+                    console.log(req.session);
+                    req.session.createUser=user;
+                    res.json(user);
+                }, function(error){
+                    res.statusCode(400).send(error);
+                }
+            );
     }
 
 };

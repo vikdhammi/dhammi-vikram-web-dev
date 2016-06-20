@@ -18,16 +18,13 @@
         };
         return api;
 
-        // function createUser(newUser){
-        //    users.push(newUser);
-        //     return true;
-        // }
+        
         function logout() {
-            return $http.post("/api/logout");
+            return $http.post("/api/project/logout");
         }
 
         function loggedIn(){
-            return $http.get("/api/loggedIn");
+            return $http.get("/api/project/loggedIn");
         }
 
         function login(username, password){
@@ -35,54 +32,46 @@
                 username: username,
                 password: password
             };
-            return $http.post("/api/login", user);
+            return $http.post("/api/project/login", user);
         }
 
         function register(username, password){
             var user = {
-                // _id: (new Date()).getTime()+"",
                 username: username,
                 password: password
             };
-            return $http.post("/api/register", user);
+            return $http.post("/api/project/register", user);
         }
         
         function createUser(username, password,email){
             var user = {
-               // _id: (new Date()).getTime()+"",
                 username: username,
                 password: password,
                 email: email
             };
-            return $http.post("/api/user", user);
+            return $http.post("/api/project/user", user);
         }
         function deleteUser(userId){
-            var url = "/api/user/" + userId;
+            var url = "/api/project/user/" + userId;
             return $http.delete(url);
 
-            // for(var i in users){
-            //     if(users[i]._id === userId){
-            //         users.splice(i,1);
-            //         return true;
-            //     }
-            // }
-            // return false;
+
         }
 
         function updateUser(id, newUser){
-            var url = "/api/user/" + id;
+            var url = "/api/project/user/" + id;
             return $http.put(url, newUser);
 
         }
 
          function findUserById(id){
-             var url = "/api/user/"+ id;
+             var url = "/api/project/user/"+ id;
              return $http.get(url);
          }
         
 
         function findUserByUsernameAndPassword(username,password) {
-            var  url= "/api/user?username="+username+"&password="+password;
+            var  url= "/api/project/user?username="+username+"&password="+password;
             return $http.get(url);
         }
     }

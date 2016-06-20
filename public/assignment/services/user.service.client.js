@@ -8,7 +8,6 @@
         var api= {
             createUser : createUser,
             login: login,
-            
             findUserByUsernameAndPassword: findUserByUsernameAndPassword,
             findUserById : findUserById,
             updateUser : updateUser,
@@ -36,7 +35,9 @@
                 username: username,
                 password: password
             };
-            return $http.post("/api/login", user);
+            var result = $http.post("/api/login", user);
+            console.log(result);
+            return result;
         }
 
         function register(username, password){

@@ -4,26 +4,35 @@
         .controller("ProfileController",ProfileController);
 
 
-    function ProfileController($routeParams, $location, UserService){
+    function ProfileController($routeParams, $location, UserService, $rootScope){
          var vm = this;
 
+         vm.userId = $routeParams.id;
          vm.updateUser = updateUser;
          vm.unregister = unregister;
+        vm.navigateUrl = navigateUrl;
+         vm.logout = logout;
 
-         var id=$routeParams.id;
+       // var id = $routeParams["userId"];
+        // var id = $rootScope.currentUser._id;
 
         function init(){
             UserService
-                .findUserById(id)
+                .findUserById(vm.userId)
                 .then(function(response){
                     vm.user = response.data;
+                    console.log(vm.user);
                 });
         }
          init();
 
+        function navigateUrl(){
+            $location.url("/user/"+vm.userId);
+        }
+
         function unregister(){
             UserService
-                .deleteUser(id)
+                .deleteUser(vm.userId)
                 .then(
                     function() {
                         $location.url("/login");
@@ -46,6 +55,19 @@
                  );
              
          }
+
+        function logout(){
+            UserService
+                .logout()
+                .then(
+                    function(response){
+                        $location.url("/login");
+                    },
+                    function(){
+                        $location.url("/login");
+                    }
+                )
+        }
     }
 
 

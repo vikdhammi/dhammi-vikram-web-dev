@@ -12,7 +12,7 @@
                 Text Widget
             </a>
             <p class="navbar-text pull-right">
-                <a ng-click="model.updateWidget(model.widget)" class="navbar-link">
+                <a ng-click="model.updateWidget(model.widget); submitted=true" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -23,12 +23,16 @@
     </div>
 </nav>
 <div class="container">
-
+    <form class="widgetForm" ng-app>
+        <div class="control-group">
             Text
-            <input
+            <input ng-class="{true: 'error'}[submitted && widgetForm.name.$error.required]"
                    ng-model="model.widget.text"
-                   class="form-control"/>
-
+                   name="name"
+                   class="form-control"
+                    required/>
+        <span class="help-inline" ng-show="submitted && widgetForm.name.$error.required">Name required</span>
+        </div>
             Rows
             <input
                    ng-model="model.widget.rows"
@@ -49,7 +53,7 @@
     </div>
 
     <a class="btn btn-danger btn-danger btn-block" ng-click="model.deleteWidget()">Delete</a>
-
+    </form>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">

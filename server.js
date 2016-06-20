@@ -6,8 +6,8 @@ var passport = require('passport');
 
 var app = express();
 
-var connectionString = 'mongodb://127.0.0.1:27017/web-dev';
-
+ var connectionString = 'mongodb://127.0.0.1:27017/web-dev';
+//
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
     connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
         process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
@@ -39,5 +39,8 @@ var port      = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 
 var assignment = require("./assignment/app.js");
 assignment(app);
+
+// var project = require('./project/app.js');
+// project(app);
 
 app.listen(port, ipaddress);
