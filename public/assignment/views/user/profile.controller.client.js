@@ -37,7 +37,7 @@
         }
         function unregister(){
             UserService
-                .deleteUser(vm.userId)
+                .deleteUser(id)
                 .then(
                     function() {
                         $location.url("/login");
