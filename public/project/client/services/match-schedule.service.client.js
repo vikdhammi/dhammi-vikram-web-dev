@@ -4,13 +4,15 @@
         .factory("ScheduleService",ScheduleService);
 
    // var key = "3rpcv3wdu7jubcaapp6n7nja";
-   // var urlBase = "http://api.sportradar.us/cricket-t1/matches/schedule.xml?api_key=API_KEY";
+   var urlBase = "http://cricapi.com/api/cricketScore/?unique_id=UNIQUE_ID";
 
 
 
     function ScheduleService($http){
         var api = {
-            viewSchedule: viewSchedule
+            viewSchedule: viewSchedule,
+            viewNews: viewNews,
+            findNewsById: findNewsById
         };
         return api;
 
@@ -22,20 +24,25 @@
         }*/
 
         function viewSchedule(){
-            var request = require("request");
+           // var request = require("request");
 
-            var options = { method: 'GET',
-                url: 'http://cricapi.com/api/cricket',
-                headers:
-                { 'postman-token': '194ccbfe-a790-9108-706e-9928097735cf',
-                    'cache-control': 'no-cache' } };
+            url = 'http://cricapi.com/api/cricket';
+            return $http.get(url);  
 
-            request(options, function (error, response, body) {
-                if (error) throw new Error(error);
-
-                console.log(body);
-            });
         }
+
+        function viewNews() {
+            url = 'http://cricapi.com/api/cricketNews';
+            return $http.get(url);
+        }
+
+        function findNewsById(newsId){
+            var url = urlBase
+                            .replace("UNIQUE_ID",newsId)
+            return $http.get(url);
+        }
+        
+
     }
 
 

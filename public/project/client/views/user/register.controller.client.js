@@ -13,11 +13,11 @@
         function createUser(username, password, repassword, email){
             if(password === repassword){
                   UserService
-                      .createUser(username, password, repassword, email)
+                      .createUser(username, password, email)
                       .then(function (response){
                           var user = response.data;
                           if(user){
-                              $location.url("/user/"+user._id);
+                              $location.url("/user/"+user._id+"/home");
                           }
                       });
             }

@@ -1,0 +1,85 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#/user/{{model.userId}}/website" class="navbar-link">
+          <span class="glyphicon glyphicon-chevron-left">
+          </span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="#">
+                Edit Website
+            </a>
+            <p class="navbar-text pull-right">
+                <a ng-click="model.updateWebsite();  submitted=true" class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+                </a>
+            </p>
+
+
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div  class="row">
+        <div ng-repeat="news in model.schedules.data" class="col-md-8 col-md-offset-2">
+            <div class="container-fluid" ng-if="model.newsId===news.unique_id"> <h4>{{news.title}}</h4>
+                <div> {{news.description}}
+                    <br>
+                    <div>Last Updated: {{model.pub | date:'medium'}}</div>
+                <textarea class="form-control"
+                          rows="3"
+                          ng-model="name"
+                          placeholder="Add comments.."></textarea>
+                    <a ng-click ="model.addNewsComment(name)"
+                       class="btn btn-primary btn-block">Add Comment</a>
+                    <div class="container comments">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="page-header">
+                                    <h1><small class="pull-right">{{model.postedComments.length}} Comments</small> Comments </h1>
+                                </div>
+                                <div class="comments-list" ng-repeat="comment in model.postedComments">
+                                    <div class="media">
+                                        <p class="pull-right"><small>{{comment.dateAdded | date:'medium'}}</small></p>
+
+                                        <div class="media-body">
+
+                                            <h4 class="media-heading user_name">{{comment.userId}}</h4>
+                                            {{comment.text}}
+
+                                            <p><small><a href="#">Like</a></small></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="row navbar-text">
+            <div class="col-xs-3 text-center">
+                <span class="glyphicon glyphicon-share-alt"></span>
+            </div>
+            <div class="col-xs-3 text-center">
+            </div>
+            <div class="col-xs-3 text-center">
+            </div>
+            <div class="col-xs-3 text-center">
+                <a href="#/user/{{model.userId}}">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -2,7 +2,7 @@
     angular
         .module("CricketApp")
         .config(Config);
-    
+
     function Config($routeProvider) {
         $routeProvider
             .when("/", {
@@ -13,14 +13,24 @@
                 controller: "LoginController",
                 controllerAs: "model"
             })
+            .when("/user/:userId/home/news/:newsId", {
+                templateUrl: "client/views/sport/news-article.view.client.html",
+                controller: "NewsViewController",
+                controllerAs: "model"
+            })
             .when("/register", {
                 templateUrl: "client/views/user/register.view.client.html",
                 controller: "RegisterController",
                 controllerAs: "model"
             })
-            .when("/user/:id", {
+            .when("/user/:userId/home/profile", {
                 templateUrl: "client/views/user/profile.view.client.html",
                 controller: "ProfileController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/home", {
+                templateUrl: "client/views/user/home.view.client.html",
+                controller: "HomeController",
                 controllerAs: "model"
             })
             .when("/profile", {
@@ -31,12 +41,17 @@
                     loggedIn: checkLoggedIn
                 }
             })
-            .when("/user/:userId/schedule", {
+            .when("/user/:userId/home/schedule", {
                 templateUrl: "client/views/user/cricket-match-schedule.view.client.html",
                 controller: "CricketMatchScheduleController",
                 controllerAs: "model"
             })
-            .when("/user/:userId/search", {
+            .when("/user/:userId/home/news", {
+                templateUrl: "client/views/user/cricket-news.view.client.html",
+                controller: "CricketNewsController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/home/profile/search", {
                 templateUrl: "client/views/user/find-teammates.view.client.html",
                 controller: "TeamMateSearchController",
                 controllerAs: "model"

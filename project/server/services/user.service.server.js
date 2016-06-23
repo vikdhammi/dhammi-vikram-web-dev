@@ -186,6 +186,7 @@ module.exports = function(app, models) {
     function getUsers(req, res){
         var username= req.query['username'];
         var password= req.query['password'];
+        var name = req.query['name'];
         console.log(username);
         console.log(password);
         if(username && password){
@@ -195,9 +196,34 @@ module.exports = function(app, models) {
         else if(username){
             findUserByUsername(username, res);
         }
-        else {
-            res.send(users);
+        else if(name){
+            searchTeammates(name, res);
         }
+        else {
+            userModel
+                .findAllUsers()
+                .then(
+                    function(users){
+                        res.json(users);
+                    },
+                    function(error){
+                        res.statusCode(400).send(error);
+                    }
+                );
+        }
+    }
+
+    function searchTeammates(name, res){
+        userModel
+            .searchTeammates(name)
+            .then(
+                function(users){
+                    res.json(users);
+                },
+                function(error){
+                    res.sendStatus(400).send(error);
+                }
+            );
     }
 
 
@@ -212,9 +238,7 @@ module.exports = function(app, models) {
                 function(err){
                     res.statusCode(400).send(err);
                 }
-
             );
-
     }
 
     function findUserByCredentials(username, password ,req, res) {

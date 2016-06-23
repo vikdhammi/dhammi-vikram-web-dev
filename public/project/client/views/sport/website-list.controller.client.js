@@ -1,9 +1,9 @@
 (function(){
     angular
-        .module("WebAppMaker")
-        .controller("WebsiteListController",WebsiteListController);
+        .module("CricketApp")
+        .controller("WebLoginController",WebLoginController);
     
-    function WebsiteListController($routeParams, WebsiteService){
+    function WebLoginController($routeParams, WebsiteService){
         var vm = this;
         vm.userId = $routeParams.userId;
         vm.websiteId = $routeParams.websiteId;

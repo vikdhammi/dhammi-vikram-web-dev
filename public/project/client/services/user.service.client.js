@@ -14,11 +14,12 @@
             deleteUser: deleteUser,
             logout: logout,
             loggedIn: loggedIn,
-            register: register
+            register: register,
+            findUsers: findUsers
         };
         return api;
 
-        
+
         function logout() {
             return $http.post("/api/project/logout");
         }
@@ -42,7 +43,7 @@
             };
             return $http.post("/api/project/register", user);
         }
-        
+
         function createUser(username, password,email){
             var user = {
                 username: username,
@@ -64,14 +65,19 @@
 
         }
 
-         function findUserById(id){
-             var url = "/api/project/user/"+ id;
-             return $http.get(url);
-         }
-        
+        function findUserById(id){
+            var url = "/api/project/user/"+ id;
+            return $http.get(url);
+        }
+
 
         function findUserByUsernameAndPassword(username,password) {
             var  url= "/api/project/user?username="+username+"&password="+password;
+            return $http.get(url);
+        }
+
+        function findUsers(){
+            var url = "api/project/user";
             return $http.get(url);
         }
     }

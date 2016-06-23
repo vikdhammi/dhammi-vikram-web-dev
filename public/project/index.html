@@ -15,6 +15,7 @@
     <link href="/project/css/style.css" rel="stylesheet"/>
 
     <link href="/project/css/19-1-10-1-14.css" rel="stylesheet" type="text/css" />
+    <link href="/project/css/website-login.css" rel="stylesheet" type="text/css"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
     <title>US Cricket League</title>
 
@@ -27,6 +28,7 @@
     <link href = "../css/textAngular.css" rel="stylesheet"/>
     <script src="app.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-resource.min.js"></script>
 
 
 
@@ -38,6 +40,12 @@
     <script src="client/views/user/register.controller.client.js"></script>
     <script src="client/views/user/cricket-match-schedule.controller.client.js"></script>
     <script src="client/views/user/find-teammates.controller.client.js"></script>
+    <script src="client/views/user/cricket-news.controller.client.html.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=init"></script>
+    <script src="client/views/user/home.controller.client.js"></script>
+    <script src="client/views/sport/news-article.controller.client.js"></script>
+    <script src="client/services/comment.service.client.js"></script>
+
 </head>
 <body>
     <div id="main">
@@ -50,13 +58,13 @@
 
                 <li><a href="#"  >Home</a></li>
 
-                <li><a href="#" >Schedule</a></li>
+                <li><a href="/project/#/schedule" >Schedule</a></li>
 
-                <li><a href="#" >Match Summary</a></li>
+                <li><a href="/project/#/news" >News</a></li>
 
                 <li><a href="#">Player Profile</a></li>
 
-                <li><a href="#" >News</a></li>
+                <li><a href="" >News</a></li>
 
                 <li><a href="/project/#/login">Login/Sign Up</a></li>
 

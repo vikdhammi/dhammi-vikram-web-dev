@@ -17,17 +17,18 @@
                 </a>
             </p>
 
-
         </div>
     </div>
 </nav>
-{{model.schedules}}
-<div class="container">
 
-    <div  class="row">
-        <div ng-repeat="schedule in model.schedules" class="col-xs-4">
+<div class="row">
+        <div  id="schedule" ng-repeat="schedule in model.schedules.data" class="col-xs-6 well">
+            <h3>{{schedule.description}}</h3>
+            <a href="#">{{schedule.title}}</a>
+            <br>
+            <div>Last Updated: {{model.pub | date:'medium'}}</div>
         </div>
-            </div>
+
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">

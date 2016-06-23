@@ -24,7 +24,10 @@
 
 <div class="container">
     <div class="input-group">
-        <input ng-model="searchText" type="text" class="form-control">
+        <input ng-model="searchText"
+               type="text"
+               class="form-control"
+               placeholder="Search Team Mates">
     <span class="input-group-btn">
         <a ng-click="model.searchTeammates(searchText)" class="btn btn-default" type="button">
             <span class="glyphicon glyphicon-search"></span>
@@ -33,32 +36,43 @@
     </div>
 
 
+    <ul class="list-group">
+        <li ng-repeat="user in model.teammembers"
+            clas="list-group-item list-group">
+            <a href="#" class="actionlink">{{user.username}}</a>
+        </li>
+    </ul>
 
-    <div  class="row">
-        <div ng-repeat="user in model.users" class="col-xs-4">
-            {{model.users}}
-        </div>
+    <div>
+        <h3> Friends you can add..</h3>
+        <ul>
+            <li class="box-search list-group list-group-item" ng-repeat="user in model.users">
+                <a href="#/user/{{model.userId}}/{{user.username}}/profile"
+                   class="actionlink">{{user.username}}</a>
+            </li>
+        </ul>
     </div>
+
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container">
+                <div class="row navbar-text">
+                    <div class="col-xs-3 text-center">
+                        <span class="glyphicon glyphicon-play"></span>
+
+                    </div>
+                    <div class="col-xs-3 text-center">
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                    </div>
+                    <div class="col-xs-3 text-center">
+
+                    </div>
+                    <div class="col-xs-3 text-center">
+                        <a href="#/user/{{model.userId}}">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
 </div>
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-        <div class="row navbar-text">
-            <div class="col-xs-3 text-center">
-                <span class="glyphicon glyphicon-play"></span>
-
-            </div>
-            <div class="col-xs-3 text-center">
-                <span class="glyphicon glyphicon-eye-open"></span>
-            </div>
-            <div class="col-xs-3 text-center">
-
-            </div>
-            <div class="col-xs-3 text-center">
-                <a href="#/user/{{model.userId}}">
-                    <span class="glyphicon glyphicon-user"></span>
-                </a>
-
-            </div>
-        </div>
-    </div>
-</nav>
