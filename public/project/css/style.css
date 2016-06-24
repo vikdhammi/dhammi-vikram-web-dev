@@ -108,3 +108,7 @@ div.well{
     border-bottom: 1px dotted #ccc;
 }
 
+div.profile.well{
+    max-height: inherit;
+    min-height: inherit;
+}

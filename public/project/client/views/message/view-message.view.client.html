@@ -1,0 +1,78 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#/user/{{model.userId}}/home" class="navbar-link">
+                  <span class="glyphicon glyphicon-home">
+                  </span>
+                </a>
+            </p>
+
+            <a class="navbar-brand" href="#">
+                View Inbox
+            </a>
+            <p class="navbar-text pull-right">
+                <a ng-click="model.updateWebsite();  submitted=true" class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+                </a>
+            </p>
+
+
+        </div>
+    </div>
+</nav>
+
+<div class="container comments">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+                <h1><small class="pull-right">{{model.messages.length}} Messages</small> Inbox </h1>
+            </div>
+            <div class="comments-list" ng-repeat="message in model.messages">
+                <div class="media">
+
+                    <p class="pull-right"><small>{{message.dateSent | date:'medium'}}</small></p>
+
+                    <div class="media-body">
+
+                        <h4 class="media-heading user_name">{{message.userId}}</h4>
+                        <h6 class="media-heading user_name"> {{message.title}}</h6>
+                        {{message.message}}
+
+                        <p> <small>Sent By: <a href="#/user/{{model.userId}}/home/userProfile/{{message.senderId}}/message">{{message.senderId}}
+
+                        </a></small>
+                            <span class="fa fa-trash-o" ng-click="model.deleteMessage(message._id)"></span>
+                        </p>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+            <nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="row navbar-text">
+            <div class="col-xs-3 text-center">
+                <span class="glyphicon glyphicon-share-alt"></span>
+            </div>
+            <div class="col-xs-3 text-center">
+                <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+            </div>
+            <div class="col-xs-3 text-center">
+                <i class="fa fa-television" aria-hidden="true"></i>
+            </div>
+            <div class="col-xs-3 text-center">
+                <a href="#/user/{{model.userId}}">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>

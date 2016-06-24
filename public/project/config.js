@@ -18,6 +18,31 @@
                 controller: "NewsViewController",
                 controllerAs: "model"
             })
+            .when("/user/:userId/home/userProfile/:profileId", {
+                templateUrl: "client/views/user/public-user-profile.view.client.html",
+                controller: "PublicUserProfileController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/home/userProfile/:profileId/message", {
+                templateUrl: "client/views/message/send-message.view.client.html",
+                controller: "SendMessageController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/home/inbox", {
+                templateUrl: "client/views/message/view-message.view.client.html",
+                controller: "ViewMessageController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/home/schedule/:matchId", {
+                templateUrl: "client/views/match/match-score.view.client.html",
+                controller: "MatchScoreController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/home/schedule/:matchId/commentary", {
+                templateUrl: "client/views/match/match-commentary.view.client.html",
+                controller: "MatchCommentaryController",
+                controllerAs: "model"
+            })
             .when("/register", {
                 templateUrl: "client/views/user/register.view.client.html",
                 controller: "RegisterController",
@@ -26,7 +51,10 @@
             .when("/user/:userId/home/profile", {
                 templateUrl: "client/views/user/profile.view.client.html",
                 controller: "ProfileController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedIn: checkLoggedIn
+                }
             })
             .when("/user/:userId/home", {
                 templateUrl: "client/views/user/home.view.client.html",

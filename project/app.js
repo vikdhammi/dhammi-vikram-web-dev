@@ -6,4 +6,8 @@ module.exports = function(app){
     
     var commentService = require("./server/services/comment.service.server")(app, models);
     
+    var scoreService = require("./server/services/score.service.server")(app, models);
+    
+    var messageService = require("./server/services/message.service.server")(app, models);
+    
 };

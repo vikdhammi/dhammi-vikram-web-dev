@@ -1,17 +1,18 @@
 (function(){
     angular
         .module("CricketApp")
-        .controller("NewsViewController",NewsViewController);
-    
-    function NewsViewController($location, $routeParams, ScheduleService, CommentService){
+        .controller("MatchScoreController",MatchScoreController);
+
+
+    function MatchScoreController($location, $routeParams, ScheduleService, ScoreService){
         var vm = this;
         vm.userId = $routeParams.userId;
-        vm.newsId =$routeParams.newsId;
-        console.log(vm.newsId);
-        vm.viewNews= viewNews;
-        vm.addNewsComment = addNewsComment;
-        vm.findCommentsByNewsId = findCommentsByNewsId;
-        
+        vm.matchId = $routeParams.matchId;
+//        console.log(vm.newsId);
+        vm.viewScore= viewScore;
+       vm.addMatchComment = addMatchComment;
+        vm.findCommentsByMatchId = findCommentsByMatchId;
+
         // vm.deleteWebsite = deleteWebsite;
         // vm.updateWebsite = updateWebsite;
 
@@ -62,29 +63,30 @@
 
 
         function init(){
-           // vm.newsResults = vm.news.get();
-            console.log("news controller");
+            // vm.newsResults = vm.news.get();
+            console.log("score controller");
             //   console.log(vm.newsResults);
-            viewNews();
-            findCommentsByNewsId();
+            viewScore();
+           findCommentsByMatchId();
         }
         init();
 
-        function viewNews(){
+        function viewScore(){
             ScheduleService
-                .viewNews()
+                .viewScore(vm.matchId)
                 .then(function(response){
-                    console.log("news func controller");
+                    console.log("match func controller");
                     console.log(response.data);
-                    vm.schedules = response.data;
-                    console.log(vm.schedules);
+                    vm.match = response.data;
                     vm.pub = response.data.provider.pubDate;
+                    //vm.match.innings_requirement = vm.match.innings-requirement;
+                   // console.log(vm.match.innings-requirement);
                 });
         }
 
-        function addNewsComment(comment) {
-            CommentService
-                .addNewsComment(vm.newsId,vm.userId,comment)
+        function addMatchComment(comment) {
+            ScoreService
+                .addMatchComment(vm.matchId,vm.userId,comment)
                 .then(
                     function(response){
                         vm.comments = response.data;
@@ -94,13 +96,13 @@
                 );
         }
 
-        function findCommentsByNewsId() {
-            CommentService
-                .findCommentsByNewsId(vm.newsId)
+        function findCommentsByMatchId() {
+            ScoreService
+                .findCommentsByMatchId(vm.matchId)
                 .then(
                     function (response) {
                         vm.postedComments = response.data;
-                        console.log("in find comments");
+                        console.log("in score comments");
                         console.log(vm.postedComments);
                         console.log(vm.postedComments.length);
                     }

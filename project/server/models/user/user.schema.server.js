@@ -10,6 +10,7 @@ module.exports = function() {
         email: String,
         phone: String,
         dob: Date,
+        moderator: Boolean,
         dateCreated: {type: Date, default: Date.now()}
     }, {collection: "project.user"});
     

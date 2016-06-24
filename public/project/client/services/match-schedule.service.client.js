@@ -12,7 +12,9 @@
         var api = {
             viewSchedule: viewSchedule,
             viewNews: viewNews,
-            findNewsById: findNewsById
+            viewScore: viewScore,
+            findNewsById: findNewsById,
+            viewCommentary: viewCommentary
         };
         return api;
 
@@ -41,8 +43,16 @@
                             .replace("UNIQUE_ID",newsId)
             return $http.get(url);
         }
-        
 
+        function viewScore(matchId){
+            url = 'http://cricapi.com/api/cricketScore/?unique_id='+matchId;
+            return $http.get(url);
+        }
+
+        function viewCommentary(matchId){
+            url = 'http://cricapi.com/api/cricketCommentary?unique_id='+matchId;
+            return $http.get(url);
+        }
     }
 
 

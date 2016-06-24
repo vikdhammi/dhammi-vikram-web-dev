@@ -3,13 +3,14 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="#/user/{{model.userId}}/website" class="navbar-link">
-          <span class="glyphicon glyphicon-chevron-left">
-          </span>
+                <a href="#/user/{{model.userId}}/home" class="navbar-link">
+                  <span class="glyphicon glyphicon-home">
+                  </span>
                 </a>
             </p>
+
             <a class="navbar-brand" href="#">
-                Edit Website
+                View News
             </a>
             <p class="navbar-text pull-right">
                 <a ng-click="model.updateWebsite();  submitted=true" class="navbar-link">
@@ -39,7 +40,7 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="page-header">
-                                    <h1><small class="pull-right">{{model.postedComments.length}} Comments</small> Comments </h1>
+                                    <h1><small class="pull-right"><h4>{{model.postedComments.length}} Comments</h4></small>Comments </h1>
                                 </div>
                                 <div class="comments-list" ng-repeat="comment in model.postedComments">
                                     <div class="media">
@@ -47,7 +48,9 @@
 
                                         <div class="media-body">
 
-                                            <h4 class="media-heading user_name">{{comment.userId}}</h4>
+                                            <h4 class="media-heading user_name">
+                                                <a href="#/user/{{model.userId}}/home/userProfile/{{comment.userId}}">
+                                                    {{comment.userId}}</a></h4>
                                             {{comment.text}}
 
                                             <p><small><a href="#">Like</a></small></p>
@@ -72,8 +75,10 @@
                 <span class="glyphicon glyphicon-share-alt"></span>
             </div>
             <div class="col-xs-3 text-center">
+                <i class="fa fa-newspaper-o" aria-hidden="true"></i>
             </div>
             <div class="col-xs-3 text-center">
+                <i class="fa fa-television" aria-hidden="true"></i>
             </div>
             <div class="col-xs-3 text-center">
                 <a href="#/user/{{model.userId}}">

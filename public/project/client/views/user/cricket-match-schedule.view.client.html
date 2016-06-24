@@ -2,11 +2,12 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
-          <span class="glyphicon glyphicon-chevron-left">
-          </span>
+                <a href="#/user/{{model.userId}}/home" class="navbar-link">
+                  <span class="glyphicon glyphicon-home">
+                  </span>
                 </a>
             </p>
+
             <a class="navbar-brand" href="#">
                 Match Schedule
             </a>
@@ -20,15 +21,16 @@
         </div>
     </div>
 </nav>
-
+<div class="container-fluid">
 <div class="row">
-        <div  id="schedule" ng-repeat="schedule in model.schedules.data" class="col-xs-6 well">
+        <div  id="schedule" ng-repeat="schedule in model.schedules.data" class="col-xs-4 well">
             <h3>{{schedule.description}}</h3>
-            <a href="#">{{schedule.title}}</a>
+            <a href="#/user/{{model.userId}}/home/schedule/{{schedule.unique_id}}/">{{schedule.title}}</a>
             <br>
             <div>Last Updated: {{model.pub | date:'medium'}}</div>
         </div>
 
+</div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">

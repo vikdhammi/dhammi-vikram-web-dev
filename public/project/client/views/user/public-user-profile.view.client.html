@@ -1,0 +1,67 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#/user/{{model.userId}}/home" class="navbar-link">
+                  <span class="glyphicon glyphicon-home">
+                  </span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="#">
+                User Profile
+            </a>
+
+
+
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="profile well well-sm">
+                <div class="row">
+
+                    <div class="col-sm-6 col-md-8">
+                        <h4>
+                           {{model.publicUser.username}}</h4>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i>{{model.publicUser.email}}
+                            <br />
+                            <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
+
+                        <a class="btn btn-primary btn-block"  ng-if="!(model.userId===model.profileId)"
+                           href="#/user/{{model.userId}}/home/userProfile/{{model.profileId}}/message" role="button">
+                            <span class="fa fa-envelope"></span>
+                            Send Message</a>
+                        <a class="btn btn-primary btn-block" ng-if="!(model.userId===model.profileId)"
+                           href="#/user/{{model.userId}}/schedule" role="button">
+                            <span class="fa fa-user-plus"></span>
+                            Add Friend</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="row navbar-text">
+            <div class="col-xs-3 text-center">
+            </div>
+            <div class="col-xs-3 text-center">
+            </div>
+            <div class="col-xs-3 text-center">
+            </div>
+            <div class="col-xs-3 text-center">
+                <a href="#/user/{{model.user._id}}">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
