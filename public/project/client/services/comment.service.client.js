@@ -7,7 +7,10 @@
     function CommentService($http) {
         var api = {
             addNewsComment: addNewsComment,
-            findCommentsByNewsId: findCommentsByNewsId
+            findCommentsByNewsId: findCommentsByNewsId,
+            updateNewsComment: updateNewsComment,
+            findCommentByCommentId: findCommentByCommentId,
+            deleteComment: deleteComment
         };
         return api;
 
@@ -25,6 +28,23 @@
             var url = "/api/project/news/"+newsId;
             return $http.get(url);
         }
+
+        function findCommentByCommentId(commentId){
+            var url = "/api/comment/news/"+ commentId;
+            return $http.get(url);
+        }
+
+
+        function updateNewsComment(commentId, comment){
+            var url = "/api/comment/news/" + commentId;
+            return $http.put(url, comment);
+        }
+
+        function deleteComment(commentId){
+            var url = "/api/comment/" + commentId;
+            return $http.delete(url);
+        }
+        
     }
 
 }());

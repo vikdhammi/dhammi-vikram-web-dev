@@ -11,6 +11,8 @@
         vm.viewNews= viewNews;
         vm.addNewsComment = addNewsComment;
         vm.findCommentsByNewsId = findCommentsByNewsId;
+        vm.deleteComment = deleteComment;
+        
         
         // vm.deleteWebsite = deleteWebsite;
         // vm.updateWebsite = updateWebsite;
@@ -106,5 +108,23 @@
                     }
                 );
         }
+
+        function deleteComment(commentId) {
+            CommentService
+                .deleteComment(commentId)
+                .then(function(response){
+                    var result = response.data;
+                    if(result){
+                        init();
+                        $location.url("/user/"+vm.userId+"/home/news/"+vm.newsId);
+                    }
+                    else{
+                        vm.error = "Unable to delete comment!";
+                    }
+                });
+
+        }
+
+        
     }
 })();

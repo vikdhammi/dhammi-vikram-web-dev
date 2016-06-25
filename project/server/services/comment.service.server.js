@@ -5,6 +5,9 @@ module.exports = function(app, models) {
 
     app.post("/api/project/user/:userId/news/:newsId", addNewsComment);
     app.get("/api/project/news/:newsId",findCommentsByNewsId);
+    app.put("/api/comment/news/:commentId",updateNewsComment);
+    app.get("/api/comment/news/:commentId",findCommentByCommentId);
+    app.delete("/api/comment/:commentId",deleteComment);
 
     function addNewsComment(req, res) {
         var comment = req.body;
@@ -38,4 +41,52 @@ module.exports = function(app, models) {
                 }
             );
     }
+
+    function updateNewsComment(req, res){
+        var commentId = req.params.commentId;
+        var newComment = req.body;
+
+        commentModel
+            .updateNewsComment(commentId, newComment)
+            .then(
+                function(stats){
+                    res.send(200);
+                },
+                function(err){
+                    res.statusCode(400).send(err);
+                }
+            );
+    }
+
+    function findCommentByCommentId(req, res){
+        var commentId = req.params.commentId;
+
+        commentModel
+            .findCommentByCommentId(commentId)
+            .then(
+                function(comment) {
+                    res.json(comment);
+                },
+                function(err){
+                    res.statusCode(400).send(err);
+                }
+            );
+    }
+
+    function deleteComment(req, res){
+        var commentId = req.params.commentId;
+
+        commentModel
+            .deleteComment(commentId)
+            .then(
+                function(stats){
+                    console.log(stats);
+                    res.send(200);
+                },
+                function(err){
+                    res.statusCode(400).send(err);
+                }
+            );
+    }
+
 };

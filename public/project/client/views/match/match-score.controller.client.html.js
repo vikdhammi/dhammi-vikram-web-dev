@@ -12,6 +12,7 @@
         vm.viewScore= viewScore;
        vm.addMatchComment = addMatchComment;
         vm.findCommentsByMatchId = findCommentsByMatchId;
+        vm.deleteComment = deleteComment;
 
         // vm.deleteWebsite = deleteWebsite;
         // vm.updateWebsite = updateWebsite;
@@ -107,6 +108,22 @@
                         console.log(vm.postedComments.length);
                     }
                 );
+        }
+
+        function deleteComment(commentId) {
+            ScoreService
+                .deleteComment(commentId)
+                .then(function(response){
+                    var result = response.data;
+                    if(result){
+                        init();
+                        $location.url("/user/"+vm.userId+"/home/schedule/"+vm.matchId);
+                    }
+                    else{
+                        vm.error = "Unable to delete comment!";
+                    }
+                });
+
         }
     }
 })();

@@ -54,6 +54,12 @@
                                             {{comment.text}}
 
                                             <p><small><a href="#">Like</a></small></p>
+                                            <p><a href="#/user/{{model.userId}}/home/news/{{model.newsId}}/comment/{{comment._id}}">
+                                                <span   class="fa fa-pencil-square-o"
+                                                ></span></a>
+                                                <span   class="fa fa-trash-o"
+                                                       ng-click="model.deleteComment(comment._id)"></span>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>

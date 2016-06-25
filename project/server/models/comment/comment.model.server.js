@@ -7,7 +7,10 @@ module.exports = function () {
     
     var api = {
         addNewsComment: addNewsComment,
-        findCommentsByNewsId: findCommentsByNewsId
+        findCommentsByNewsId: findCommentsByNewsId,
+        findCommentByCommentId: findCommentByCommentId,
+        updateNewsComment: updateNewsComment,
+        deleteComment: deleteComment
     };
     
     return api;
@@ -19,5 +22,19 @@ module.exports = function () {
 
     function findCommentsByNewsId(newsId) {
         return Comment.find({newsId: newsId});
+    }
+
+    function findCommentByCommentId(commentId){
+        return Comment.findById(commentId);
+    }
+
+    function updateNewsComment(commentId, newComment){
+        delete newComment._id;
+        return Comment.update({_id: commentId},{
+            $set: newComment
+        });
+    }
+    function deleteComment(commentId){
+        return Comment.remove({_id: commentId});
     }
 };

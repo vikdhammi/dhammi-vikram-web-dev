@@ -43,36 +43,41 @@
                                             <h4 class="media-heading user_name">{{comment.userId}}</h4>
                                             {{comment.text}}
 
-                                            <p><small><a href="#">Like</a></small></p>
+                                            <p><a href="#/user/{{model.userId}}/home/schedule/{{model.matchId}}/comment/{{comment._id}}">
+                                                <span  ng-if="model.userId===comment.userId" class="fa fa-pencil-square-o"
+                                                      ></span></a>
+                                                <span  ng-if="model.userId===comment.userId" class="fa fa-trash-o"
+                                                      ng-click="model.deleteComment(comment._id)"></span>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <nav class="navbar navbar-default navbar-fixed-bottom">
-            <div class="container">
-                <div class="row navbar-text">
-                    <div class="col-xs-3 text-center">
-                        <span class="glyphicon glyphicon-play"></span>
+    </div>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="row navbar-text">
+                <div class="col-xs-3 text-center">
+                    <span class="glyphicon glyphicon-play"></span>
 
-                    </div>
-                    <div class="col-xs-3 text-center">
-                        <span class="glyphicon glyphicon-eye-open"></span>
-                    </div>
-                    <div class="col-xs-3 text-center">
+                </div>
+                <div class="col-xs-3 text-center">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                </div>
+                <div class="col-xs-3 text-center">
 
-                    </div>
-                    <div class="col-xs-3 text-center">
-                        <a href="#/user/{{model.userId}}">
-                            <span class="glyphicon glyphicon-user"></span>
-                        </a>
+                </div>
+                <div class="col-xs-3 text-center">
+                    <a href="#/user/{{model.userId}}">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </a>
 
-                    </div>
                 </div>
             </div>
-        </nav>
+        </div>
+    </nav>

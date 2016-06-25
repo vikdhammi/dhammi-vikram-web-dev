@@ -11,7 +11,8 @@ module.exports = function(){
         findUserByCredentials: findUserByCredentials,
         findUserByUsername: findUserByUsername,
         updateUser: updateUser,
-        deleteUser: deleteUser
+        deleteUser: deleteUser,
+        searchUsersByUsername: searchUsersByUsername
     };
     
     return api;
@@ -49,4 +50,11 @@ module.exports = function(){
     function deleteUser(userId) {
         return User.remove({_id: userId});
      }
+
+    function searchUsersByUsername(searchText){
+        return User.find({'$or':[
+            {'username':{'$regex':searchText, '$options':'i'}},
+            {'firstName':{'$regex':searchText, '$options':'i'}},
+            {'lastName':{'$regex':searchText, '$options':'i'}}]}).sort('-dateCreated');
+    }
 };

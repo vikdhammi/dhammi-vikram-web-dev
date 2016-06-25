@@ -15,10 +15,15 @@
             logout: logout,
             loggedIn: loggedIn,
             register: register,
-            findUsers: findUsers
+            findUsers: findUsers,
+            searchUsersByUsername: searchUsersByUsername
         };
         return api;
 
+        function searchUsersByUsername(searchText){
+            var url = "/api/search/"+searchText;
+            return $http.get(url);
+        }
 
         function logout() {
             return $http.post("/api/project/logout");

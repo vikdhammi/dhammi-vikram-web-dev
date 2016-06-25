@@ -38,6 +38,16 @@
                 controller: "MatchScoreController",
                 controllerAs: "model"
             })
+            .when("/user/:userId/home/schedule/:matchId/comment/:commentId", {
+                templateUrl: "client/views/match/score-comment-edit.view.client.html",
+                controller: "EditScoreCommentController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/home/news/:newsId/comment/:commentId", {
+                templateUrl: "client/views/match/news-comment-edit.view.client.html",
+                controller: "EditNewsCommentController",
+                controllerAs: "model"
+            })
             .when("/user/:userId/home/schedule/:matchId/commentary", {
                 templateUrl: "client/views/match/match-commentary.view.client.html",
                 controller: "MatchCommentaryController",

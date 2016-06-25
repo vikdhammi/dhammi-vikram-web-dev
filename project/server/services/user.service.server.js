@@ -14,6 +14,7 @@ module.exports = function(app, models) {
     app.get("/api/project/user/:userId", findUserById);
     app.put("/api/project/user/:userId", updateUser);
     app.delete("/api/project/user/:userId", deleteUser);
+    app.get("/api/search/:searchText", searchUsers);
 
     passport.use(new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
@@ -250,6 +251,26 @@ module.exports = function(app, models) {
                     req.session.createUser=user;
                     res.json(user);
                 }, function(error){
+                    res.statusCode(400).send(error);
+                }
+            );
+    }
+
+    function searchUsers(req, res){
+        var searchText = req.params.searchText;
+
+        userModel
+            .searchUsersByUsername(searchText)
+            .then(
+                function(users){
+                    if(users){
+                        res.json(users);
+                    }
+                    else{
+                        res.statusCode(400);
+                    }
+                },
+                function (error) {
                     res.statusCode(400).send(error);
                 }
             );

@@ -8,7 +8,10 @@
     function ScoreService($http) {
         var api = {
             addMatchComment: addMatchComment,
-            findCommentsByMatchId: findCommentsByMatchId
+            findCommentsByMatchId: findCommentsByMatchId,
+            findCommentByCommentId: findCommentByCommentId,
+            updateComment: updateComment,
+            deleteComment: deleteComment
         };
         return api;
 
@@ -25,6 +28,23 @@
         function findCommentsByMatchId(matchId) {
             var url = "/api/project/schedule/"+matchId;
             return $http.get(url);
+        }
+
+        function findCommentByCommentId(commentId){
+            var url = "/api/comment/"+ commentId;
+            return $http.get(url);
+        }
+
+        function updateComment(commentId, comment){
+            var url = "/api/comment/" + commentId;
+            return $http.put(url, comment);
+        }
+
+       
+
+        function deleteComment(commentId){
+            var url = "/api/comment/" + commentId;
+            return $http.delete(url);
         }
     }
 

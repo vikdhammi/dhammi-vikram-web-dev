@@ -2,42 +2,39 @@
 (function(){
     angular
         .module("CricketApp")
-        .controller("TeamMateSearchController",TeamMateSearchController)
+        .controller("TeamMateSearchController",TeamMateSearchController);
 
 
 
-    function TeamMateSearchController($location, $routeParams, UserService){
+    function TeamMateSearchController($location, $routeParams, UserService, $rootScope){
         var vm = this;
-        vm.userId = $routeParams.userId;
+
+        var userId = $routeParams.userId;
 
 
         vm.searchTeammates = searchTeammates;
 
         function init(){
-            UserService
-                .findUserById(vm.userId)
-                .then(
-                    function(response){
-                        vm.users= response.data;
-                    }
-                );
-            UserService
-                .findUsers()
-                .then(
-                    function (response) {
-                        vm.users = response.data;
-                    }
-                )
+
         }
 
         init();
 
         function searchTeammates(searchText){
             UserService
-                .searchTeammates(searchText)
-                .then(function(response){
-                    vm.teammembers = response.data;
+                .searchUsersByUsername(searchText)
+                .then(function(response) {
+                    var teammembers = response.data;
+                    for (var u in teammembers) {
+                        if (teammembers[u]._id == userId) {
+                            teammembers.splice(u, 1);
+                        }
+                    }
+                    vm.users = teammembers;
                     console.log(vm.users);
+                },
+                function(error){
+                    vm.error = "User not found!";
                 });
         }
     }

@@ -7,7 +7,10 @@ module.exports = function () {
 
     var api = {
         addMatchComment: addMatchComment,
-        findCommentsByMatchId: findCommentsByMatchId
+        findCommentsByMatchId: findCommentsByMatchId,
+        findCommentByCommentId: findCommentByCommentId,
+        updateComment: updateComment,
+        deleteComment: deleteComment
     };
 
     return api;
@@ -20,4 +23,22 @@ module.exports = function () {
     function findCommentsByMatchId(matchId) {
         return Score.find({matchId: matchId});
     }
+
+    function findCommentByCommentId(commentId){
+        return Score.findById(commentId);
+    }
+
+    function updateComment(commentId, newComment){
+        delete newComment._id;
+        console.log(newComment);
+        console.log(commentId);
+        return Score.update({_id: commentId},{
+            $set: newComment
+
+        });
+    }
+    function deleteComment(commentId){
+        return Score.remove({_id: commentId});
+    }
+
 };
