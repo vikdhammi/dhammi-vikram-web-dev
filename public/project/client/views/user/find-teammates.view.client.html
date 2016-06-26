@@ -7,12 +7,7 @@
                   </span>
                 </a>
             </p>
-            <p class="navbar-text pull-left">
-                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
-          <span class="glyphicon glyphicon-chevron-left">
-          </span>
-                </a>
-            </p>
+
             <a class="navbar-brand" href="#">
                 Search Users
             </a>
@@ -41,7 +36,6 @@
         {{model.error}}
     </div>
 </div>
-
 <div class="well">
     <table class="table">
         <thead>
@@ -58,9 +52,14 @@
             <td>1</td>
             <td>{{user.firstName}}</td>
             <td>{{user.lastName}}</td>
-            <td>{{user.username}}</td>
             <td>
-                <a ng-click="model.deleteUser()"><i class="fa fa-user-times"></i></a>
+                <a href="#/user/{{model.userId}}/home/userProfile/{{user._id}}" class="navbar-link">{{user.username}}</a>
+                <a ng-if="model.user.moderator===true"
+                        ng-click="model.deleteUser(user._id)"><i class="fa fa-user-times"></i></a>
+            </td>
+            <td>
+                <a ng-if="model.user.moderator===true"
+                        ng-click="model.makeAdmin(user._id, user)"><i class="fa fa-user-secret"></i></a>
             </td>
         </tr>
 

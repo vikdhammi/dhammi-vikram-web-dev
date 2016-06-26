@@ -1,55 +1,75 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <p class="navbar-text pull-left">
-                <a href="#/user/{{model.userId}}/home" class="navbar-link">
-                  <span class="glyphicon glyphicon-home">
-                  </span>
-                </a>
-            </p>
-
-            <a class="navbar-brand" href="#">
-                Match Schedule
-            </a>
-            <p class="navbar-text pull-right">
-                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new" class="navbar-link">
-          <span class="glyphicon glyphicon-plus">
-          </span>
-                </a>
-            </p>
-
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Cric Info</a>
         </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#/user/{{model.userId}}/home">Home</a>
+                </li>
+                <li>
+                    <a href="#/user/{{model.userId}}/home/news">News</a>
+                </li>
+                <li>
+                    <a href="#/user/{{model.userId}}/home/profile">Profile</a>
+                </li>
+
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
     </div>
+    <!-- /.container -->
 </nav>
-<div class="container-fluid">
+
+
+<div class="col-md-10 col-md-offset-1">
 <div class="row">
-        <div  id="schedule" ng-repeat="schedule in model.schedules.data" class="col-xs-4 well">
-            <h3>{{schedule.description}}</h3>
-            <a href="#/user/{{model.userId}}/home/schedule/{{schedule.unique_id}}/">{{schedule.title}}</a>
-            <br>
-            <div>Last Updated: {{model.pub | date:'medium'}}</div>
+        <div  id="schedule" ng-repeat="schedule in model.schedules.data" class="custom-match col-xs-4  well col">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+
+            <a href="#/user/{{model.userId}}/home/schedule/{{schedule.unique_id}}/">{{schedule.description}}</a>
+                    </h4>
+                </div>
+
+                <div class="news-pad panel-body">
+                <p class="text-primary" >{{schedule.title}}</p>
+                    <h6><span class="fa fa-calendar"> {{model.pub | date:'mediumDate'}}</span></h6>
         </div>
+                </div>
+            </div>
 
 </div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
         <div class="row navbar-text">
-            <div class="col-xs-3 text-center">
-                <span class="glyphicon glyphicon-play"></span>
+            <div class="col-xs-4 text-center">
+                <a href="#/user/{{model.userId}}/home/profile/search">
+                    <span class="fa fa-users"></span>
+                </a>
+            </div>
+            <div class="col-xs-4 text-center">
+                <a href="#/user/{{model.userId}}/home/inbox">
+                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                </a>
+            </div>
 
-            </div>
-            <div class="col-xs-3 text-center">
-                <span class="glyphicon glyphicon-eye-open"></span>
-            </div>
-            <div class="col-xs-3 text-center">
-
-            </div>
-            <div class="col-xs-3 text-center">
-                <a href="#/user/{{model.userId}}">
+            <div class="col-xs-4 text-center">
+                <a href="#/user/{{model.userId}}/home/profile">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
-
             </div>
         </div>
     </div>

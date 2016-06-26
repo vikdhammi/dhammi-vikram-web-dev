@@ -47,10 +47,7 @@ module.exports = function(){
     function updateUser(userId, newUser) {
         delete newUser._id;    //if you want to set the entire object to newUser
         return User.update({_id: userId},{
-            $set: {
-                firstName: newUser.firstName,
-                lastName: newUser.lastName
-            }
+            $set: newUser
            // Alt. way -   $set: user
         });
      }

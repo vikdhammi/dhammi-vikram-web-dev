@@ -49,11 +49,15 @@
             return $http.post("/api/project/register", user);
         }
 
-        function createUser(username, password,email){
+        function createUser(firstName, lastName,username, password,email, contact, address){
             var user = {
+                firstName: firstName,
+                lastName: lastName,
                 username: username,
                 password: password,
-                email: email
+                email: email,
+                contact: contact,
+                address: address
             };
             return $http.post("/api/project/user", user);
         }

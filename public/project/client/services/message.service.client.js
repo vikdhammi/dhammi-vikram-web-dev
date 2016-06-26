@@ -13,10 +13,11 @@
         };
         return api;
 
-        function sendMessage(userId, receiverId, title, message) {
+        function sendMessage(userId, receiverId, sentBy, title, message) {
             var newMessage = {
                 senderId: userId,
                 receiverId: receiverId,
+                username: sentBy,
                 title: title,
                 message: message
             };

@@ -8,7 +8,8 @@ module.exports = function() {
         firstName: {type: String, minLength: 4 },
         lastName: String,
         email: String,
-        phone: String,
+        contact: String,
+        address: String,
         dob: Date,
         moderator: Boolean,
         dateCreated: {type: Date, default: Date.now()}

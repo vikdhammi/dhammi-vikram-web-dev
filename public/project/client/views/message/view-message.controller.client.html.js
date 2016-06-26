@@ -4,14 +4,14 @@
         .module("CricketApp")
         .controller("ViewMessageController",ViewMessageController);
 
-    function ViewMessageController($location, $routeParams, MessageService){
+    function ViewMessageController($location, $routeParams, MessageService, UserService){
         var vm = this;
         vm.userId = $routeParams.userId;
         vm.findMessageByUserId = findMessageByUserId;
         vm.deleteMessage = deleteMessage;
 
         function init(){
-            
+           
             console.log("message controller");
             findMessageByUserId();
         }

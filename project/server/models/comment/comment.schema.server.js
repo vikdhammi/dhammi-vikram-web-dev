@@ -5,6 +5,7 @@ module.exports = function() {
     var CommentSchema = mongoose.Schema({
        newsId: String,
         userId : String,
+        username: String,
         text : String,
         dateAdded: {type: Date, default: Date.now()}
     }, {collection: "project.comment"});

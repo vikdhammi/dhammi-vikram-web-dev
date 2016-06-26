@@ -5,6 +5,7 @@ module.exports = function() {
     var MessageSchema = mongoose.Schema({
        receiverId: String,
         senderId: String,
+        username: String,
         title: String,
         message : String,
         dateSent: {type: Date, default: Date.now()}

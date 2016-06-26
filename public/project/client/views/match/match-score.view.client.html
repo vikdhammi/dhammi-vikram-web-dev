@@ -1,27 +1,53 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <p class="navbar-text pull-left">
-                <a href="#/user/{{model.userId}}/home" class="navbar-link">
-                  <span class="glyphicon glyphicon-home">
-                  </span>
-                </a>
-            </p>
-            <a class="navbar-brand" href="#">
-                Match Score
-            </a>
 
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Cric Info</a>
         </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#/user/{{model.userId}}/home">Home</a>
+                </li>
+                <li>
+                    <a href="#/user/{{model.userId}}/home/profile">Profile</a>
+                </li>
+                <li>
+                    <a href="#/user/{{model.userId}}/home/news">News</a>
+                </li>
+                <li>
+                    <a href="#/user/{{model.userId}}/home/schedule">Schedule</a>
+                </li>
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
     </div>
+    <!-- /.container -->
 </nav>
+
 <div class="container-fluid">
     <div  class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="container-fluid"> <h4><a href="#/user/{{model.userId}}/home/schedule/{{model.matchId}}/commentary">{{model.match.score}}</a></h4>
-                <h5>{{model.match["team-1"]}} Vs {{model.match["team-2"]}}</h5>
-                <div> {{model.match["innings-requirement"]}}
-                    <br>
-                    <div>Last Updated: {{model.pub | date:'medium'}}</div>
+            <div class="col-md-8 col-md-offset-2">
+                <div class="container-fluid">
+                    <div class="article"> <h3 align="center">{{model.match["team-1"]}} Vs {{model.match["team-2"]}}</h3>
+                <h4><a href="#/user/{{model.userId}}/home/schedule/{{model.matchId}}/commentary">
+                    {{model.match.score}}</a></h4>
+
+                <div><p align="center"> <b>{{model.match["innings-requirement"]}}</b></p>
+
+                    <ul class="list-unstyled list-inline">
+                        <li><i class="fa fa-calendar"></i> {{model.pub | date:'mediumDate'}}</li>
+                        <li><i class="fa fa-comments"></i> {{model.postedComments.length}} Comments</li>
+                    </ul>
                   <textarea class="form-control"
                             rows="3"
                             ng-model="name"
@@ -32,22 +58,25 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="page-header">
-                                    <h1><small class="pull-right">{{model.postedComments.length}} Comments</small> Comments </h1>
+                                    <h3> Comments </h3>
                                 </div>
                                 <div class="comments-list" ng-repeat="comment in model.postedComments">
                                     <div class="media">
-                                        <p class="pull-right"><small>{{comment.dateAdded | date:'medium'}}</small></p>
+                                        <p class="pull-right"><small><i class="fa fa-calendar"></i>{{comment.dateAdded | date:'mediumDate'}}</small></p>
 
                                         <div class="media-body">
 
-                                            <h4 class="media-heading user_name">{{comment.userId}}</h4>
+                                            <h4 class="media-heading user_name">
+                                                <a href="#/user/{{model.userId}}/home/userProfile/{{comment.userId}}">
+                                                    {{comment.username}}</a></h4>
                                             {{comment.text}}
 
-                                            <p><a href="#/user/{{model.userId}}/home/schedule/{{model.matchId}}/comment/{{comment._id}}">
+                                            <p><a class="btn btn-primary" role="button"
+                                                    href="#/user/{{model.userId}}/home/schedule/{{model.matchId}}/comment/{{comment._id}}">
                                                 <span  ng-if="model.userId===comment.userId" class="fa fa-pencil-square-o"
-                                                      ></span></a>
+                                                ></span>Edit</a>
                                                 <span  ng-if="model.userId===comment.userId" class="fa fa-trash-o"
-                                                      ng-click="model.deleteComment(comment._id)"></span>
+                                                       ng-click="model.deleteComment(comment._id)"></span>
                                             </p>
                                         </div>
                                     </div>
@@ -59,25 +88,27 @@
             </div>
         </div>
     </div>
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container">
-            <div class="row navbar-text">
-                <div class="col-xs-3 text-center">
-                    <span class="glyphicon glyphicon-play"></span>
+    </div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="row navbar-text">
+            <div class="col-xs-4 text-center">
+                <a href="#/user/{{model.userId}}/home/profile/search">
+                    <span class="fa fa-users"></span>
+                </a>
+            </div>
+            <div class="col-xs-4 text-center">
+                <a href="#/user/{{model.userId}}/home/inbox">
+                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                </a>
+            </div>
 
-                </div>
-                <div class="col-xs-3 text-center">
-                    <span class="glyphicon glyphicon-eye-open"></span>
-                </div>
-                <div class="col-xs-3 text-center">
-
-                </div>
-                <div class="col-xs-3 text-center">
-                    <a href="#/user/{{model.userId}}">
-                        <span class="glyphicon glyphicon-user"></span>
-                    </a>
-
-                </div>
+            <div class="col-xs-4 text-center">
+                <a href="#/user/{{model.userId}}/home/profile">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>

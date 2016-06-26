@@ -1,33 +1,78 @@
 
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Start Bootstrap</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
 <div class="container">
     <div ng-show="model.error" class="alert alert-danger" role="alert">
         {{model.error}}
     </div>
 
-
-<h1>Login</h1>
-    <form name="loginForm" ng-app>
-        <div class="control-group" ng-class="{true: 'error'}[submitted && loginForm.username.$error.required]">
-    <input ng-model="username"
-           name = "username"
-           class="form-control"
-            type="text"
-            placeholder="username"
-            required/>
-            <span class="help-inline" ng-show="submitted && loginForm.username.$error.required">*Username is a Required field</span>
-
-
-    <input ng-model="password"
-            class="form-control"
-       type="password"
-       placeholder="password"
-        required/>
-            <span class="help-inline" ng-show="submitted && loginForm.username.$error.required">*Password is a Required field</span>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title" align="center">Welcome to Cric Info</h3>
         </div>
-    <a ng-click ="model.login(username, password); submitted=true"
-       class="btn btn-primary btn-block">Login</a>
-    <a class="btn btn-success btn-block"
-       href="#/register" >Register</a>
-        <a href="#/reset" class="form-group">Forgotten your password?</a>
-    </form>
+        <div class="panel-body">
+            <form name="loginForm" ng-app>
+                <div class="control-group" ng-class="{true: 'error'}[submitted && loginForm.username.$error.required]">
+                    <input ng-model="username"
+                           name = "username"
+                           class="form-control"
+                           type="text"
+                           placeholder="username"
+                           required/>
+                    <span class="help-inline" ng-show="submitted && loginForm.username.$error.required">*Username is a Required field</span>
+
+
+                    <input ng-model="password"
+                           class="form-control"
+                           type="password"
+                           placeholder="password"
+                           required/>
+                    <span class="help-inline" ng-show="submitted && loginForm.username.$error.required">*Password is a Required field</span>
+                </div>
+                <a ng-click ="model.login(username, password); submitted=true"
+                   class="btn btn-primary btn-block">Login</a>
+                <a class="btn btn-success btn-block"
+                   href="#/register" >Register</a>
+                <hr/>
+                <a href="/auth/facebook"
+                   class="btn btn-primary btn-block">
+                    <span class ="fa fa-facebook"></span>
+                    Login Using Facebook</a>
+                <a class="btn btn-success btn-block">
+                    <span class ="fa fa-google"></span>
+                    Login Using Google</a>
+            </form>
+
+        </div>
+    </div>
 </div>

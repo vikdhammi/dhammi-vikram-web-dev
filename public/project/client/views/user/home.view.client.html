@@ -1,51 +1,111 @@
-<body>
-<div id="main">
-
-    <div id="header"><a href="#">United Premier League</a></div>
-
-    <div id="menupanel">
-
-        <ul>
-
-            <li><a href="#">Home</a></li>
-
-            <li><a href="#/user/{{model.userId}}/home/schedule">Schedule</a></li>
-
-            <li><a href="#/user/{{model.userId}}/home/news">News</a></li>
-
-            <li><a href="#/user/{{model.userId}}/home/profile">Profile</a></li>
-
-            <li><a href="">Play</a></li>
-
-            <li><a href="/login">Logout</a></li>
-
-        </ul>
-
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Cric Info</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#/user/{{model.userId}}/home/news">News</a>
+                </li>
+                <li>
+                    <a href="#/user/{{model.userId}}/home/schedule">Schedule</a>
+                </li>
+                <li>
+                    <a href="#/user/{{model.userId}}/home/profile">Profile</a>
+                </li>
+                <li>
+                    <a ng-if="!model.userId===null" href="#/login">Login/Sign Up</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
     </div>
+    <!-- /.container -->
+</nav>
 
-    <div id="banner">
+<header id="myCarousel" class="carousel slide">
+    <!-- Indicators -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active" ></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+        </ol>
 
-    </div>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="images/sider4.jpg" alt="Chania">
+            </div>
 
-    <div id="content">
+            <div class="item">
+                <img src="images/sider2.jpg" alt="Chania">
+            </div>
 
-        <div class="sider">
+            <div class="item">
+                <img src="images/sider3.jpg" alt="Flower">
+            </div>
 
-            <img src="images/sider1.jpg" alt="sider1" width="200" height="80" /><img src="images/sider2.jpg" alt="sider2" width="200" height="80" /><img src="images/sider3.jpg" alt="sider3" width="200" height="80" />
-
-            <img src="images/sider4.jpg" alt="sider4" width="200" height="80" /></div>
-
-        <div class="col1">EASIGRASS<br />
-
-            <br />
-            <p>Easigrass is the leading artificial grass producer in the industry is here at your call for the cost effective artificial grass. Our artificial grass is recyclable and suits every atmosphere and environment. Easigrass fulfill your requirement of artificial grass in various sites related to the home, garden and sports.</p>
-            <p>With more than seventeen years of experience we worked with many leading agency like FIFA, The RFU, Top Golf, Chelsea FC, The Lawn Tennis Association and David loyd. Our stylish and attractive and artificial grasses are fixed in twenty hour time for a normal garden.</p>
-            <p>Artificial grass are eco friendly and it give you added advantage in garden such as noise pollution , electricity charge , grass clipping, grass watering etc. along with this our customers don&rsquo;t need to spend fertilizers, pesticides or weed killers. Easigrass offers all these products at every affordable cost that no other company can give. Above all we give eight years guarantee on our artificial grass works.<br />
-            </p>
+            <div class="item">
+                <img src="images/sider1.jpg" alt="Flower">
+            </div>
         </div>
 
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
 
-</div>
+</header>
 
-</body>
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Full Slider by Start Bootstrap</h1>
+            <p>The background images for the slider are set directly in the HTML using inline CSS. The rest of the styles for this template are contained within the <code>full-slider.css</code>file.</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+
+</div>
+<!-- /.container -->
+
+<!-- jQuery -->
+
+
+<!-- Bootstrap Core JavaScript -->
+
+
+<!-- Script to Activate the Carousel -->
+<script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+</script>
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+
+    <!-- /.container -->
+</nav>

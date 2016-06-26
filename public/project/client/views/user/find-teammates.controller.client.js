@@ -6,36 +6,78 @@
 
 
 
-    function TeamMateSearchController($location, $routeParams, UserService, $rootScope){
+    function TeamMateSearchController($location, $routeParams, UserService, $rootScope) {
         var vm = this;
 
-        var userId = $routeParams.userId;
-
+        vm.userId = $routeParams.userId;
 
         vm.searchTeammates = searchTeammates;
+        vm.deleteUser = deleteUser;
+        vm.makeAdmin = makeAdmin;
 
-        function init(){
+        function init() {
+            // vm.newsResults = vm.news.get();
+            UserService
+                .findUserById(vm.userId)
+                .then(function (response) {
+                    vm.user = response.data;
+                });
 
         }
 
         init();
 
-        function searchTeammates(searchText){
+        function searchTeammates(searchText) {
             UserService
                 .searchUsersByUsername(searchText)
-                .then(function(response) {
-                    var teammembers = response.data;
-                    for (var u in teammembers) {
-                        if (teammembers[u]._id == userId) {
-                            teammembers.splice(u, 1);
+                .then(function (response) {
+                        var teammembers = response.data;
+                        for (var u in teammembers) {
+                            if (teammembers[u]._id == vm.userId) {
+                                teammembers.splice(u, 1);
+                            }
                         }
+                        vm.users = teammembers;
+                        console.log(vm.users);
+                    },
+                    function (error) {
+                        vm.error = "User not found!";
+                    });
+        }
+
+        function deleteUser(delUserId) {
+            UserService
+                .deleteUser(delUserId)
+                .then(
+                    function (response) {
+                        $location.url("/user/" + vm.userId + "/home/profile/search/");
+                        console.log("user deleted");
+                    },
+                    function () {
+                        console.log("user not deleted");
+                        vm.error = "Unable to remove user";
                     }
-                    vm.users = teammembers;
-                    console.log(vm.users);
-                },
-                function(error){
-                    vm.error = "User not found!";
-                });
+                );
+        }
+
+        function makeAdmin(adminId, admin) {
+            if (admin.moderator) {
+                vm.error = "User already an admin";
+            }
+            else {
+                admin.moderator = true;
+                console.log(admin);
+                UserService
+                    .updateUser(adminId, admin)
+                    .then(
+                        function (response) {
+                            $location.url("/user/" + vm.userId + "/home/profile/search");
+                        },
+                        function (err) {
+                            vm.error = "Error occurred!";
+                        }
+                    );
+            }
         }
     }
 })();

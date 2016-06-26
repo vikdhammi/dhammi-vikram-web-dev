@@ -26,8 +26,10 @@
 
                     <div class="col-sm-6 col-md-8">
                         <h4>
-                           {{model.publicUser.username}}</h4>
+                            <i class="fa fa-briefcase">{{model.publicUser.username}}</i></h4>
                         <p>
+                            <i class="fa fa-user"></i>{{model.publicUser.firstName}} {{model.publicUser.lastName}}
+                            <br />
                             <i class="glyphicon glyphicon-envelope"></i>{{model.publicUser.email}}
                             <br />
                             <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
@@ -36,10 +38,7 @@
                            href="#/user/{{model.userId}}/home/userProfile/{{model.profileId}}/message" role="button">
                             <span class="fa fa-envelope"></span>
                             Send Message</a>
-                        <a class="btn btn-primary btn-block" ng-if="!(model.userId===model.profileId)"
-                           href="#/user/{{model.userId}}/schedule" role="button">
-                            <span class="fa fa-user-plus"></span>
-                            Add Friend</a>
+
 
                     </div>
                 </div>

@@ -40,10 +40,10 @@
                         <h6 class="media-heading user_name"> {{message.title}}</h6>
                         {{message.message}}
 
-                        <p> <small>Sent By: <a href="#/user/{{model.userId}}/home/userProfile/{{message.senderId}}/message">{{message.senderId}}
+                        <p> <small>Sent By: <a href="#/user/{{model.userId}}/home/userProfile/{{message.senderId}}/message">{{message.username}}
 
-                        </a></small>
-                            <span class="fa fa-trash-o" ng-click="model.deleteMessage(message._id)"></span>
+                        </a></small></p>
+                        <p>    <span class="fa fa-trash-o" ng-click="model.deleteMessage(message._id)"></span>
                         </p>
 
 

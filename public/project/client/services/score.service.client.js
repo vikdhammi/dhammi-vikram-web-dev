@@ -15,10 +15,11 @@
         };
         return api;
 
-        function addMatchComment(matchId, userId, comment) {
+        function addMatchComment(matchId, userId, username, comment) {
             var matchComment = {
                 matchId: matchId,
                 userId: userId,
+                username: username,
                 text: comment
             };
             return $http.post("/api/project/user/" + userId + "/schedule/" + matchId, matchComment);

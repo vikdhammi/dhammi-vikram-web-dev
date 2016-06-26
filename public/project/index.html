@@ -6,11 +6,19 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="viewport" content="initial-scale=1.25, user-scalable=no">
 
+    <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
+    <!--<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>-->
+
+
     <script src="../js/jquery.js"></script>
     <script src="../js/jquery-ui.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
     <script src="../css/jquery-ui.css"></script>
 
+
+
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
 
     <link href="/project/css/style.css" rel="stylesheet"/>
 
@@ -18,8 +26,10 @@
     <link href="/project/css/website-login.css" rel="stylesheet" type="text/css"/>
     <link href="/project/css/comments.css" rel="stylesheet" type="text/css"/>
     <link href="/project/css/comment-edit.css" rel="stylesheet" type="text/css"/>
+
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
-    <title>US Cricket League</title>
+
+    <title>Cric Info</title>
 
 
 
@@ -57,57 +67,22 @@
     <script src="client/views/match/score-comment-edit.controller.client.js"></script>
     <script src="client/views/match/news-comment-edit.controller.client.js"></script>
 
+
 </head>
 <body>
-    <div id="main">
 
-        <div id="header"><a href="#">United Premier League</a></div>
 
-        <div id="menupanel">
+<!-- Navigation -->
 
-            <ul>
+<!-- Full Page Image Background Carousel Header -->
 
-                <li><a href="#"  >Home</a></li>
 
-                <li><a href="/project/#/schedule" >Schedule</a></li>
+    <div ng-view></div>
 
-                <li><a href="/project/#/news" >News</a></li>
 
-                <li><a href="#">Player Profile</a></li>
 
-                <li><a href="" >News</a></li>
 
-                <li><a href="/project/#/login">Login/Sign Up</a></li>
-
-            </ul>
-
-        </div>
-
-        <div id="banner">
-
-        </div>
-
-        <div id="content">
-
-            <div class="sider">
-
-                <img src="images/sider1.jpg" alt="sider1" width="200" height="80" /><img src="images/sider2.jpg" alt="sider2" width="200" height="80" /><img src="images/sider3.jpg" alt="sider3" width="200" height="80" />
-
-                <img src="images/sider4.jpg" alt="sider4" width="200" height="80" /></div>
-
-            <div class="col1">EASIGRASS<br />
-
-                <br />
-                <p>Easigrass is the leading artificial grass producer in the industry is here at your call for the cost effective artificial grass. Our artificial grass is recyclable and suits every atmosphere and environment. Easigrass fulfill your requirement of artificial grass in various sites related to the home, garden and sports.</p>
-                <p>With more than seventeen years of experience we worked with many leading agency like FIFA, The RFU, Top Golf, Chelsea FC, The Lawn Tennis Association and David loyd. Our stylish and attractive and artificial grasses are fixed in twenty hour time for a normal garden.</p>
-                <p>Artificial grass are eco friendly and it give you added advantage in garden such as noise pollution , electricity charge , grass clipping, grass watering etc. along with this our customers don&rsquo;t need to spend fertilizers, pesticides or weed killers. Easigrass offers all these products at every affordable cost that no other company can give. Above all we give eight years guarantee on our artificial grass works.<br />
-                </p>
-            </div>
-
-        </div>
-
-</div>
 
 </body>
-<div ng-view></div>
+
 </html>

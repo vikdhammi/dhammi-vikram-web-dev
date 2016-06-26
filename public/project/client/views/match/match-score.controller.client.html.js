@@ -4,7 +4,7 @@
         .controller("MatchScoreController",MatchScoreController);
 
 
-    function MatchScoreController($location, $routeParams, ScheduleService, ScoreService){
+    function MatchScoreController($location, $routeParams, ScheduleService, ScoreService, UserService){
         var vm = this;
         vm.userId = $routeParams.userId;
         vm.matchId = $routeParams.matchId;
@@ -64,6 +64,11 @@
 
 
         function init(){
+            UserService
+                .findUserById(vm.userId)
+                .then(function(response){
+                    vm.user = response.data;
+                });
             // vm.newsResults = vm.news.get();
             console.log("score controller");
             //   console.log(vm.newsResults);
@@ -87,7 +92,7 @@
 
         function addMatchComment(comment) {
             ScoreService
-                .addMatchComment(vm.matchId,vm.userId,comment)
+                .addMatchComment(vm.matchId,vm.userId,vm.user.username, comment)
                 .then(
                     function(response){
                         vm.comments = response.data;

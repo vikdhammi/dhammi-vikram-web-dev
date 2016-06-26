@@ -14,10 +14,11 @@
         };
         return api;
 
-        function addNewsComment(newsId, userId, comment) {
+        function addNewsComment(newsId, userId, username, comment) {
             var newsComment = {
                 newsId: newsId,
                 userId: userId,
+                username: username,
                 text: comment
             };
             return $http.post("/api/project/user/" + userId + "/news/" + newsId, newsComment);

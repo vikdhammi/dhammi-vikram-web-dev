@@ -10,10 +10,10 @@
         vm.createUser = createUser;
 
 
-        function createUser(username, password, repassword, email){
+        function createUser(firstName, lastName, username, password, repassword, email, contact, address){
             if(password === repassword){
                 UserService
-                    .createUser(username, password, email)
+                    .createUser(firstName, lastName, username, password, email,contact, address)
                     .then(function (response){
                         var user = response.data;
                         if(user){

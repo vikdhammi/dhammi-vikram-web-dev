@@ -3,15 +3,23 @@
         .module("CricketApp")
         .controller("SendMessageController",SendMessageController);
     
-    function SendMessageController($location, $routeParams, MessageService){
+    function SendMessageController($location, $routeParams, MessageService, UserService){
         var vm = this;
         vm.userId = $routeParams.userId;
         vm.receiverId = $routeParams.profileId;
         vm.sendMessage = sendMessage;
 
+        function init() {
+            UserService
+                .findUserById(vm.userId)
+                .then(function (response) {
+                    vm.user = response.data;
+                });
+        }
+        init();
         function sendMessage(title, message){
             MessageService
-                .sendMessage(vm.userId,vm.receiverId,title, message)
+                .sendMessage(vm.userId,vm.receiverId, vm.user.username, title, message)
                 .then(function(response){
                     vm.newMessage = response.data;
                     console.log(vm.newMessage);

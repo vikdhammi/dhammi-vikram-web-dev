@@ -103,12 +103,39 @@
                    compare-to="registerForm.password"/>
 
             <span class="help-inline" ng-show="submitted && registerForm.repassword.$error.required">*Password is a Required field</span>
+
+            <label for="contact">*Contact Number</label>
+            <input class="form-control"
+                   ng-model="contact"
+                   name="contact"
+                   id="contact"
+                   type="text"
+                   placeholder="6177857811"
+                   required/>
+
+            <span class="help-inline" ng-show="submitted && registerForm.contact.$error.required">*Contact is a Required field</span>
+
+            <label for="address">*Address</label>
+            <textarea
+                    class="form-control"
+                    ng-model="address"
+                    name="address"
+                    id="address"
+                    type="text"
+                    rows="4"
+                    placeholder="102 Park Drive, Boston MA - 02115"
+                    required>
+
+            </textarea>
+
+            <span class="help-inline" ng-show="submitted && registerForm.address.$error.required">*Address is a Required field</span>
+
             <div ng-show="model.error" class="alert alert-danger" role="alert">
                 {{model.error}}
             </div>
         </div>
         <a class="btn btn-primary btn-block"
-           ng-click="model.createUser(username,password,repassword,email); submitted=true">Submit</a>
+           ng-click="model.createUser(firstName, lastName, username,password,repassword,email, contact , address); submitted=true">Submit</a>
         <a class="btn btn-danger btn-block"
            href="#/login">Cancel</a>
     </form>

@@ -16,10 +16,7 @@
                 <a ng-click="model.updateUser(model.user)" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span></a>
-                <a href="#/user/{{model.user._id}}/search" class="navbar-link">
-          <span class="glyphicon glyphicon-search">
-          </span>
-                </a>
+
             </p>
 
 
@@ -36,7 +33,6 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Error!</strong> {{model.error}}
     </div>
-    {{model.user}}
     <form>
         <div class="form-group">
             <label for="username">Username</label>
@@ -74,7 +70,7 @@
         <a class="btn btn-primary btn-block"
            href="#/user/{{model.userId}}/schedule" role="button">View Schedule</a>
         <a class="btn btn-danger btn-block" ng-click="model.logout()">Logout</a>
-        <a ng-click="model.unregister()" class="btn btn-danger btn-block" >Unregister</a>
+
     </form>
 
 </div>
@@ -84,8 +80,16 @@
             <div class="col-xs-3 text-center">
             </div>
             <div class="col-xs-3 text-center">
+                <a href="#/user/{{model.user._id}}/home/profile/search" class="navbar-link">
+          <span class="fa fa-users">
+          </span>
+                </a>
             </div>
             <div class="col-xs-3 text-center">
+                <a href="#/user/{{model.user._id}}/home/inbox" class="navbar-link">
+                 <span class="fa fa-inbox">
+                 </span>
+                </a>
             </div>
             <div class="col-xs-3 text-center">
                 <a href="#/user/{{model.user._id}}">

@@ -3,7 +3,7 @@
         .module("CricketApp")
         .controller("NewsViewController",NewsViewController);
     
-    function NewsViewController($location, $routeParams, ScheduleService, CommentService){
+    function NewsViewController($location, $routeParams, ScheduleService, CommentService, UserService){
         var vm = this;
         vm.userId = $routeParams.userId;
         vm.newsId =$routeParams.newsId;
@@ -65,6 +65,11 @@
 
         function init(){
            // vm.newsResults = vm.news.get();
+            UserService
+                .findUserById(vm.userId)
+                .then(function(response){
+                    vm.user = response.data;
+                });
             console.log("news controller");
             //   console.log(vm.newsResults);
             viewNews();
@@ -86,7 +91,7 @@
 
         function addNewsComment(comment) {
             CommentService
-                .addNewsComment(vm.newsId,vm.userId,comment)
+                .addNewsComment(vm.newsId,vm.userId,vm.user.username,comment)
                 .then(
                     function(response){
                         vm.comments = response.data;
