@@ -1,27 +1,34 @@
 
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <p class="navbar-text pull-left">
-                <a href="#/user/{{model.userId}}/home" class="navbar-link">
-                  <span class="glyphicon glyphicon-home">
-                  </span>
-                </a>
-            </p>
-            <a class="navbar-brand" href="#">
-                Profile
-            </a>
-
-            <p class="navbar-text pull-right">
-                <a ng-click="model.updateUser(model.user)" class="navbar-link">
-          <span class="glyphicon glyphicon-ok">
-          </span></a>
-
-            </p>
-
-
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Cric Info</a>
         </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#/user/{{model.userId}}/home">Home</a>
+                </li>
+                <li>
+                    <a href="#/user/{{model.userId}}/home/news">News</a>
+                </li>
+                <li>
+                    <a href="#/user/{{model.userId}}/home/schedule">Schedule</a>
+                </li>
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
     </div>
+    <!-- /.container -->
 </nav>
 <div class="container">
     <div ng-if="model.success" class="alert alert-success alert-dismissible" role="alert">
@@ -40,7 +47,8 @@
                    type="text"
                    class="form-control"
                    id="username"
-                   placeholder="alwonder">
+                   placeholder="alwonder"
+                    disabled>
         </div>
         <div class="form-group">
             <label for="email">Email</label>
@@ -67,9 +75,30 @@
                    placeholder="Wonderland">
         </div>
 
+        <div class="form-group">
+            <label for="contact">Contact</label>
+            <input ng-model="model.user.contact"
+                   type="text"
+                   class="form-control"
+                   id="contact"
+                   placeholder="8781230989">
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address</label>
+            <textarea ng-model="model.user.address"
+                   type="text"
+                   class="form-control"
+                   id="address"
+                   placeholder="12 Fenway, Boston , MA 01234"></textarea>
+        </div>
+
         <a class="btn btn-primary btn-block"
-           href="#/user/{{model.userId}}/schedule" role="button">View Schedule</a>
-        <a class="btn btn-danger btn-block" ng-click="model.logout()">Logout</a>
+           ng-click="model.updateUser(model.user)"
+           role="button">
+            <span class ="glyphicon glyphicon-ok"></span> Update Profile</a>
+        <a class="btn btn-danger btn-block" ng-click="model.logout()">
+            <span class ="fa fa-sign-out"></span> Logout</a>
 
     </form>
 
@@ -77,24 +106,20 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
         <div class="row navbar-text">
-            <div class="col-xs-3 text-center">
-            </div>
-            <div class="col-xs-3 text-center">
-                <a href="#/user/{{model.user._id}}/home/profile/search" class="navbar-link">
-          <span class="fa fa-users">
-          </span>
+            <div class="col-xs-4 text-center">
+                <a href="#/user/{{model.userId}}/home/profile/search">
+                    <span class="fa fa-users"></span>
                 </a>
             </div>
-            <div class="col-xs-3 text-center">
-                <a href="#/user/{{model.user._id}}/home/inbox" class="navbar-link">
-                 <span class="fa fa-inbox">
-                 </span>
+            <div class="col-xs-4 text-center">
+                <a href="#/user/{{model.userId}}/home/inbox">
+                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
                 </a>
             </div>
-            <div class="col-xs-3 text-center">
-                <a href="#/user/{{model.user._id}}">
-                    <span class="glyphicon glyphicon-user"></span>
-                </a>
+
+            <div class="col-xs-4 text-center">
+                    <span  ng-click="model.logout()"
+                            class="glyphicon glyphicon-off"></span>
             </div>
         </div>
     </div>

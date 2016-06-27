@@ -8,6 +8,7 @@ module.exports = function(){
     var api = {
         createUser: createUser,
         findUserById: findUserById,
+        findGoogleUser: findGoogleUser,
         findUserByCredentials: findUserByCredentials,
         findUserByUsername: findUserByUsername,
         updateUser: updateUser,
@@ -17,6 +18,10 @@ module.exports = function(){
     
     return api;
 
+    function findGoogleUser(id) {
+        return User.findOne({"google.id": id});
+    }
+    
     function findUserByUsername(username){
         return User.findOne({username: username});
     }

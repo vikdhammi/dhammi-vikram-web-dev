@@ -9,20 +9,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Start Bootstrap</a>
+            <a class="navbar-brand" href="#">Cric Info</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="#">About</a>
+                    <a href="#/">Home</a>
                 </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
+
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -38,7 +33,7 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title" align="center">Welcome to Cric Info</h3>
+            <h3 class="panel-title" align="center"><b>Welcome to Cric Info</b></h3>
         </div>
         <div class="panel-body">
             <form name="loginForm" ng-app>
@@ -60,15 +55,12 @@
                     <span class="help-inline" ng-show="submitted && loginForm.username.$error.required">*Password is a Required field</span>
                 </div>
                 <a ng-click ="model.login(username, password); submitted=true"
-                   class="btn btn-primary btn-block">Login</a>
-                <a class="btn btn-success btn-block"
-                   href="#/register" >Register</a>
+                   class="btn btn-primary btn-block"><span class ="fa fa-sign-in"></span> Login</a>
+                <a class="btn btn-info btn-block"
+                   href="#/register" ><span class ="fa fa-bars"></span> Sign Up</a>
                 <hr/>
-                <a href="/auth/facebook"
-                   class="btn btn-primary btn-block">
-                    <span class ="fa fa-facebook"></span>
-                    Login Using Facebook</a>
-                <a class="btn btn-success btn-block">
+
+                <a class="btn btn-success btn-block" href="/auth/google">
                     <span class ="fa fa-google"></span>
                     Login Using Google</a>
             </form>
@@ -76,3 +68,8 @@
         </div>
     </div>
 </div>
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+
+    <!-- /.container -->
+</nav>

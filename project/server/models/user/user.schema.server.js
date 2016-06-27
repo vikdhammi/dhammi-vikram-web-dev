@@ -4,13 +4,17 @@ module.exports = function() {
 
     var UserSchema = mongoose.Schema({
        username: {type: String, required: true},
-        password: {type: String, minLength : 4, required: true},
-        firstName: {type: String, minLength: 4 },
+        password:  String,
+        firstName: String,
         lastName: String,
         email: String,
         contact: String,
         address: String,
         dob: Date,
+        google: {
+            token: String,
+            id: String
+        },
         moderator: Boolean,
         dateCreated: {type: Date, default: Date.now()}
     }, {collection: "project.user"});

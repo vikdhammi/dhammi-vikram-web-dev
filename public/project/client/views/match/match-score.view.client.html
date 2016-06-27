@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Cric Info</a>
+            <a class="navbar-brand" href=""><b>CRIC INFO</b></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -18,7 +18,7 @@
                     <a href="#/user/{{model.userId}}/home">Home</a>
                 </li>
                 <li>
-                    <a href="#/user/{{model.userId}}/home/profile">Profile</a>
+                    <a href="#/user/{{model.userId}}/profile">Profile</a>
                 </li>
                 <li>
                     <a href="#/user/{{model.userId}}/home/news">News</a>
@@ -36,48 +36,53 @@
 
 <div class="container-fluid">
     <div  class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="container-fluid">
-                    <div class="article"> <h3 align="center">{{model.match["team-1"]}} Vs {{model.match["team-2"]}}</h3>
-                <h4><a href="#/user/{{model.userId}}/home/schedule/{{model.matchId}}/commentary">
-                    {{model.match.score}}</a></h4>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="container-fluid">
+                <div class="article"> <h3 align="center">{{model.match["team-1"]}} Vs {{model.match["team-2"]}}</h3>
+                    <h4><a href="#/user/{{model.userId}}/home/schedule/{{model.matchId}}/commentary">
+                        {{model.match.score}}</a></h4>
 
-                <div><p align="center"> <b>{{model.match["innings-requirement"]}}</b></p>
+                    <div><p align="center"> <b>{{model.match["innings-requirement"]}}</b></p>
 
-                    <ul class="list-unstyled list-inline">
-                        <li><i class="fa fa-calendar"></i> {{model.pub | date:'mediumDate'}}</li>
-                        <li><i class="fa fa-comments"></i> {{model.postedComments.length}} Comments</li>
-                    </ul>
+                        <ul class="list-unstyled list-inline">
+                            <li><i class="fa fa-calendar"></i> {{model.pub | date:'short'}}</li>
+                            <li><i class="fa fa-comments"></i> {{model.postedComments.length}} Comments</li>
+                        </ul>
                   <textarea class="form-control"
                             rows="3"
                             ng-model="name"
                             placeholder="Add comments.."></textarea>
-                    <a ng-click ="model.addMatchComment(name)"
-                       class="btn btn-primary btn-block">Add Comment</a>
-                    <div class="container comments">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <div class="page-header">
-                                    <h3> Comments </h3>
-                                </div>
-                                <div class="comments-list" ng-repeat="comment in model.postedComments">
-                                    <div class="media">
-                                        <p class="pull-right"><small><i class="fa fa-calendar"></i>{{comment.dateAdded | date:'mediumDate'}}</small></p>
+                        <a ng-click ="model.addMatchComment(name)"
+                           class="btn btn-primary btn-block">Add Comment</a>
+                        <div class="container comments">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="page-header">
+                                        <h3> Comments </h3>
+                                    </div>
+                                    <div class="comments-list" ng-repeat="comment in model.postedComments">
+                                        <div class="media">
+                                            <p class="pull-right"><small>{{comment.dateAdded | date:'short'}} <i class="fa fa-calendar"></i></small></p>
 
-                                        <div class="media-body">
+                                            <div class="media-body">
 
-                                            <h4 class="media-heading user_name">
-                                                <a href="#/user/{{model.userId}}/home/userProfile/{{comment.userId}}">
-                                                    {{comment.username}}</a></h4>
-                                            {{comment.text}}
+                                                <h4 class="media-heading user_name">
+                                                    <a href="#/user/{{model.userId}}/home/userProfile/{{comment.userId}}">
+                                                        {{comment.username}}</a></h4>
+                                                {{comment.text}}
 
-                                            <p><a class="btn btn-primary" role="button"
-                                                    href="#/user/{{model.userId}}/home/schedule/{{model.matchId}}/comment/{{comment._id}}">
-                                                <span  ng-if="model.userId===comment.userId" class="fa fa-pencil-square-o"
-                                                ></span>Edit</a>
-                                                <span  ng-if="model.userId===comment.userId" class="fa fa-trash-o"
-                                                       ng-click="model.deleteComment(comment._id)"></span>
-                                            </p>
+                                                <p><a class="btn btn-primary btn-xs" role="button"
+                                                      ng-if="model.userId===comment.userId"
+                                                      href="#/user/{{model.userId}}/home/schedule/{{model.matchId}}/comment/{{comment._id}}">
+                                                <span class="fa fa-pencil-square-o"></span> Edit</a>
+                                                    <a class="btn btn-danger btn-xs"
+                                                       ng-if="model.userId===comment.userId || model.user.moderator===true"
+                                                       ng-click="model.deleteComment(comment._id)"
+                                                       role="button">
+                                                        <span class="fa fa-trash-o"></span> Delete</a>
+
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -87,7 +92,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
@@ -105,7 +109,7 @@
             </div>
 
             <div class="col-xs-4 text-center">
-                <a href="#/user/{{model.userId}}/home/profile">
+                <a href="#/user/{{model.userId}}/profile">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>

@@ -18,6 +18,11 @@
                 controller: "NewsViewController",
                 controllerAs: "model"
             })
+            .when("/user/:userId/search", {
+                templateUrl: "client/views/match/match-search.view.client.html",
+                controller: "MatchSearchController",
+                controllerAs: "model"
+            })
             .when("/user/:userId/home/userProfile/:profileId", {
                 templateUrl: "client/views/user/public-user-profile.view.client.html",
                 controller: "PublicUserProfileController",
@@ -58,7 +63,15 @@
                 controller: "RegisterController",
                 controllerAs: "model"
             })
-            .when("/user/:userId/home/profile", {
+            .when("/profile", {
+                templateUrl: "client/views/user/profile.view.client.html",
+                controller: "ProfileController",
+                controllerAs: "model",
+                resolve: {
+                    loggedIn: checkLoggedIn
+                }
+            })
+            .when("/user/:userId/profile", {
                 templateUrl: "client/views/user/profile.view.client.html",
                 controller: "ProfileController",
                 controllerAs: "model",

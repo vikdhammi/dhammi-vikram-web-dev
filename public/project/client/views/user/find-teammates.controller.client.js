@@ -38,7 +38,11 @@
                             }
                         }
                         vm.users = teammembers;
-                        console.log(vm.users);
+
+                    if(vm.users.length < 1){
+                        vm.error = "User not found!";
+                    }
+                    
                     },
                     function (error) {
                         vm.error = "User not found!";

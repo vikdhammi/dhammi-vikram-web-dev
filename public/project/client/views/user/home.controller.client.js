@@ -12,11 +12,16 @@
         vm.unregister = unregister;
         vm.navigateUrl = navigateUrl;
         vm.logout = logout;
+        vm.slide = slide;
+        vm.login = login;
 
         // var id = $routeParams["userId"];
         // var id = $rootScope.currentUser._id;
-
+        var slides = []
         function init(){
+            $('.carousel').carousel({
+                interval: 5000 //changes the speed
+            });
             UserService
                 .findUserById(vm.userId)
                 .then(function(response){
@@ -68,6 +73,15 @@
                     }
                 )
         }
+
+        function slide(dir) {
+            $('#myCarousel').carousel(dir);
+        }
+
+        function login(){
+            $location.url("/login");
+        }
+
     }
 
 

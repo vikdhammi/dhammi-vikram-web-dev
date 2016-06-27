@@ -1,6 +1,7 @@
 
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var GoogleStrategy = require('passport-google-oauth2').Strategy;
 var bcrypt = require("bcrypt-nodejs");
 
 module.exports = function(app, models) {
@@ -15,10 +16,27 @@ module.exports = function(app, models) {
     app.put("/api/project/user/:userId", updateUser);
     app.delete("/api/project/user/:userId", deleteUser);
     app.get("/api/search/:searchText", searchUsers);
+    app.get("/auth/google", passport.authenticate('google', { scope: [
+        'https://www.googleapis.com/auth/plus.login',
+        'https://www.googleapis.com/auth/plus.profile.emails.read']
+    }));
+    app.get("/auth/google/callback", passport.authenticate('google', {
+        successRedirect: '/project/#/profile',
+        failureRedirect: '/project/#/login'
+    }));
 
     passport.use(new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
+
+    var googleConfig = {
+        clientID     : process.env.GOOGLE_CLIENT_ID,
+        clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL  : process.env.GOOGLE_CALLBACK_URL,
+        passReqToCallback   : true
+    };
+
+    passport.use('google', new GoogleStrategy(googleConfig, googleLogin));
 
     function localStrategy(username, password, done){    //done - tells whether login was successful or not
         userModel
@@ -52,6 +70,39 @@ module.exports = function(app, models) {
                 },
                 function(err){
                     done(err, null);
+                }
+            );
+    }
+
+    function googleLogin(request, accessToken, refreshToken, profile, done){
+        console.log(profile.id);
+        userModel
+            .findGoogleUser(profile.id)
+            .then(
+                function(googleUser) {
+                    if(googleUser) {
+                        return done(null, googleUser);
+                    } else {
+                        var email = profile.emails[0].value;
+                        var emailParts = email.split("@");
+                        var googleUser = {
+                            username: emailParts[0],
+                            firstName: profile.name.givenName,
+                            lastName: profile.name.familyName,
+                            email: email,
+                            google: {
+                                id: profile.id,
+                                token: accessToken
+                            }
+                        };
+                        userModel
+                            .createUser(googleUser)
+                            .then(
+                                function(user) {
+                                    done(null, user);
+                                }
+                            );
+                    }
                 }
             );
     }
