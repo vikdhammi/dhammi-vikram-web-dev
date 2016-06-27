@@ -116,13 +116,14 @@
         }
 
         function deleteComment(commentId) {
+            console.log(commentId);
             ScoreService
                 .deleteComment(commentId)
                 .then(function(response){
                     var result = response.data;
                     if(result){
                         init();
-                        $location.url("/user/"+vm.userId+"/home/schedule/"+vm.matchId);
+                     //   $location.url("/user/"+vm.userId+"/home/schedule/"+vm.matchId);
                     }
                     else{
                         vm.error = "Unable to delete comment!";

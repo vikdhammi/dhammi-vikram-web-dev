@@ -3,18 +3,17 @@
         .module("CricketApp")
         .controller("MatchSearchController",MatchSearchController)
 
-
-
     function MatchSearchController(ScheduleService , $location, $routeParams) {
         var vm = this;
         vm.userId = $routeParams.userId;
 
-
         vm.viewSchedule = viewSchedule;
-        vm.searchTeam = searchTeam;
+        vm.searchResults =[];   
+       vm.searchTeam = searchTeam;
 
         function init() {
             viewSchedule();
+
         }
 
         init();
@@ -29,24 +28,21 @@
         }
 
         function searchTeam(searchText) {
-            var result = vm.matches;
-            for (var m in result) {
-                if (result[m].title.indexOf(searchText)) {
-                    result.splice(m, 1);
+            var result = vm.matches.data;
+            for( var i =0; i< result.length; i++) {
+                console.log(result[i].title);
+                if(result[i].title.indexOf(searchText,0)!=-1){
+                    console.log(result[i].unique_id);
+                  //  result.splice[i,1];
+                    vm.searchResults.push(result[i]);
+                   // vm.getId = result[i].unique_id;
+                  //  $location.url("/user/"+vm.userId+"/home/schedule/"+vm.getId);
+                   // return;
                 }
-            }
-            if(result) {
-                vm.displayMatch = result;
-                console.log(vm.displayMatch.unique_id);
-            }
-            else {
-                vm.error = "Match ";
-            }
-
+                
         }
-
-    }
-
-
+            console.log(vm.searchResults);
+            
+    }}
 
 })();

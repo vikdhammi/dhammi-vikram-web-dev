@@ -84,6 +84,7 @@ module.exports = function(app, models) {
             .then(
                 function(stats){
                     console.log(stats);
+                    console.log("deleting cmmnt");
                     res.send(200);
                 },
                 function(err){

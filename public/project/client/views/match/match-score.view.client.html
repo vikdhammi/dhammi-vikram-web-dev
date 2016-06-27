@@ -75,10 +75,9 @@
                                                       ng-if="model.userId===comment.userId"
                                                       href="#/user/{{model.userId}}/home/schedule/{{model.matchId}}/comment/{{comment._id}}">
                                                 <span class="fa fa-pencil-square-o"></span> Edit</a>
-                                                    <a class="btn btn-danger btn-xs"
+                                                    <a class="btn btn-danger btn-xs" role="button"
                                                        ng-if="model.userId===comment.userId || model.user.moderator===true"
-                                                       ng-click="model.deleteComment(comment._id)"
-                                                       role="button">
+                                                       ng-click="model.deleteComment(comment._id)">
                                                         <span class="fa fa-trash-o"></span> Delete</a>
 
                                                 </p>

@@ -17,6 +17,17 @@
                     </span>
                 </div>
             </div>
-        </div>
+            <div  id="schedule" ng-repeat="schedule in model.searchResults" class="custom-match col-xs-4  well col">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+
+                            <a href="#/user/{{model.userId}}/home/schedule/{{schedule.unique_id}}/">{{schedule.description}}</a>
+                        </h4>
+                    </div>
+
+                </div>
     </div>
 </div>
+        </div>
+    </div>

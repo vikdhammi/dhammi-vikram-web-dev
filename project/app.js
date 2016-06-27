@@ -9,5 +9,7 @@ module.exports = function(app){
     var scoreService = require("./server/services/score.service.server")(app, models);
     
     var messageService = require("./server/services/message.service.server")(app, models);
+
+    
     
 };
