@@ -165,7 +165,7 @@ module.exports = function(app, models) {
             );
     }
     
-    function logout(res, req) {
+    function logout(req, res) {
     //   req.logout();
        res.send(200);
     }
