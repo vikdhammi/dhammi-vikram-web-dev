@@ -14,13 +14,16 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="#/user/{{model.userId}}/home/news">News</a>
+                    <a ng-if="model.userId" href="#/user/{{model.userId}}/home/news">News</a>
                 </li>
                 <li>
-                    <a href="#/user/{{model.userId}}/home/schedule">Schedule</a>
+                    <a ng-if="model.userId" href="#/user/{{model.userId}}/home/schedule">Schedule</a>
                 </li>
                 <li>
                     <a ng-if="model.userId" href="#/user/{{model.userId}}/profile">Profile</a>
+                </li>
+                <li>
+                    <a ng-if="model.userId" href="#/user/{{model.userId}}/search">Search Matches</a>
                 </li>
                 <li>
                     <a ng-if="!model.userId" href="#/login">Login/Sign Up</a>
