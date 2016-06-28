@@ -97,9 +97,11 @@
                     function(response){
                         vm.comments = response.data;
                         console.log(vm.comments);
+                       // $location.url("/user/"+vm.userId+"/home/schedule/"+vm.matchId);
                         init();
                     }
                 );
+            
         }
 
         function findCommentsByMatchId() {

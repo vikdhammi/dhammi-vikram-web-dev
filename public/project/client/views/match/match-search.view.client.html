@@ -36,37 +36,48 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
-            <h2>Search Matches for a Team</h2>
+        <div class="col-md-12">
+            <h2 align="center">Search Matches by Team</h2>
             <div id="custom-search-input">
-                <div class="input-group col-md-12">
+                <div class="input-group col-md-12 ">
                     <input type="text"
-                           class="form-control input-lg"
-                           placeholder="Australia"
-                            ng-model="model.searchText"/>
+                           class="form-control"
+                           placeholder="Pakistan"
+                           ng-model="model.searchText"/>
                     <span class="input-group-btn">
                         <button class="btn btn-info btn-lg"
-                                ng-click="model.searchTeam(model.searchText)"
+                                ng-click="model.searchTeam(model.searchText); show=true"
                                 type="button">
                             <i class="glyphicon glyphicon-search"></i>
                         </button>
                     </span>
                 </div>
             </div>
-            <div  id="schedule" ng-repeat="schedule in model.searchResults" class="custom-match col-xs-4  well col">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-
-                            <a href="#/user/{{model.userId}}/home/schedule/{{schedule.unique_id}}/">{{schedule.description}}</a>
-                        </h4>
-                    </div>
-
-                </div>
-    </div>
-</div>
         </div>
     </div>
+</div>
+<div class="container">
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+<hggroup class="mb20" ng-if="model.searchText && show">
+    <h2 class="lead" align="center"><strong class="text-danger">{{model.searchResults.length}}</strong> results were found.</h2>
+</hggroup>
+    <p class="text-muted" ng-if="model.searchResults.length<1 && show">Try searching: Kent/ Africa/ Pakistan/ Lanka</p>
+    </div>
+<div  id="schedule" ng-repeat="schedule in model.searchResults" class="custom-match col-xs-4 col-xs-offset-4 well col">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+
+                <a href="#/user/{{model.userId}}/home/schedule/{{schedule.unique_id}}/">{{schedule.description}}</a>
+            </h4>
+        </div>
+
+    </div>
+
+</div>
+
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">

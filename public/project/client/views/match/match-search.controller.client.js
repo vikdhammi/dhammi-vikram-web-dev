@@ -8,8 +8,8 @@
         vm.userId = $routeParams.userId;
 
         vm.viewSchedule = viewSchedule;
-        vm.searchResults =[];   
-       vm.searchTeam = searchTeam;
+        vm.searchResults =[];
+        vm.searchTeam = searchTeam;
 
         function init() {
             viewSchedule();
@@ -28,22 +28,28 @@
         }
 
         function searchTeam(searchText) {
-            init();
-            var result = vm.matches.data;
-            for( var i =0; i< result.length; i++) {
-                console.log(result[i].title);
-                if(result[i].title.indexOf(searchText,0)!=-1){
-                    console.log(result[i].unique_id);
-                  //  result.splice[i,1];
-                    vm.searchResults.push(result[i]);
-                   // vm.getId = result[i].unique_id;
-                  //  $location.url("/user/"+vm.userId+"/home/schedule/"+vm.getId);
-                   // return;
+            if (searchText) {
+                vm.searchResults =[];
+                init();
+                var result = vm.matches.data;
+                for (var i = 0; i < result.length; i++) {
+                    console.log(result[i].title);
+                    if (result[i].title.toLowerCase().indexOf(searchText.toLowerCase(), 0) != -1) {
+                        console.log(result[i].unique_id);
+                        //  result.splice[i,1];
+                        vm.searchResults.push(result[i]);
+                        // vm.getId = result[i].unique_id;
+                        //  $location.url("/user/"+vm.userId+"/home/schedule/"+vm.getId);
+                        // return;
+                    }
+
                 }
-                
-        }
-            console.log(vm.searchResults);
-            
-    }}
+                console.log(vm.searchResults);
+
+            }
+            else{
+                vm.error = "Please enter a team";
+            }
+        }}
 
 })();
