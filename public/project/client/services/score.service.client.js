@@ -45,7 +45,7 @@
 
         function deleteComment(commentId){
             console.log("in score c servc");
-            var url = "/api/comment/" + commentId;
+            var url = "/api/comment/delete/" + commentId;
             return $http.delete(url);
         }
     }

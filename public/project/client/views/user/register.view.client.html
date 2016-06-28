@@ -9,13 +9,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Cric Info</a>
+            <a class="navbar-brand" href=""><b>CRIC INFO</b></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="#/user/{{model.userId}}/home">Home</a>
+                    <a href="#/">Home</a>
                 </li>
 
 
@@ -27,34 +27,40 @@
 </nav>
 <div class="container">
     <form name="registerForm" ng-app>
-        <div class="control-group" ng-class="{true: 'error'}[submitted && registerForm.username.$error.required]">
+        <div class="form-group">
             <label for="firstname">*First Name</label>
-            <input class="form-control"
+            <input ng-class="{true: 'error'}[submitted && registerForm.firstName.$error.required]"
+                    class="form-control"
                    name="firstName"
                    ng-model="firstName"
                    type="text"
                    placeholder="Michael"
                    required/>
             <span class="help-inline" ng-show="submitted && registerForm.firstName.$error.required">*First Name is a Required field</span>
-
+            </div>
+            <div class="form-group">
             <label for="lastname">*Last Name</label>
-            <input class="form-control"
+            <input ng-class="{true: 'error'}[submitted && registerForm.lastName.$error.required]"
+                    class="form-control"
                    name="lastName"
                    ng-model="lastName"
                    type="text"
                    placeholder="Clarke"
                    required/>
             <span class="help-inline" ng-show="submitted && registerForm.lastName.$error.required">*Last Name is a Required field</span>
+            </div>
 
+            <div class="form-group">
             <label for="username">*Username</label>
-            <input class="form-control"
+            <input ng-class="{true: 'error'}[submitted && registerForm.username.$error.required]"
+                    class="form-control"
                    name="username"
                    ng-model="username"
                    type="text"
                    placeholder="mick17"
                    required/>
             <span class="help-inline" ng-show="submitted && registerForm.username.$error.required">*Username is a Required field</span>
-
+            </div>
             <!-- <div class="dropdown">
                  <button class="btn btn-default dropdown-toggle"
                          type="button"
@@ -78,35 +84,46 @@
                  <span class="help-inline" ng-show="submitted && registerForm.gender.$error.required">*Gender is a Required field</span>
              </div>
  -->
+            <div class="form-group">
             <label for="email">*Email</label>
-            <input class="form-control"
+            <input ng-class="{true: 'error'}[submitted && registerForm.email.$error.required]"
+                    class="form-control"
                    name="email"
                    ng-model="email"
                    type="email"
                    placeholder="jamesfrank@gmail.com"
                    required/>
             <span class="help-inline" ng-show="submitted && registerForm.email.$error.required">*Email is a Required field</span>
+            </div>
 
+            <div class="form-group">
             <label for="confirm-email">*Confirm Email</label>
-            <input class="form-control"
+            <input ng-class="{true: 'error'}[submitted && registerForm.confirm-email.$error.required]"
+                    class="form-control"
                    name="confirm-Email"
                    ng-model="confirmemail"
                    type="email"
                    placeholder="jamesfrank@gmail.com"
                    required/>
             <span class="help-inline" ng-show="submitted && registerForm.confirm-email.$error.required">*Email is a Required field</span>
+            </div>
 
+            <div class="form-group">
             <label for="password">*Password</label>
-            <input class="form-control"
+            <input ng-class="{true: 'error'}[submitted && registerForm.password.$error.required]"
+                    class="form-control"
                    ng-model="password"
                    name="password"
                    type="password"
                    placeholder="password"
                    required/>
             <span class="help-inline" ng-show="submitted && registerForm.password.$error.required">*Password is a Required field</span>
+            </div>
 
+            <div class="form-group">
             <label for="confirm-password">*Confirm Password</label>
-            <input class="form-control"
+            <input ng-class="{true: 'error'}[submitted && registerForm.repassword.$error.required]"
+                    class="form-control"
                    ng-model="repassword"
                    name="repassword"
                    id="confirm-password"
@@ -116,9 +133,12 @@
                    compare-to="registerForm.password"/>
 
             <span class="help-inline" ng-show="submitted && registerForm.repassword.$error.required">*Password is a Required field</span>
+            </div>
 
+            <div class="form-group">
             <label for="contact">*Contact Number</label>
-            <input class="form-control"
+            <input ng-class="{true: 'error'}[submitted && registerForm.contact.$error.required]"
+                    class="form-control"
                    ng-model="contact"
                    name="contact"
                    id="contact"
@@ -127,9 +147,11 @@
                    required/>
 
             <span class="help-inline" ng-show="submitted && registerForm.contact.$error.required">*Contact is a Required field</span>
+            </div>
 
+            <div class="form-group">
             <label for="address">*Address</label>
-            <textarea
+            <textarea ng-class="{true: 'error'}[submitted && registerForm.address.$error.required]"
                     class="form-control"
                     ng-model="address"
                     name="address"
@@ -142,11 +164,12 @@
             </textarea>
 
             <span class="help-inline" ng-show="submitted && registerForm.address.$error.required">*Address is a Required field</span>
-
+            </div>
             <div ng-show="model.error" class="alert alert-danger" role="alert">
                 {{model.error}}
             </div>
-        </div>
+
+
         <a class="btn btn-primary btn-block"
            ng-click="model.createUser(firstName, lastName, username,password,repassword,email, contact , address); submitted=true">Submit</a>
         <a class="btn btn-danger btn-block"

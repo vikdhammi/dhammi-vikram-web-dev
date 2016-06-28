@@ -5,10 +5,10 @@ module.exports = function(app, models) {
     var scoreModel = models.projectScore;
 
     app.post("/api/project/user/:userId/schedule/:matchId", addMatchComment);
-    app.get("/api/project/schedule/:matchId",findCommentsByMatchId);
-    app.get("/api/comment/:commentId",findCommentByCommentId);
-    app.put("/api/comment/:commentId",updateComment);
-    app.delete("/api/comment/:commentId",deleteComment);
+    app.get("/api/project/schedule/:matchId", findCommentsByMatchId);
+    app.get("/api/comment/:commentId", findCommentByCommentId);
+    app.put("/api/comment/:commentId", updateComment);
+    app.delete("/api/comment/delete/:commentId", deleteComment);
     
 
     function addMatchComment(req, res) {

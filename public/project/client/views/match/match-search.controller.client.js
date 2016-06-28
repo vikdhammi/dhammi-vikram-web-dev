@@ -28,6 +28,7 @@
         }
 
         function searchTeam(searchText) {
+            init();
             var result = vm.matches.data;
             for( var i =0; i< result.length; i++) {
                 console.log(result[i].title);
