@@ -27,6 +27,7 @@
 
 
 <div class="container">
+
     <div ng-show="model.error" class="alert alert-danger" role="alert">
         {{model.error}}
     </div>
@@ -35,6 +36,9 @@
         <div class="panel-heading">
             <h3 class="panel-title" align="center"><b>Welcome to Cric Info</b></h3>
         </div>
+        <div class ="container custom-pic">
+            <img class="logo-img img-responsive" src="https://s32.postimg.org/xfgg46lsl/logo_new.png">
+            </div>
         <div class="panel-body">
             <form name="loginForm" ng-app>
                 <div class="control-group" ng-class="{true: 'error'}[submitted && loginForm.username.$error.required]">

@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Cric Info</a>
+            <a class="navbar-brand" href=""><b>CRIC INFO</b></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -17,7 +17,7 @@
                     <a href="#/user/{{model.userId}}/home">Home</a>
                 </li>
                 <li>
-                    <a href="#/user/{{model.userId}}/home/profile">Profile</a>
+                    <a href="#/user/{{model.userId}}/profile">Profile</a>
                 </li>
                 <li>
                     <a href="#/user/{{model.userId}}/home/news">News</a>
@@ -39,19 +39,22 @@
         <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="profile well well-sm">
                 <div class="row">
-
+                    <div class="col-sm-6 col-md-4" align="left">
+                        <!--<i class="fa fa-user fa-5x img-responsive" aria-hidden="true"></i>-->
+                        <img src="https://s32.postimg.org/le3mkr8v9/user.png" alt="" class="img-rounded img-responsive" />
+                    </div>
                     <div class="col-sm-6 col-md-8">
                         <h4>
-                            <i class="fa fa-briefcase">{{model.publicUser.username}}</i></h4>
+                            <i class="fa fa-briefcase"> {{model.publicUser.username}}</i></h4>
                         <p>
-                            <i class="fa fa-user"></i>{{model.publicUser.firstName}} {{model.publicUser.lastName}}
+                            <i class="fa fa-user"></i> {{model.publicUser.firstName}} {{model.publicUser.lastName}}
                             <br />
-                            <i class="glyphicon glyphicon-envelope"></i>{{model.publicUser.email}}
+                            <i class="glyphicon glyphicon-envelope"></i> {{model.publicUser.email}}
                             <br />
 
-                        <i class="glyphicon glyphicon-home"></i>{{model.publicUser.address}}
+                        <i class="glyphicon glyphicon-home"></i> {{model.publicUser.address}}
                             <br />
-                            <i class="glyphicon glyphicon-earphone"></i>{{model.publicUser.contact}}
+                            <i class="glyphicon glyphicon-earphone"></i> {{model.publicUser.contact}}
                         </p>
 
                         <a class="btn btn-primary btn-block"  ng-if="!(model.userId===model.profileId)"
@@ -99,7 +102,7 @@
             </div>
 
             <div class="col-xs-4 text-center">
-                <a href="#/user/{{model.userId}}/home/profile">
+                <a href="#/user/{{model.userId}}/profile">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>

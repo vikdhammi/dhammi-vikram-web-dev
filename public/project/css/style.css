@@ -212,3 +212,10 @@ div.custom-table.well{
 div.custom-search{
     padding-bottom: 10px;
 }
+
+img.logo-img.img-responsive{
+    vertical-align: middle;
+    display: block;
+    margin: 0 auto;
+    padding-top: 10px;
+}

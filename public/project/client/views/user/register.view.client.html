@@ -9,7 +9,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href=""><b>CRIC INFO</b></a>
+            <a class="navbar-brand" href=""><span class="fa fa-trophy"> </span><b> CRIC INFO </b></a>
+
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -86,6 +87,8 @@
  -->
             <div class="form-group">
             <label for="email">*Email</label>
+                <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
             <input ng-class="{true: 'error'}[submitted && registerForm.email.$error.required]"
                     class="form-control"
                    name="email"
@@ -95,6 +98,7 @@
                    required/>
             <span class="help-inline" ng-show="submitted && registerForm.email.$error.required">*Email is a Required field</span>
             </div>
+                </div>
 
             <div class="form-group">
             <label for="confirm-email">*Confirm Email</label>
