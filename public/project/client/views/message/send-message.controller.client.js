@@ -18,6 +18,7 @@
         }
         init();
         function sendMessage(title, message){
+            if(title && message){
             MessageService
                 .sendMessage(vm.userId,vm.receiverId, vm.user.username, title, message)
                 .then(function(response){
@@ -28,6 +29,10 @@
                         vm.alert = "Failed!";
                     }
                 );
+        }
+            else {
+                vm.alert = "Please enter title and content for your message";
+            }
         }
 
     }

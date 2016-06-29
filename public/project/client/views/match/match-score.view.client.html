@@ -48,12 +48,23 @@
                             <li><i class="fa fa-calendar"></i> {{model.pub | date:'short'}}</li>
                             <li><i class="fa fa-comments"></i> {{model.postedComments.length}} Comments</li>
                         </ul>
+                        <form name="commentForm" ng-app>
                   <textarea class="form-control"
+                            ng-class="{true: 'error'}[submitted && commentForm.name.$error.required]"
                             rows="3"
                             ng-model="name"
-                            placeholder="Add comments.."></textarea>
-                        <a ng-click ="model.addMatchComment(name)"
+                            placeholder="Add comments.."
+                            required></textarea>
+                            <!--<span class="help-inline" ng-show="submitted && commentForm.name.$error.required">*Name is a Required field</span>-->
+
+                        </form>
+                        <a ng-click ="model.addMatchComment(name); submitted=true; name=''"
                            class="btn btn-primary btn-block">Add Comment</a>
+                        <div class="container">
+                            <div ng-show="model.error" class="alert alert-danger" role="alert">
+                                {{model.error}}
+                            </div>
+                        </div>
                         <div class="container comments">
                             <div class="row">
                                 <div class="col-md-8">

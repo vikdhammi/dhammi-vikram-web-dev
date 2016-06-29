@@ -40,11 +40,12 @@
         {{model.alert}}
     </div>
 
-    <form name="pageForm">
+    <form name="pageForm" ng-app>
 
             <div class="control-group">
             <label for="name">Title</label>
             <input type="text"
+                   ng-class="{true: 'error'}[submitted && pageForm.title.$error.required]"
                    ng-model="title"
                    class="form-control"
                    id="title"
@@ -59,10 +60,14 @@
                    ng-model="message"
                    class="form-control"
                    id="message"
-                   placeholder="Type message..">
+                   name="message"
+                   placeholder="Type message.."
+                    required/>
+
+
 
         <a class="btn btn-primary btn-block"
-           ng-click ="model.sendMessage(title, message)"
+           ng-click ="model.sendMessage(title, message); submitted=true; title=''; message=''"
             role="button">
             <span class="fa fa-paper-plane"></span> Send Message</a>
         <a class="btn btn-danger btn-block"

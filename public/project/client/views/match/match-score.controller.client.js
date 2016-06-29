@@ -91,10 +91,12 @@
         }
 
         function addMatchComment(comment) {
+            if(comment){
             ScoreService
                 .addMatchComment(vm.matchId,vm.userId,vm.user.username, comment)
                 .then(
                     function(response){
+                        vm.error = null;
                         vm.comments = response.data;
                         console.log(vm.comments);
                        // $location.url("/user/"+vm.userId+"/home/schedule/"+vm.matchId);
@@ -102,6 +104,10 @@
                     }
                 );
             
+        }
+            else{
+                vm.error= "Please enter your comment!";
+            }
         }
 
         function findCommentsByMatchId() {

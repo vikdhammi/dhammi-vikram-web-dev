@@ -34,30 +34,61 @@
 </nav>
 
 <div class="container">
-    <div class="input-group">
-        <input ng-model="model.searchText"
-               type="text"
-               class="form-control"
-               placeholder="Find Users..">
-    <span class="input-group-btn">
-        <a ng-click="model.searchTeammates(model.searchText)"
-           class="btn btn-default"
-           type="button">
-            <span class="glyphicon glyphicon-search"></span>
-        </a>
-    </span>
-    </div>
-
-    <div ng-if="model.error"
-         class="alert alert-danger">
-        {{model.error}}
+    <div class="row">
+        <div class="col-md-12">
+            <h2 align="center">Find Users</h2>
+            <div id="custom-search-input">
+                <div class="input-group col-md-12 ">
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Bob"
+                           ng-model="model.searchText"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg"
+                                ng-click="model.searchTeammates(model.searchText); show=true"
+                                type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-<div class="well">
+
+<div class="custom-search container">
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+    <hggroup class="mb20" ng-if="model.searchText && show">
+        <h2 class="lead" align="center"><strong class="text-danger">{{model.users.length}}</strong> results were found.</h2>
+    </hggroup>
+    <p class="text-muted" ng-if="model.searchResults.length<1 && show">Try searching: Alice/ Bob/ Vikram</p>
+</div>
+<!--<div class="container">-->
+    <!--&lt;!&ndash;<div class="input-group">&ndash;&gt;-->
+        <!--&lt;!&ndash;<input ng-model="model.searchText"&ndash;&gt;-->
+               <!--&lt;!&ndash;type="text"&ndash;&gt;-->
+               <!--&lt;!&ndash;class="form-control"&ndash;&gt;-->
+               <!--&lt;!&ndash;placeholder="Find Users..">&ndash;&gt;-->
+    <!--&lt;!&ndash;<span class="input-group-btn">&ndash;&gt;-->
+        <!--&lt;!&ndash;<a ng-click="model.searchTeammates(model.searchText)"&ndash;&gt;-->
+           <!--&lt;!&ndash;class="btn btn-default"&ndash;&gt;-->
+           <!--&lt;!&ndash;type="button">&ndash;&gt;-->
+            <!--&lt;!&ndash;<span class="glyphicon glyphicon-search"></span>&ndash;&gt;-->
+        <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+    <!--<div ng-if="model.error"-->
+         <!--class="alert alert-danger">-->
+        <!--{{model.error}}-->
+    <!--</div>-->
+<!--</div>-->
+<div class="custom-table well">
     <table class="table">
         <thead>
         <tr>
-            <th>#</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Username</th>
@@ -66,17 +97,22 @@
         </thead>
         <tbody >
         <tr  ng-repeat="user in model.users">
-            <td>1</td>
             <td>{{user.firstName}}</td>
             <td>{{user.lastName}}</td>
+
             <td>
                 <a href="#/user/{{model.userId}}/home/userProfile/{{user._id}}" class="navbar-link">{{user.username}}</a>
-                <a ng-if="model.user.moderator===true"
-                        ng-click="model.deleteUser(user._id)"><i class="fa fa-user-times"></i></a>
+                <button class="btn btn-danger btn-xs"
+                   ng-if="model.user.moderator===true"
+                   ng-click="model.deleteUser(user._id)">
+                    <i class="fa fa-user-times"></i></button>
             </td>
             <td>
-                <a ng-if="model.user.moderator===true"
-                        ng-click="model.makeAdmin(user._id, user)"><i class="fa fa-user-secret"></i></a>
+
+                <button class="btn btn-info btn-xs"
+                   ng-if="model.user.moderator===true"
+                   ng-click="model.makeAdmin(user._id, user)">
+                    <i class="fa fa-user-secret"></i></button>
             </td>
         </tr>
 
@@ -87,7 +123,7 @@
 
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row navbar-text">
             <div class="col-xs-4 text-center">
                 <a href="#/user/{{model.userId}}/home/profile/search">

@@ -52,8 +52,13 @@
                           rows="3"
                           ng-model="name"
                           placeholder="Add comments.."></textarea>
-                    <a ng-click ="model.addNewsComment(name)"
+                    <a ng-click ="model.addNewsComment(name); submitted=true"
                        class="btn btn-primary btn-block">Add Comment</a>
+                    <div class="container" ng-if="submitted && !model.name">
+                        <div ng-show="model.error" class="alert alert-danger" role="alert">
+                            {{model.error}}
+                        </div>
+                    </div>
                     <div class="container comments">
                         <div class="row">
                             <div class="col-md-8">

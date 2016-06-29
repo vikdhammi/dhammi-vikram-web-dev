@@ -90,6 +90,7 @@
         }
 
         function addNewsComment(comment) {
+            if(comment){
             CommentService
                 .addNewsComment(vm.newsId,vm.userId,vm.user.username,comment)
                 .then(
@@ -99,6 +100,10 @@
                         init();
                     }
                 );
+        }
+            else{
+                vm.error = "Please enter your comment!";
+            }
         }
 
         function findCommentsByNewsId() {

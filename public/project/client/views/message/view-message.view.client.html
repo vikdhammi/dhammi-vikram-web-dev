@@ -53,12 +53,16 @@
                         <h6 class="media-heading user_name"> {{message.title}}</h6>
                         {{message.message}}
 
-                        <p> <small>Sent By: <a href="#/user/{{model.userId}}/home/userProfile/{{message.senderId}}/message">{{message.username}}
+                        <p> <small>Sent By: <a href="#/user/{{model.userId}}/home/userProfile/{{message.senderId}}">{{message.username}}
 
                         </a></small></p>
+                        <a class="btn btn-success btn-sm" role="button"
+                           href="#user/{{model.userId}}/home/userProfile/{{message.senderId}}/message">
+                            <span class="fa fa-reply" ></span> Reply</a>
                         <a class="btn btn-danger btn-sm" role="button"
                            ng-click="model.deleteMessage(message._id)">
                             <span class="fa fa-trash-o" ></span> Delete</a>
+
 
 
 
