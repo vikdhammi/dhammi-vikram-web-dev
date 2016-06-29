@@ -35,7 +35,7 @@
                    name="firstName"
                    ng-model="firstName"
                    type="text"
-                   placeholder="Michael"
+                   placeholder="Enter your First Name"
                    required/>
             <span class="help-inline" ng-show="submitted && registerForm.firstName.$error.required">*First Name is a Required field</span>
             </div>
@@ -46,7 +46,7 @@
                    name="lastName"
                    ng-model="lastName"
                    type="text"
-                   placeholder="Clarke"
+                   placeholder="Enter your Last Name"
                    required/>
             <span class="help-inline" ng-show="submitted && registerForm.lastName.$error.required">*Last Name is a Required field</span>
             </div>
@@ -58,7 +58,7 @@
                    name="username"
                    ng-model="username"
                    type="text"
-                   placeholder="mick17"
+                   placeholder="Enter your User Name"
                    required/>
             <span class="help-inline" ng-show="submitted && registerForm.username.$error.required">*Username is a Required field</span>
             </div>
@@ -94,7 +94,7 @@
                    name="email"
                    ng-model="email"
                    type="email"
-                   placeholder="jamesfrank@gmail.com"
+                   placeholder="Enter your Email"
                    required/>
             <span class="help-inline" ng-show="submitted && registerForm.email.$error.required">*Email is a Required field</span>
             </div>
@@ -107,7 +107,7 @@
                    name="confirm-Email"
                    ng-model="confirmemail"
                    type="email"
-                   placeholder="jamesfrank@gmail.com"
+                   placeholder="Confirm your Email"
                    required/>
             <span class="help-inline" ng-show="submitted && registerForm.confirm-email.$error.required">*Email is a Required field</span>
             </div>
@@ -119,7 +119,7 @@
                    ng-model="password"
                    name="password"
                    type="password"
-                   placeholder="password"
+                   placeholder="Enter your Password"
                    required/>
             <span class="help-inline" ng-show="submitted && registerForm.password.$error.required">*Password is a Required field</span>
             </div>
@@ -132,7 +132,7 @@
                    name="repassword"
                    id="confirm-password"
                    type="password"
-                   placeholder="verify password"
+                   placeholder="Confirm your Password"
                    required
                    compare-to="registerForm.password"/>
 
@@ -147,7 +147,7 @@
                    name="contact"
                    id="contact"
                    type="text"
-                   placeholder="6177857811"
+                   placeholder="Enter your Mobile No"
                    required/>
 
             <span class="help-inline" ng-show="submitted && registerForm.contact.$error.required">*Contact is a Required field</span>
@@ -162,7 +162,7 @@
                     id="address"
                     type="text"
                     rows="4"
-                    placeholder="102 Park Drive, Boston MA - 02115"
+                    placeholder="Enter your Address"
                     required>
 
             </textarea>

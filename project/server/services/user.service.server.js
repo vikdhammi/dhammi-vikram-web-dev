@@ -43,7 +43,7 @@ module.exports = function(app, models) {
             .findUserByUsername(username)
             .then(
                 function (user) {
-                    if(user && (password === user.password)){
+                    if(user && bcrypt.compareSync(password, user.password)){
                         done(null, user);    // allows request to go thru (success case)
                     }
                     else{
@@ -131,42 +131,38 @@ module.exports = function(app, models) {
             .then(
                 function(user) {
                     if(user){
-                        console.log(user);
-                        res.json(null);
-                       // res.statusCode(400).send("Username already in use");
-                       // return;
+                        res.sendStatus(400);
+                        return;
                     }
                     else{
-                        req.body.password = bcrypt.hashSync(user.password);
-                        return userModel
-                            .createUser(req.body);
+                        req.body.password = bcrypt.hashSync(req.body.password);
+                        userModel
+                            .createUser(req.body)
+                            .then(
+                                function(user){
+                                    if(user){
+                                        req.login(user, function(error){
+                                            if(error){
+                                                res.sendStatus(400);
+                                            } else{
+                                                res.json(user);
+                                            }
+                                        })
+                                    }
+                                },
+                                function(error){
+                                    res.sendStatus(400);
+                                }
+                            );
                     }
                 },
                 function(error){
-                    res.statusCode(400).send(error);
+                    res.sendStatus(400);
                 }
             )
-            .then(
-                function(user){
-                    if(user){
-                        req.login(user, function (err) {
-                            if(err){
-                                res.statusCode(400).send(err);
-                            }
-                            else{
-                                res.json(user);
-                            }
-                        });
-                    }
-                },
-                function(err){
-                    res.statusCode(400).send(err);
-                }
-            );
     }
-    
     function logout(req, res) {
-    //   req.logout();
+         req.logout();
        res.send(200);
     }
     function deleteUser(req, res) {

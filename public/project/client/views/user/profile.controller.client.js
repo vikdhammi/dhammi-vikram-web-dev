@@ -7,7 +7,8 @@
     function ProfileController($routeParams, $location, UserService, $rootScope){
          var vm = this;
 
-         vm.userId = $rootScope.currentUser._id;
+         var userId = $rootScope.currentUser._id;
+        vm.id = $rootScope.currentUser._id;
         console.log($rootScope.currentUser);
          vm.updateUser = updateUser;
          vm.unregister = unregister;
@@ -19,7 +20,7 @@
 
         function init(){
             UserService
-                .findUserById(vm.userId)
+                .findUserById(userId)
                 .then(function(response){
                     vm.user = response.data;
                     console.log(vm.user);
@@ -28,12 +29,12 @@
          init();
 
         function navigateUrl(){
-            $location.url("/user/"+vm.userId);
+            $location.url("/user/"+userId);
         }
 
         function unregister(){
             UserService
-                .deleteUser(vm.userId)
+                .deleteUser(userId)
                 .then(
                     function() {
                         $location.url("/login");
@@ -45,7 +46,7 @@
         }
          function updateUser(newUser){
              UserService
-                 .updateUser(vm.userId, newUser)
+                 .updateUser(userId, newUser)
                  .then(
                      function(response){
                          vm.success = "Successfully updated";
@@ -62,9 +63,11 @@
                 .logout()
                 .then(
                     function(response){
+                        $rootScope.currentUser = null;
                         $location.url("/login");
                     },
                     function(){
+                        $rootScope.currentUser = null;
                         $location.url("/login");
                     }
                 )

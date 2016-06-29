@@ -18,7 +18,7 @@
                             console.log(response.data);
                             var user = response.data;
                             if (user) {
-                                $location.url("/user/" + user._id + "/home");
+                                $location.url("/user/" + user._id + "/profile");
                             }
                             else {
                                 vm.error = "User not found";

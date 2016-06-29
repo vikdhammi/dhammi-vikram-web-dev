@@ -103,16 +103,62 @@
             <td>
                 <a href="#/user/{{model.userId}}/home/userProfile/{{user._id}}" class="navbar-link">{{user.username}}</a>
                 <button class="btn btn-danger btn-xs"
+                        data-toggle="modal" data-target="#delModal"
                    ng-if="model.user.moderator===true"
-                   ng-click="model.deleteUser(user._id)">
+                   >
                     <i class="fa fa-user-times"></i></button>
+                <div class="modal"  id="delModal" tabindex="-1" role="dialog" aria-labelledby="delModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title" id="delModalLabel"><b>Confirmation</b></h4>
+                            </div>
+                            <div class="modal-body">
+                                <strong>You sure you want to delete {{user.username}}?</strong>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button class="btn btn-primary"
+                                        ng-click="model.deleteUser(user._id)">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </td>
+
+
             <td>
 
                 <button class="btn btn-info btn-xs"
-                   ng-if="model.user.moderator===true"
-                   ng-click="model.makeAdmin(user._id, user)">
+                        data-toggle="modal" data-target="#myModal"
+                        ng-if="model.user.moderator===true">
+                   <!--ng-click="model.makeAdmin(user._id, user)">-->
                     <i class="fa fa-user-secret"></i></button>
+                <div class="modal"  id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel"><b>Confirmation</b></h4>
+                            </div>
+                            <div class="modal-body">
+                                <strong>Click Yes to make {{user.username}} an Admin!</strong>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button class="btn btn-primary"
+                                    ng-click="model.makeAdmin(user._id, user)">Yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </td>
         </tr>
 

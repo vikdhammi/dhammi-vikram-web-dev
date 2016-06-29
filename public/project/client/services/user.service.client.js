@@ -41,10 +41,15 @@
             return $http.post("/api/project/login", user);
         }
 
-        function register(username, password){
+        function register(firstName, lastName,username, password,email, contact, address){
             var user = {
+                firstName: firstName,
+                lastName: lastName,
                 username: username,
-                password: password
+                password: password,
+                email: email,
+                contact: contact,
+                address: address
             };
             return $http.post("/api/project/register", user);
         }
