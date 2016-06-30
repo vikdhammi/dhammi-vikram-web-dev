@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href=""><b>CRIC INFO</b></a>
+            <a class="navbar-brand" href=""><span class="fa fa-wpforms"></span><b> CRIC INFO</b></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -59,7 +59,8 @@
 
                         </form>
                         <a ng-click ="model.addMatchComment(name); submitted=true; name=''"
-                           class="btn btn-primary btn-block">Add Comment</a>
+                           class="btn btn-primary btn-block">
+                            <span class="fa fa-pencil"></span> Add Comment</a>
                         <div class="container">
                             <div ng-show="model.error" class="alert alert-danger" role="alert">
                                 {{model.error}}

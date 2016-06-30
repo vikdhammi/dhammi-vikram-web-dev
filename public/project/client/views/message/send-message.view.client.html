@@ -44,6 +44,8 @@
 
             <div class="control-group">
             <label for="name">Title</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-comment fa" aria-hidden="true"></i></span>
             <input type="text"
                    ng-class="{true: 'error'}[submitted && pageForm.title.$error.required]"
                    ng-model="title"
@@ -52,10 +54,12 @@
                    name="title"
                    placeholder="Message Title"
                     required/>
-
+            </div>
                 </div>
 
             <label for="message">Message</label>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-commenting fa" aria-hidden="true"></i></span>
             <input type="text"
                    ng-model="message"
                    class="form-control"
@@ -64,7 +68,7 @@
                    placeholder="Type message.."
                     required/>
 
-
+        </div>
 
         <a class="btn btn-primary btn-block"
            ng-click ="model.sendMessage(title, message); submitted=true; title=''; message=''"
@@ -72,7 +76,7 @@
             <span class="fa fa-paper-plane"></span> Send Message</a>
         <a class="btn btn-danger btn-block"
            href="#/user/{{model.userId}}/home/schedule" role="button">
-            Cancel</a>
+        <span class="fa fa-times fa"></span> Cancel</a>
 
 
     </form>

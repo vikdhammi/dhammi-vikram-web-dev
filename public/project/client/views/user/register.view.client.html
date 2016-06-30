@@ -30,148 +30,169 @@
     <form name="registerForm" ng-app>
         <div class="form-group">
             <label for="firstname">*First Name</label>
-            <input ng-class="{true: 'error'}[submitted && registerForm.firstName.$error.required]"
-                    class="form-control"
-                   name="firstName"
-                   ng-model="firstName"
-                   type="text"
-                   placeholder="Enter your First Name"
-                   required/>
-            <span class="help-inline" ng-show="submitted && registerForm.firstName.$error.required">*First Name is a Required field</span>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                <input ng-class="{true: 'error'}[submitted && registerForm.firstName.$error.required]"
+                       class="form-control"
+                       name="firstName"
+                       ng-model="firstName"
+                       type="text"
+                       placeholder="Enter your First Name"
+                       required/>
             </div>
-            <div class="form-group">
+                <span class="help-inline" ng-show="submitted && registerForm.firstName.$error.required">*First Name is a Required field</span>
+        </div>
+        <div class="form-group">
             <label for="lastname">*Last Name</label>
-            <input ng-class="{true: 'error'}[submitted && registerForm.lastName.$error.required]"
-                    class="form-control"
-                   name="lastName"
-                   ng-model="lastName"
-                   type="text"
-                   placeholder="Enter your Last Name"
-                   required/>
-            <span class="help-inline" ng-show="submitted && registerForm.lastName.$error.required">*Last Name is a Required field</span>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                <input ng-class="{true: 'error'}[submitted && registerForm.lastName.$error.required]"
+                       class="form-control"
+                       name="lastName"
+                       ng-model="lastName"
+                       type="text"
+                       placeholder="Enter your Last Name"
+                       required/>
             </div>
+                <span class="help-inline" ng-show="submitted && registerForm.lastName.$error.required">*Last Name is a Required field</span>
 
-            <div class="form-group">
+        </div>
+
+        <div class="form-group">
             <label for="username">*Username</label>
-            <input ng-class="{true: 'error'}[submitted && registerForm.username.$error.required]"
-                    class="form-control"
-                   name="username"
-                   ng-model="username"
-                   type="text"
-                   placeholder="Enter your User Name"
-                   required/>
-            <span class="help-inline" ng-show="submitted && registerForm.username.$error.required">*Username is a Required field</span>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                <input ng-class="{true: 'error'}[submitted && registerForm.username.$error.required]"
+                       class="form-control"
+                       name="username"
+                       ng-model="username"
+                       type="text"
+                       placeholder="Enter your User Name"
+                       required/>
             </div>
-            <!-- <div class="dropdown">
-                 <button class="btn btn-default dropdown-toggle"
-                         type="button"
-                         id="dropdownMenu1"
-                         name="gender"
-                         data-toggle="dropdown"
-                         aria-haspopup="true"
-                         aria-expanded="true"
-                         required
-                         ng-model="gender">
-                    *Gender
-                     <span class="caret"></span>
-                 </button>
-                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                     <li><a href="#">Gender</a></li>
-                     <li><a href="#">Male</a></li>
-                     <li><a href="#">Female</a></li>
-                     <li role="separator" class="divider"></li>
-                     <li><a href="#">Separated link</a></li>
-                 </ul>
-                 <span class="help-inline" ng-show="submitted && registerForm.gender.$error.required">*Gender is a Required field</span>
-             </div>
- -->
-            <div class="form-group">
+                <span class="help-inline" ng-show="submitted && registerForm.username.$error.required">*Username is a Required field</span>
+        </div>
+        <!-- <div class="dropdown">
+             <button class="btn btn-default dropdown-toggle"
+                     type="button"
+                     id="dropdownMenu1"
+                     name="gender"
+                     data-toggle="dropdown"
+                     aria-haspopup="true"
+                     aria-expanded="true"
+                     required
+                     ng-model="gender">
+                *Gender
+                 <span class="caret"></span>
+             </button>
+             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                 <li><a href="#">Gender</a></li>
+                 <li><a href="#">Male</a></li>
+                 <li><a href="#">Female</a></li>
+                 <li role="separator" class="divider"></li>
+                 <li><a href="#">Separated link</a></li>
+             </ul>
+             <span class="help-inline" ng-show="submitted && registerForm.gender.$error.required">*Gender is a Required field</span>
+         </div>
+-->
+        <div class="form-group">
             <label for="email">*Email</label>
-                <div class="input-group">
+            <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-            <input ng-class="{true: 'error'}[submitted && registerForm.email.$error.required]"
-                    class="form-control"
-                   name="email"
-                   ng-model="email"
-                   type="email"
-                   placeholder="Enter your Email"
-                   required/>
-            <span class="help-inline" ng-show="submitted && registerForm.email.$error.required">*Email is a Required field</span>
+                <input ng-class="{true: 'error'}[submitted && registerForm.email.$error.required]"
+                       class="form-control"
+                       name="email"
+                       ng-model="email"
+                       type="email"
+                       placeholder="Enter your Email"
+                       required/>
             </div>
-                </div>
+                <span class="help-inline" ng-show="submitted && registerForm.email.$error.required">*Email is a Required field</span>
+        </div>
 
-            <div class="form-group">
+        <div class="form-group">
             <label for="confirm-email">*Confirm Email</label>
-            <input ng-class="{true: 'error'}[submitted && registerForm.confirm-email.$error.required]"
-                    class="form-control"
-                   name="confirm-Email"
-                   ng-model="confirmemail"
-                   type="email"
-                   placeholder="Confirm your Email"
-                   required/>
-            <span class="help-inline" ng-show="submitted && registerForm.confirm-email.$error.required">*Email is a Required field</span>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                <input ng-class="{true: 'error'}[submitted && registerForm.confirm-email.$error.required]"
+                       class="form-control"
+                       name="confirm-Email"
+                       ng-model="confirmemail"
+                       type="email"
+                       placeholder="Confirm your Email"
+                       required/>
             </div>
+                <span class="help-inline" ng-show="submitted && registerForm.confirm-email.$error.required">*Email is a Required field</span>
+        </div>
 
-            <div class="form-group">
+        <div class="form-group">
             <label for="password">*Password</label>
-            <input ng-class="{true: 'error'}[submitted && registerForm.password.$error.required]"
-                    class="form-control"
-                   ng-model="password"
-                   name="password"
-                   type="password"
-                   placeholder="Enter your Password"
-                   required/>
-            <span class="help-inline" ng-show="submitted && registerForm.password.$error.required">*Password is a Required field</span>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+                <input ng-class="{true: 'error'}[submitted && registerForm.password.$error.required]"
+                       class="form-control"
+                       ng-model="password"
+                       name="password"
+                       type="password"
+                       placeholder="Enter your Password"
+                       required/>
+            </div>
+                <span class="help-inline" ng-show="submitted && registerForm.password.$error.required">*Password is a Required field</span>
             </div>
 
-            <div class="form-group">
+        <div class="form-group">
             <label for="confirm-password">*Confirm Password</label>
-            <input ng-class="{true: 'error'}[submitted && registerForm.repassword.$error.required]"
-                    class="form-control"
-                   ng-model="repassword"
-                   name="repassword"
-                   id="confirm-password"
-                   type="password"
-                   placeholder="Confirm your Password"
-                   required
-                   compare-to="registerForm.password"/>
-
-            <span class="help-inline" ng-show="submitted && registerForm.repassword.$error.required">*Password is a Required field</span>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+                <input ng-class="{true: 'error'}[submitted && registerForm.repassword.$error.required]"
+                       class="form-control"
+                       ng-model="repassword"
+                       name="repassword"
+                       id="confirm-password"
+                       type="password"
+                       placeholder="Confirm your Password"
+                       required
+                       compare-to="registerForm.password"/>
             </div>
+                <span class="help-inline" ng-show="submitted && registerForm.repassword.$error.required">*Password is a Required field</span>
 
-            <div class="form-group">
+        </div>
+
+        <div class="form-group">
             <label for="contact">*Contact Number</label>
-            <input ng-class="{true: 'error'}[submitted && registerForm.contact.$error.required]"
-                    class="form-control"
-                   ng-model="contact"
-                   name="contact"
-                   id="contact"
-                   type="text"
-                   placeholder="Enter your Mobile No"
-                   required/>
-
-            <span class="help-inline" ng-show="submitted && registerForm.contact.$error.required">*Contact is a Required field</span>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-phone" aria-hidden="true"></i></span>
+                <input ng-class="{true: 'error'}[submitted && registerForm.contact.$error.required]"
+                       class="form-control"
+                       ng-model="contact"
+                       name="contact"
+                       id="contact"
+                       type="text"
+                       placeholder="Enter your Mobile No"
+                       required/>
+            </div>
+                <span class="help-inline" ng-show="submitted && registerForm.contact.$error.required">*Contact is a Required field</span>
             </div>
 
-            <div class="form-group">
+        <div class="form-group">
             <label for="address">*Address</label>
             <textarea ng-class="{true: 'error'}[submitted && registerForm.address.$error.required]"
-                    class="form-control"
-                    ng-model="address"
-                    name="address"
-                    id="address"
-                    type="text"
-                    rows="4"
-                    placeholder="Enter your Address"
-                    required>
+                      class="form-control"
+                      ng-model="address"
+                      name="address"
+                      id="address"
+                      type="text"
+                      rows="4"
+                      placeholder="Enter your Address"
+                      required>
 
             </textarea>
 
-            <span class="help-inline" ng-show="submitted && registerForm.address.$error.required">*Address is a Required field</span>
+                <span class="help-inline" ng-show="submitted && registerForm.address.$error.required">*Address is a Required field</span>
             </div>
-            <div ng-show="model.error" class="alert alert-danger" role="alert">
-                {{model.error}}
-            </div>
+        <div ng-show="model.error" class="alert alert-danger" role="alert">
+            {{model.error}}
+        </div>
 
 
         <a class="btn btn-primary btn-block"
