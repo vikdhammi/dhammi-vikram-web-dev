@@ -97,6 +97,11 @@
                 controller: "CricketMatchScheduleController",
                 controllerAs: "model"
             })
+            .when("/user/:userId/team", {
+                templateUrl: "client/views/team/team.view.client.html",
+                controller: "TeamController",
+                controllerAs: "model"
+            })
             .when("/user/:userId/home/news", {
                 templateUrl: "client/views/user/cricket-news.view.client.html",
                 controller: "CricketNewsController",

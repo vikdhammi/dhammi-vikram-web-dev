@@ -10,6 +10,8 @@ module.exports = function(app){
     
     var messageService = require("./server/services/message.service.server")(app, models);
 
+    var teamService = require("./server/services/team.service.server")(app, models);
+
     
     
 };

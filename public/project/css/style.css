@@ -219,3 +219,7 @@ img.logo-img.img-responsive{
     margin: 0 auto;
     padding-top: 10px;
 }
+
+ul.list-group#contact-list{
+    padding-top: 10px;
+}

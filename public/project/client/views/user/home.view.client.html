@@ -26,6 +26,9 @@
                     <a ng-if="model.userId" href="#/user/{{model.userId}}/search">Search Matches</a>
                 </li>
                 <li>
+                    <a ng-if="model.userId" href="#/user/{{model.userId}}/team">View Teams</a>
+                </li>
+                <li>
                     <a ng-if="!model.userId" href="#/login">Login/Sign Up</a>
                 </li>
             </ul>
